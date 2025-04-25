@@ -1,6 +1,14 @@
 # PortfolioSite
 Main website for Portfolio
 
+Attributes and sources:
+
+Space wallpaper: https://opengameart.org/content/seamless-space-backgrounds
+Icons:  https://www.svgrepo.com
+        https://icons8.com/icon/jShwZ2RCyPSO/phone
+Logo:   https://www.flaticon.com/free-icon/circle_11068138
+
+
 Desktop:
     W: 1920
     H: 1080
