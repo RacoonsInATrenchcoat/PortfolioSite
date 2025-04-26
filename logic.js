@@ -67,6 +67,7 @@ const syncPairs = [
     ['AboutMeContainer', 'Background_AboutMe'],
     ['ProjectsContainer', 'Background_Projects'],
     ['ContactContainer', 'Background_Contact'],
+    ['LeftSide', 'Background_Container']
 ];
 
 // Map them to actual elements
@@ -82,8 +83,16 @@ function syncBtoA() {
     syncElements.forEach(({ source, target }) => {
       if (source && target) {
         const height = source.getBoundingClientRect().height + (GapValue * 4 ) + 'px';
+        if (target.id != "Background_Container") {
         target.style.height = height;
-        target.style.marginLeft = GapValue + 'px';
+
+        }
+
+        //Extra to ensure backgrounds are aligned with the leftSide's gap
+        if (target.id == "Background_Container") {
+          const leftSideWidth = source.getBoundingClientRect().width + 'px';
+          target.style.marginLeft = leftSideWidth;
+        }
       }
     });
   }

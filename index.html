@@ -36,36 +36,44 @@
     </div>
     <div class="Body">
 
-        <div class="Background_Container">
+        <div class="Background_Container" id="Background_Container">
             <div class="Background_Body">
                 <div class="Background_Landing" id="Background_Landing">
 
                 </div>
                 <div class="Background_AboutMe" id="Background_AboutMe">
                     <!-- Dots and locations compared to container -->
-                    <!-- X is horizontal, Y is vertical-->
+                    <!-- X is horizontal >, Y is vertical ^          -->
                     <div class="dot" style="--x: 1%; --y: 1%;"></div> <!-- 0 -->
-                    <div class="dot" style="--x: 100%; --y: 100%;"></div> <!-- 1 -->
+                    <div class="dot" style="--x: -10%; --y: -10%;"></div> <!-- 1 -->
 
-                    <div class="dot" style="--x: 80%; --y: 5%;"></div> <!-- 2 -->
-                    <div class="dot" style="--x: 90%; --y: 15%;"></div> <!-- 3 -->
-                    <div class="dot" style="--x: 70%; --y: 25%;"></div> <!-- 4 -->
+                    <div class="dot" style="--x: 80%; --y: -5%;"></div> <!-- 2 -->
+                    <div class="dot" style="--x: 90%; --y: 5%;"></div> <!-- 3 -->
+                    <div class="dot" style="--x: 70%; --y: 15%;"></div> <!-- 4 -->
 
-                    <div class="dot" style="--x: 45%; --y: 5%;"></div> <!-- 5 -->
-                    <div class="dot" style="--x: 50%; --y: 10%;"></div> <!-- 6 -->
-                    <div class="dot" style="--x: 55%; --y: 15%;"></div> <!-- 7 -->
-                    <div class="dot" style="--x: 60%; --y: 12%;"></div> <!-- 8 -->
+                    <div class="dot" style="--x: 35%; --y: -5%;"></div> <!-- 5 -->
+                    <div class="dot" style="--x: 40%; --y: 0%;"></div> <!-- 6 -->
+                    <div class="dot" style="--x: 45%; --y: 5%;"></div> <!-- 7 -->
+                    <div class="dot" style="--x: 55%; --y: -2%;"></div> <!-- 8 -->
 
-                    <div class="dot" style="--x: 90%; --y: 30%;"></div> <!-- 9 -->
-                    <div class="dot" style="--x: 92%; --y: 35%;"></div> <!-- 10 -->
-                    <div class="dot" style="--x: 92%; --y: 42%;"></div> <!-- 11 -->
-                    <div class="dot" style="--x: 90%; --y: 47%;"></div> <!-- 12 -->
-                    <div class="dot" style="--x: 88%; --y: 42%;"></div> <!-- 13 -->
-                    <div class="dot" style="--x: 88%; --y: 35%;"></div> <!-- 14 -->
+                    <div class="dot" style="--x: 110%; --y: 30%;"></div> <!-- 9 -->
+                    <div class="dot" style="--x: 115%; --y: 35%;"></div> <!-- 10 -->
+                    <div class="dot" style="--x: 115%; --y: 42%;"></div> <!-- 11 -->
+                    <div class="dot" style="--x: 110%; --y: 47%;"></div> <!-- 12 -->
+                    <div class="dot" style="--x: 105%; --y: 42%;"></div> <!-- 13 -->
+                    <div class="dot" style="--x: 105%; --y: 35%;"></div> <!-- 14 -->
 
-                    <div class="dot" style="--x: 85%; --y: 60%;"></div> <!-- 15 -->
-                    <div class="dot" style="--x: 88%; --y: 65%;"></div> <!-- 16 -->
-                    <div class="dot" style="--x: 90%; --y: 84%;"></div> <!-- 17 -->
+                    <div class="dot" style="--x: 85%; --y: 55%;"></div> <!-- 15 -->
+                    <div class="dot" style="--x: 108%; --y: 65%;"></div> <!-- 16 -->
+                    <div class="dot" style="--x: 120%; --y: 84%;"></div> <!-- 17 -->
+
+                    <div class="dot" style="--x: 15%; --y: 90%;"></div>  <!-- 18 -->
+                    <div class="dot" style="--x: 35%; --y: 80%;"></div> <!-- 19 -->
+                    <div class="dot" style="--x: 50%; --y: 95%;"></div> <!-- 20 -->
+                    <div class="dot" style="--x: 55%; --y: 88%;"></div><!-- 21 -->
+                    <div class="dot" style="--x: 58%; --y: 85%;"></div><!-- 22 -->
+
+
 
                     <!-- Line between dot 1 and 2 -->
                     <div class="line" data-from="0" data-to="1"></div>
@@ -88,6 +96,11 @@
                     <div class="line" data-from="15" data-to="16"></div>
                     <div class="line" data-from="16" data-to="17"></div>
 
+                    <div class="line" data-from="18" data-to="19"></div>
+                    <div class="line" data-from="19" data-to="20"></div>
+                    <div class="line" data-from="20" data-to="21"></div>
+                    <div class="line" data-from="21" data-to="22"></div>
+
                 </div>
                 <div class="Background_Projects" id="Background_Projects">
                     test
@@ -107,7 +120,7 @@
         </div>
 
         <div class="BodyContainer">
-            <div class="LeftSide">
+            <div class="LeftSide" id="LeftSide">
                 <div class="LeftEmpty"></div>
                 <div class="Arrows">Arrows</div>
                 <div class="RightEmpty"></div>
