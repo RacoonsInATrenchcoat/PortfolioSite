@@ -1,46 +1,88 @@
 //Logic for calculating the position of Dots and drawing Lines between them
+const containers = document.querySelectorAll('.dot-container');
 
-const container = document.getElementById('Background_AboutMe');
-const dots = Array.from(container.querySelectorAll('.dot'));
-const lines = container.querySelectorAll('.line');
+// --- Helper: Create a curved SVG path
+function createCurve(svg, x1, y1, x2, y2, x3, y3) {
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", `M ${x1},${y1} Q ${x2},${y2} ${x3},${y3}`);
+  path.setAttribute("class", "curve");
+  svg.appendChild(path);
+}
 
+// --- Helper: Create a straight line (div)
+function createStraightLine(line, x1, y1, x3, y3) {
+  const dx = x3 - x1;
+  const dy = y3 - y1;
+  const length = Math.sqrt(dx * dx + dy * dy);
+  const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+  line.style.left = `${x1}px`;
+  line.style.top = `${y1}px`;
+  line.style.width = `${length}px`;
+  line.style.transform = `rotate(${angle}deg)`;
+}
+
+// --- Main update function
 function updateLines() {
-    //Gets the Container's absolute position and size
+  containers.forEach(container => {
+    const dots = Array.from(container.querySelectorAll('.dot'));
+    const lines = container.querySelectorAll('.line');
+    
+    let svg = container.querySelector('.line-svg');
+
+    if (!svg) {
+      svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("class", "line-svg");
+      svg.style.position = "absolute";
+      svg.style.top = "0";
+      svg.style.left = "0";
+      svg.style.width = "100%";
+      svg.style.height = "100%";
+      svg.style.overflow = "visible";
+      svg.style.pointerEvents = "none";
+      container.appendChild(svg);
+    } else {
+      svg.innerHTML = '';
+    }
+
     const containerRect = container.getBoundingClientRect();
 
     lines.forEach(line => {
+      const fromIndex = +line.dataset.from;
+      const toIndex = +line.dataset.to;
+      const viaIndex = line.dataset.via !== undefined ? +line.dataset.via : null;
 
-        //Gets the data for each line's connection from the HTML "data-from="0" data-to="1""
-        const fromIndex = +line.dataset.from;
-        const toIndex = +line.dataset.to;
+      const dotA = dots[fromIndex].getBoundingClientRect();
+      const dotC = dots[toIndex].getBoundingClientRect();
+      
+      const x1 = dotA.left + dotA.width / 2 - containerRect.left;
+      const y1 = dotA.top + dotA.height / 2 - containerRect.top;
+      const x3 = dotC.left + dotC.width / 2 - containerRect.left;
+      const y3 = dotC.top + dotC.height / 2 - containerRect.top;
 
-        //Gets the on-screen position of each dot
-        const dotA = dots[fromIndex].getBoundingClientRect();
-        const dotB = dots[toIndex].getBoundingClientRect();
+      // If there's a "via" point, hide that dot by setting display: none
+      if (viaIndex !== null) {
+        const dotB = dots[viaIndex];
+        dotB.style.visibility = "hidden"; // Hide the via point
 
-        //Gets X/Y coordinate of each dot, by checking distance then minus the container's 0 (topleft) point.
-        const x1 = dotA.left + dotA.width / 2 - containerRect.left;
-        const y1 = dotA.top + dotA.height / 2 - containerRect.top;
-        const x2 = dotB.left + dotB.width / 2 - containerRect.left;
-        const y2 = dotB.top + dotB.height / 2 - containerRect.top;
+        const dotBRect = dotB.getBoundingClientRect();
+        const x2 = dotBRect.left + dotBRect.width / 2 - containerRect.left;
+        const y2 = dotBRect.top + dotBRect.height / 2 - containerRect.top;
 
-        //Difference between dots gets the length and angle for the line
-        const dx = x2 - x1;
-        const dy = y2 - y1;
-        const length = Math.sqrt(dx * dx + dy * dy);
-        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-
-        //Adds the above details (position, length, angle) for the line
-        //Overwrites the original CSS details via "transform" values
-        line.style.left = `${x1}px`;
-        line.style.top = `${y1}px`;
-        line.style.width = `${length}px`;
-        line.style.transform = `rotate(${angle}deg)`;
+        createCurve(svg, x1, y1, x2, y2, x3, y3);
+        line.style.display = 'none'; // Hide dummy div line
+      } else {
+        createStraightLine(line, x1, y1, x3, y3);
+      }
     });
+  });
 }
 
+
 // Initial render
-window.addEventListener('load', updateLines);
+window.addEventListener('load', () => {
+  setTimeout(updateLines, 10); // 50ms to ensure all other stuff loads, was unreliable
+});
 // Optional (Container is fixed currently): update on resize
 window.addEventListener('resize', updateLines);
 
@@ -63,49 +105,49 @@ const GapValue = parseFloat(rootStyles.getPropertyValue('--grid-Gap').trim());
 
 // Define pairs of [sourceId, targetId]
 const syncPairs = [
-    ['LandingContainer','Background_Landing'],
-    ['AboutMeContainer', 'Background_AboutMe'],
-    ['ProjectsContainer', 'Background_Projects'],
-    ['ContactContainer', 'Background_Contact'],
-    ['LeftSide', 'Background_Container']
+  ['LandingContainer', 'Background_Landing'],
+  ['AboutMeContainer', 'Background_AboutMe'],
+  ['ProjectsContainer', 'Background_Projects'],
+  ['ContactContainer', 'Background_Contact'],
+  ['LeftSide', 'Background_Container']
 ];
 
 // Map them to actual elements
 const syncElements = syncPairs.map(([sourceId, targetId]) => {
-    return {
-        source: document.getElementById(sourceId),
-        target: document.getElementById(targetId)
-    };
+  return {
+    source: document.getElementById(sourceId),
+    target: document.getElementById(targetId)
+  };
 });
 
 //Get and sync the data
 function syncBtoA() {
-    syncElements.forEach(({ source, target }) => {
-      if (source && target) {
-        const height = source.getBoundingClientRect().height + (GapValue * 4 ) + 'px';
-        if (target.id != "Background_Container") {
+  syncElements.forEach(({ source, target }) => {
+    if (source && target) {
+      const height = source.getBoundingClientRect().height + (GapValue * 4) + 'px';
+      if (target.id != "Background_Container") {
         target.style.height = height;
 
-        }
-
-        //Extra to ensure backgrounds are aligned with the leftSide's gap
-        if (target.id == "Background_Container") {
-          const leftSideWidth = source.getBoundingClientRect().width + 'px';
-          target.style.marginLeft = leftSideWidth;
-        }
       }
-    });
-  }
+
+      //Extra to ensure backgrounds are aligned with the leftSide's gap
+      if (target.id == "Background_Container") {
+        const leftSideWidth = source.getBoundingClientRect().width + 'px';
+        target.style.marginLeft = leftSideWidth;
+      }
+    }
+  });
+}
 
 // observe A for any size changes
 if (window.ResizeObserver) {
-    const observer = new ResizeObserver(syncBtoA);
-    syncElements.forEach(({ source }) => {
-      if (source) observer.observe(source);
-    });
-  } else {
-    // fallback: just sync on load and window resize
-    window.addEventListener('resize', syncBtoA);
+  const observer = new ResizeObserver(syncBtoA);
+  syncElements.forEach(({ source }) => {
+    if (source) observer.observe(source);
+  });
+} else {
+  // fallback: just sync on load and window resize
+  window.addEventListener('resize', syncBtoA);
 }
 
 // initial load to sync
@@ -135,7 +177,7 @@ function generateStars(layerSelector, count) {
   for (let i = 0; i < count; i++) {
     const star = document.createElement('div');
     star.classList.add('star');
-    star.style.top = `${Math.random() * 100}%`; 
+    star.style.top = `${Math.random() * 100}%`;
     star.style.left = `${Math.random() * 200 - 50}%`;
     star.style.width = `${Math.random() * 2 + 1}px`; // random size 1-3px, needs +1 to be not 0
     star.style.height = star.style.width;
