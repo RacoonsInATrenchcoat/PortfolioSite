@@ -113,10 +113,20 @@ window.addEventListener('load', syncBtoA);
 
 
 //Parallax effect for the background. Slower number  = less movement per scroll.
+// Speed configuration for each layer
+const layers = [
+  { selector: '.Parallax1', speed: 0.2 },
+  { selector: '.Parallax2', speed: 0.5 },
+  { selector: '.Parallax3', speed: 0.8 }
+];
 
-
-
-
+// Fallback function (kept for reference; not used when looped version is active)
+function updateParallax() {
+  const scrolled = window.scrollY;
+  document.querySelector('.Parallax1').style.transform = `translateY(${scrolled * 0.2}px)`;
+  document.querySelector('.Parallax2').style.transform = `translateY(${scrolled * 0.5}px)`;
+  document.querySelector('.Parallax3').style.transform = `translateY(${scrolled * 0.8}px)`;
+}
 
 //Randomise the star locations for Parralax Background
 
@@ -132,7 +142,45 @@ function generateStars(layerSelector, count) {
     layer.appendChild(star);
   }
 }
+// Core looping update: moves original and its clone based on scroll
+function updateParallaxLooped() {
+  const scrollY = window.scrollY;
+  const viewportHeight = window.innerHeight;
+  layers.forEach(({ selector, speed }) => {
+    const offset = (scrollY * speed) % viewportHeight;
+    const original = document.querySelector(selector);
+    const clone = document.querySelector(`${selector}.clone`);
 
-generateStars('.Parallax1', 100);
-generateStars('.Parallax2', 80);
-generateStars('.Parallax3', 60);
+    // Position the primary and cloned layer
+    original.style.transform = `translateY(${offset}px)`;
+    clone.style.transform = `translateY(${offset - viewportHeight}px)`;
+  });
+}
+
+// Initialization on load
+window.addEventListener('load', () => {
+  // Preserve initial zero-offset for any CSS-based fallback
+  document.querySelector('.Parallax1').style.transform = 'translateY(0)';
+  document.querySelector('.Parallax2').style.transform = 'translateY(0)';
+  document.querySelector('.Parallax3').style.transform = 'translateY(0)';
+
+  // Generate stars for each layer
+  generateStars('.Parallax1', 100);
+  generateStars('.Parallax2', 80);
+  generateStars('.Parallax3', 60);
+
+  // Create and append clones for looping
+  layers.forEach(({ selector }) => {
+    const original = document.querySelector(selector);
+    const clone = original.cloneNode(true);
+    clone.classList.add('clone');
+    original.parentNode.appendChild(clone);
+  });
+
+  // Initial positioning and scroll listener for looped effect
+  updateParallaxLooped();
+  window.addEventListener('scroll', updateParallaxLooped);
+
+  // Optional fallback listener (commented out)
+  // window.addEventListener('scroll', updateParallax);
+});
