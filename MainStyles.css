@@ -4,7 +4,6 @@
     font-style: normal;
     color: white;
 
-    background-image: url(/Assets/Purple\ Nebula\ 2.png);
 
     --grid-Margin: 32px;
     --grid-Gap: 32px;
@@ -168,6 +167,8 @@ body {
         /*Body*/
         100px;
     /*Footer*/
+    background-color: black;
+    position: relative;
 }
 
 .Header {
@@ -176,7 +177,7 @@ body {
     grid-template-rows: auto;
     justify-content: space-between;
     /*Horizontal align*/
-    background-color: rgba(128, 128, 128, 0.2);
+    background-color: rgba(128, 128, 128, 0.5);
 }
 
 .Header_Menu {
@@ -210,7 +211,45 @@ body {
     display: grid;
 }
 
-.Body {}
+.Parallax_Container{
+    height: 100%;
+    width: 1280px;
+    position: fixed;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.Parallax1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.Parallax2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.Parallax3{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.star{
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    width: 2px;
+    height: 2px;
+}
 
 .Background_Landing {
     height: 90vh;
@@ -221,24 +260,20 @@ body {
 
     position: absolute;
     z-index: -1;
-    background-color: #d4be5d;
     width: 1280px;
 }
 
 .Background_AboutMe {
     height: 100%;
     position: relative;
-    background-color: rgb(163, 44, 44);
 }
 
 .Background_Projects {
     z-index: -1;
-    background-color: #61c058;
 }
 
 .Background_Contact {
     z-index: -1;
-    background-color: #5d91d4;
 }
 
 .Footer {}
@@ -285,6 +320,7 @@ body {
     width: 100%;
     height: 95vh;
     object-fit: cover;
+    opacity: 0;
 }
 
 .LandingPageText {
@@ -323,6 +359,9 @@ body {
 .main_Container {
     background-color: rgba(128, 128, 128, 0.3);
     border-radius: 25px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    outline: 1px solid rgb(136, 136, 136, 0.5);
 }
 
 .AboutMePortrait {
@@ -373,6 +412,7 @@ body {
     background: #ffffff;
     transform-origin: 0 0;
 }
+
 .line::after{
         content: '';
         position: absolute;

@@ -110,3 +110,29 @@ if (window.ResizeObserver) {
 
 // initial load to sync
 window.addEventListener('load', syncBtoA);
+
+
+//Parallax effect for the background. Slower number  = less movement per scroll.
+
+
+
+
+
+//Randomise the star locations for Parralax Background
+
+function generateStars(layerSelector, count) {
+  const layer = document.querySelector(layerSelector);
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.top = `${Math.random() * 100}%`; 
+    star.style.left = `${Math.random() * 200 - 50}%`;
+    star.style.width = `${Math.random() * 2 + 1}px`; // random size 1-3px, needs +1 to be not 0
+    star.style.height = star.style.width;
+    layer.appendChild(star);
+  }
+}
+
+generateStars('.Parallax1', 100);
+generateStars('.Parallax2', 80);
+generateStars('.Parallax3', 60);
