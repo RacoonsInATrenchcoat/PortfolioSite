@@ -21,16 +21,13 @@
         <img class="Logo" src="/Assets/Logo_Inverted.png" alt="Logo">
         <div class="Header_Menu">
             <div class="nav_Button_Container">
-                <button class="nav_Button font_H5">Back To Top</button>
+                <a class="nav_Button font_H5" data-target="#AboutMeContainer">About Me</a>
             </div>
             <div class="nav_Button_Container">
-                <button class="nav_Button font_H5">About Me</button>
+                <a class="nav_Button font_H5" data-target="#ProjectsContainer">Projects</a>
             </div>
             <div class="nav_Button_Container">
-                <button class="nav_Button font_H5">Projects</button>
-            </div>
-            <div class="nav_Button_Container">
-                <button class="nav_Button font_H5">Contact</button>
+                <a class="nav_Button font_H5" data-target="#ContactContainer">Contact</a>
             </div>
         </div>
     </div>
@@ -127,9 +124,9 @@
                 <div class="LeftEmpty"></div>
                 <div class="Arrows dot-container" id = "Arrows">
                     <div class="dot" style="--x: 50%; --y: 0%;"></div> <!-- 0 -->
-                    <div class="dot" style="--x: 50%; --y: 8%;"></div> <!-- 1 -->
-                    <div class="dot" style="--x: 50%; --y: 45%;"></div> <!-- 2 -->
-                    <div class="dot" style="--x: 50%; --y: 85%;"></div> <!-- 3 -->
+                    <div class="dot dot_title" style="--x: 50%; --y: 8.5%;"></div> <!-- 1 -->
+                    <div class="dot dot_title" style="--x: 50%; --y: 46%;"></div> <!-- 2 -->
+                    <div class="dot dot_title" style="--x: 50%; --y: 86.5%;"></div> <!-- 3 -->
                     
                     <div class="dot" style="--x: 65%; --y: 90%;"></div> <!-- 4, hidden -->
                     <div class="dot" style="--x: 165%; --y: 90%;"></div> <!-- 5 -->
@@ -141,6 +138,7 @@
                     <div class="dot" style="--x: 235%; --y: 97.5%;"></div> <!-- 9 -->
 
                     <div class="line" data-from="0" data-to="1"></div> <!-- To AboutMe-->
+                    <div class="line" data-from="3" data-via="4" data-to="5"></div> <!-- Curved, to AboutMe-->
                     <div class="line" data-from="1" data-to="2"></div> <!-- To Projects-->
                     <div class="line" data-from="2" data-to="3"></div> <!-- To Contacts-->
                     <div class="line" data-from="3" data-via="4" data-to="5"></div> <!-- Curved, to Email-->

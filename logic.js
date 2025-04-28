@@ -6,6 +6,7 @@ function createCurve(svg, x1, y1, x2, y2, x3, y3) {
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   path.setAttribute("d", `M ${x1},${y1} Q ${x2},${y2} ${x3},${y3}`);
   path.setAttribute("class", "curve");
+  path.classList.add('curve-blurred');
   svg.appendChild(path);
 }
 
@@ -226,3 +227,48 @@ window.addEventListener('load', () => {
   // Optional fallback listener (commented out)
   // window.addEventListener('scroll', updateParallax);
 });
+
+
+  // Smooth scrolling (default CSS is too jumpy and fast)
+
+  function smoothScroll(target, duration) {
+    const targetElement = document.querySelector(target);
+    const startPosition = window.pageYOffset;
+    const targetPosition = targetElement.getBoundingClientRect().top;
+    const distance = targetPosition;
+    const startTime = performance.now();
+
+    function scroll() {
+      const currentTime = performance.now();
+      const timeElapsed = currentTime - startTime;
+      const step = easeInOutCubic(timeElapsed, 0, distance, duration);
+      
+      // Calculate the new scroll position incrementally (smaller steps)
+      window.scrollTo(0, startPosition + step);
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(scroll); // Call next frame for smoother steps
+      } else {
+        window.scrollTo(0, startPosition + distance); // Ensure it ends exactly at the target
+      }
+    }
+
+    // Easing function (ease-in-out cubic) for smooth motion
+    function easeInOutCubic(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t * t + b;
+      t -= 2;
+      return (c / 2) * (t * t * t + 2) + b;
+    }
+
+    scroll();
+  }
+
+  // Attach event listener to all navigation buttons
+  document.querySelectorAll('.nav_Button').forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default anchor behavior
+      const targetId = this.getAttribute('data-target'); // Get the target section
+      smoothScroll(targetId, 2500); // Adjust the duration (in ms) for smoother scrolling
+    });
+  });

@@ -3,7 +3,7 @@
     font-optical-sizing: auto;
     font-style: normal;
     color: white;
-
+    scroll-behavior: smooth;
 
     --grid-Margin: 32px;
     --grid-Gap: 32px;
@@ -182,7 +182,7 @@ body {
 
 .Header_Menu {
     display: grid;
-    grid-template-columns: minmax(50px, 10vw) minmax(50px, 10vw) minmax(50px, 10vw) minmax(50px, 10vw);
+    grid-template-columns: minmax(50px, 10vw) minmax(50px, 10vw) minmax(50px, 10vw);
     grid-template-rows: auto;
     justify-content: center;
     /*Horizontal align*/
@@ -205,6 +205,7 @@ body {
     border: unset;
     color: white;
     font-family: "Inter", sans-serif;
+    cursor: pointer;
 }
 
 .nav_Button_Container {
@@ -222,11 +223,11 @@ body {
 .Parallax1,
 .Parallax2,
 .Parallax3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .star {
@@ -241,43 +242,64 @@ body {
     source: auto;
     orientation: vertical;
     scroll-offsets: 0% 100%;
-  }
-  @scroll-timeline scrollParallax2 {
+}
+
+@scroll-timeline scrollParallax2 {
     source: auto;
     orientation: vertical;
     scroll-offsets: 0% 100%;
-  }
-  @scroll-timeline scrollParallax3 {
+}
+
+@scroll-timeline scrollParallax3 {
     source: auto;
     orientation: vertical;
     scroll-offsets: 0% 100%;
-  }
-  
-  .Parallax1 {
+}
+
+.Parallax1 {
     animation: move1 linear infinite;
     animation-timeline: scrollParallax1;
-  }
-  .Parallax2 {
+}
+
+.Parallax2 {
     animation: move2 linear infinite;
     animation-timeline: scrollParallax2;
-  }
-  .Parallax3 {
+}
+
+.Parallax3 {
     animation: move3 linear infinite;
     animation-timeline: scrollParallax3;
-  }
-  
-  @keyframes move1 {
-    from { transform: translateY(0); }
-    to   { transform: translateY(calc(-100vh * 0.2)); }
-  }
-  @keyframes move2 {
-    from { transform: translateY(0); }
-    to   { transform: translateY(calc(-100vh * 0.5)); }
-  }
-  @keyframes move3 {
-    from { transform: translateY(0); }
-    to   { transform: translateY(calc(-100vh * 0.8)); }
-  }
+}
+
+@keyframes move1 {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(calc(-100vh * 0.2));
+    }
+}
+
+@keyframes move2 {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(calc(-100vh * 0.5));
+    }
+}
+
+@keyframes move3 {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(calc(-100vh * 0.8));
+    }
+}
 
 
 .Arrows {
@@ -287,14 +309,14 @@ body {
 }
 
 
-.curved_line_svg{
-position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  pointer-events: none;
+.curved_line_svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
 }
 
 
@@ -302,7 +324,17 @@ position: absolute;
     fill: none;
     stroke: rgb(255, 255, 255);
     stroke-width: 2px;
-  }
+}
+
+.curve-blurred {
+    fill: none;
+    stroke: rgb(255, 255, 255); /* Color for the blurred line */
+    stroke-width: 2px;
+    filter: blur(1px); /* Apply blur effect */
+    opacity: 1;
+    z-index: -2; /* Place the blurred curve behind the original one */
+}
+
 
 .Background_Landing {
     height: 90vh;
@@ -434,9 +466,8 @@ position: absolute;
     transform: translate(-50%, -50%);
     top: var(--y);
     left: var(--x);
-
-
 }
+
 
 .dot:after {
     content: '';
@@ -446,6 +477,33 @@ position: absolute;
     width: 50px;
     /* Size of the glow */
     height: 50px;
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 0.8) 0%,
+            /* Brighter near center */
+            rgba(255, 255, 255, 0.2) 30%,
+            /* Much softer further out */
+            rgba(255, 255, 255, 0) 60%
+            /* Fully fades before reaching edge */
+        );
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    /* Allows clicks to pass through the glow */
+}
+
+.dot_title {
+    width: 16px;
+    height: 16px;
+    z-index: 2;
+}
+
+.dot_title:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    /* Size of the glow */
+    height: 200px;
     background: radial-gradient(circle,
             rgba(255, 255, 255, 0.8) 0%,
             /* Brighter near center */
@@ -479,7 +537,6 @@ position: absolute;
     opacity: 1;
     z-index: -2;
     /* behind main line */
-
 }
 
 .AboutMeGroup1 {
@@ -662,4 +719,8 @@ position: absolute;
 
 .Contact_Text {
     align-self: center;
+}
+
+.ContactContainer {
+    z-index: -2;
 }
