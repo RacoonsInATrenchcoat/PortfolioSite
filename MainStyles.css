@@ -173,9 +173,8 @@ body {
 
 .Header {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 60px auto;
     grid-template-rows: auto;
-    justify-content: space-between;
     /*Horizontal align*/
     background-color: rgba(128, 128, 128, 0.5);
 }
@@ -192,7 +191,8 @@ body {
 }
 
 .Logo {
-    height: 100%;
+    height: 60px;
+    width: 60px;
     margin-left: var(--grid-Margin);
 }
 
@@ -200,16 +200,48 @@ body {
     justify-self: center;
 }
 
-.nav_Button {
-    background-color: unset;
-    border: unset;
-    color: white;
-    font-family: "Inter", sans-serif;
-    cursor: pointer;
-}
-
 .nav_Button_Container {
     display: grid;
+    justify-self: center;
+}
+
+.nav_Button {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.nav_Button::before,
+.nav_Button::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 0%;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    transition: width 0.5s ease;
+    transform: translateX(-50%);
+}
+
+.nav_Button::before {
+    top: -5px;
+    /*Top distance from text*/
+    border-radius: 2px;
+}
+
+.nav_Button::after {
+    bottom: -5px;
+    /*Bottom distance from text*/
+    border-radius: 2px;
+}
+
+.nav_Button:hover::before,
+.nav_Button:hover::after {
+    width: 75%;
 }
 
 .Parallax_Container {
@@ -328,11 +360,14 @@ body {
 
 .curve-blurred {
     fill: none;
-    stroke: rgb(255, 255, 255); /* Color for the blurred line */
+    stroke: rgb(255, 255, 255);
+    /* Color for the blurred line */
     stroke-width: 2px;
-    filter: blur(1px); /* Apply blur effect */
+    filter: blur(1px);
+    /* Apply blur effect */
     opacity: 1;
-    z-index: -2; /* Place the blurred curve behind the original one */
+    z-index: -2;
+    /* Place the blurred curve behind the original one */
 }
 
 
