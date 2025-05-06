@@ -17,11 +17,19 @@ function createStraightLine(line, x1, y1, x3, y3) {
   const length = Math.sqrt(dx * dx + dy * dy);
   const angle = Math.atan2(dy, dx) * 180 / Math.PI;
 
+  // Position at start point
   line.style.left = `${x1}px`;
   line.style.top = `${y1}px`;
+
+  // Ensure transform-origin is consistent (JS override)
+  line.style.transformOrigin = "0 50%"; // rotate from left center
+
+  // Set line size and angle
   line.style.width = `${length}px`;
+  line.style.height = "2px"; // ensure consistent line thickness
   line.style.transform = `rotate(${angle}deg)`;
 }
+
 
 // --- Main update function
 function updateLines() {
@@ -78,7 +86,6 @@ function updateLines() {
     });
   });
 }
-
 
 // Initial render
 window.addEventListener('load', () => {

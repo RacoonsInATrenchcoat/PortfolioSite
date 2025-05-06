@@ -433,28 +433,33 @@ body {
 
 .LandingContainer {
     position: relative;
-    text-align: center;
+    display:grid;
+    place-items: center;
+    z-index: 2;
 }
 
-.LandingPageImage {
-    display: block;
-    width: 100%;
-    height: 95vh;
+#canvas_1 {
+
     object-fit: cover;
-    opacity: 0;
+    z-index: 0;
+}
+
+#canvas_1,
+.LandingPageText {
+    grid-area: 1 / 1;     /* Place both items in the same grid cell */
 }
 
 .LandingPageText {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    z-index: 2;
     color: white;
     padding: 50px;
     border-radius: 25px;
 
     background-color: rgba(240, 248, 255, 0.5);
 }
+
+
 
 .HeadLineText {
     letter-spacing: 25px;
@@ -498,9 +503,9 @@ body {
     height: 8px;
     background: #ffffff;
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    top: var(--y);
-    left: var(--x);
+    top: calc(var(--y) - 4px); /* 4px = half of .dot height */
+    left: calc(var(--x) - 4px);
+    transform: none;
 }
 
 
@@ -553,12 +558,12 @@ body {
 }
 
 .line {
-    position: absolute;
-    height: 2px;
-    width: 1px;
-    background: #ffffff;
-    transform-origin: 0 0;
+  position: absolute;
+  height: 2px;
+  background: #ffffff;
+  transform-origin: 0 50%; /* roration is from middle of line, to match JS */
 }
+
 
 .line::after {
     content: '';
