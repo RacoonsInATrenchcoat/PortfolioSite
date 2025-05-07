@@ -10,9 +10,11 @@
     /*Fonts
 1REM = 16px */
 
-    --font-display-size: 4rem;
+
+
+    --font-display-size: 5rem;
     /* 64px */
-    --font-display-weight: 800;
+    --font-display-weight: 1000;
     --font-display-spacing: -0.02em;
     --font-display-line-height: 1.1;
 
@@ -176,7 +178,7 @@ body {
     grid-template-columns: 60px auto;
     grid-template-rows: auto;
     /*Horizontal align*/
-    background-color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(181, 0, 252, 0.2);
 }
 
 .Header_Menu {
@@ -455,13 +457,17 @@ body {
     color: white;
     padding: 50px;
     border-radius: 25px;
-
-    background-color: rgba(240, 248, 255, 0.5);
 }
 
 
 
-.HeadLineText {
+.HeadLineText_1 {
+    letter-spacing: 25px;
+    text-wrap: nowrap;
+    --font-display-weight: 100;
+}
+
+.HeadLineText_2 {
     letter-spacing: 25px;
     text-wrap: nowrap;
 }
@@ -677,6 +683,32 @@ body {
 
 .ProjectText {
     margin: var(--grid-Margin)
+}
+
+.Project_2{
+}
+
+.Project_2_Body {
+    display: grid;
+    grid-template-columns:
+        1fr
+        /*LeftSide*/
+        3fr
+        /*Rightside*/
+    ;
+    grid-template-rows: auto;
+    justify-content: space-between;
+    /*Horizontal align*/
+    align-items: space-between;
+    /*Vertical align*/
+
+    margin: var(--grid-Margin);
+}
+
+.Project_2_Image {
+    align-self: center;
+    width: 150px;
+    height: 150px;
 }
 
 .Contact_Top {

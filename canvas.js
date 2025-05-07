@@ -8,6 +8,7 @@ function getRandomNumber() {
 
 //1, Select the HTML element in JS:
 const canvas_1 = document.getElementById("canvas_1"); //JS value is linked, so the correct gets updated
+const landingContainer = document.getElementById("LandingContainer");
 const context_1 = canvas_1.getContext("2d");              //Default command, so it knows to interpret as 2D drawing.
 
 const currentItemList = [];
@@ -18,13 +19,22 @@ const amountOfItems_1 = 30;
 let mouseX = null;
 let mouseY = null;
 
-canvas_1.addEventListener('mousemove', (e) => {
-    const rect = canvas_1.getBoundingClientRect();
-    mouseX = e.clientX - rect.left;
-    mouseY = e.clientY - rect.top;
+//Update on mouse move
+landingContainer.addEventListener('mousemove', (e) => {
+    const containerRect = landingContainer.getBoundingClientRect();
+    const canvasRect = canvas_1.getBoundingClientRect();
+
+    //Ehh, catch-22 issue here. Technically the CSS "place-items: center;" stretches (?) the container.
+    //This makes the mouse offset with distance, and this is to reset when checking.
+    //If the CSS is removed, then the grid/centering with alternatives are issues as well.
+    const offsetX = canvasRect.left - containerRect.left;
+    const offsetY = canvasRect.top - containerRect.top;
+
+    mouseX = e.clientX - containerRect.left - offsetX;
+    mouseY = e.clientY - containerRect.top - offsetY;
 });
 
-canvas_1.addEventListener('mouseleave', () => {
+landingContainer.addEventListener('mouseleave', () => {
     mouseX = null;
     mouseY = null;
 });
@@ -43,15 +53,14 @@ class Circle {
 
 
     //Needed for animation to update each frame
-    //Repelling function added
     update(canvasWidth, canvasHeight) {
-
+        //Repelling function added
         if (mouseX !== null && mouseY !== null) {
             const dx = this.x - mouseX;
             const dy = this.y - mouseY;
             const distance = Math.sqrt(dx * dx + dy * dy);
 
-            const repelDistance = 50;
+            const repelDistance = 100;
     
             if (distance < repelDistance && distance > 0) {
                 // If the distance is very small, give it a higher escape momentum.
@@ -134,7 +143,7 @@ function drawForContainer1() {
 
         //Parameters, randomised here for variety
         const radius = 4
-        const colors = ['white', /*'blue', 'green', 'orange', 'purple'*/]; //Add whatever colors wanted
+        const colors = ['rgb(238, 196, 255)',/*'white', blue', 'yellow',  'green', 'orange', 'purple'*/]; //Add whatever colors wanted
         const color = colors[Math.floor(Math.random() * colors.length)];
 
         currentItemList.push(new Circle(x, y, radius, { color }));
@@ -181,7 +190,7 @@ function animate() {
                 context_1.moveTo(a.x, a.y);
                 context_1.lineTo(b.x, b.y);
                 context_1.lineWidth = lineWidth; // Slightly wider than main line
-                context_1.strokeStyle = 'rgba(252, 252, 252, 0.4)';
+                context_1.strokeStyle = 'rgba(181, 0, 252, 0.9)';
                 context_1.shadowColor = 'rgba(255, 255, 255, 0.8)';
                 context_1.shadowBlur = 12;
                 context_1.stroke();

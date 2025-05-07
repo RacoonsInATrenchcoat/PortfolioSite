@@ -6,6 +6,7 @@ Attributes and sources:
 Space wallpaper: https://opengameart.org/content/seamless-space-backgrounds
 Icons:  https://www.svgrepo.com
         https://icons8.com/icon/jShwZ2RCyPSO/phone
+        https://www.flaticon.com/free-icon/astronaut-ingravity_80643
 Logo:   https://www.flaticon.com/free-icon/circle_11068138
 
 

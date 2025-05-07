@@ -48,24 +48,25 @@
                     <!-- Dots and locations compared to container -->
                     <!-- X is horizontal >, Y is vertical ^          -->
                     <div class="dot" style="--x: 65%; --y: -5%;"></div> <!-- 0 -->
-                    <div class="dot" style="--x: 75%; --y: -11%;"></div> <!-- 1 -->
-                    <div class="dot" style="--x: 88%; --y: -2%;"></div> <!-- 2 -->
+                    <div class="dot" style="--x: 75%; --y: -10%;"></div> <!-- 1 -->
+                    <div class="dot" style="--x: 88%; --y: 4%;"></div> <!-- 2 -->
 
-                    <div class="dot" style="--x: 110%; --y: 30%;"></div> <!-- 3 -->
+                    <div class="dot" style="--x: 111%; --y: 30%;"></div> <!-- 3 -->
                     <div class="dot" style="--x: 115%; --y: 40%;"></div> <!-- 4 -->
                     <div class="dot" style="--x: 105%; --y: 40%;"></div> <!-- 5 -->
                     <div class="dot" style="--x: 115%; --y: 50%;"></div> <!-- 6 -->
                     <div class="dot" style="--x: 105%; --y: 50%;"></div> <!-- 7 -->
-                    <div class="dot" style="--x: 110%; --y: 60%;"></div> <!-- 8 -->
+                    <div class="dot" style="--x: 109%; --y: 60%;"></div> <!-- 8 -->
 
-                    <div class="dot" style="--x: 71%; --y: 88%;"></div> <!-- 9 -->
-                    <div class="dot" style="--x: 79%; --y: 93%;"></div> <!-- 10 -->
-                    <div class="dot" style="--x: 85%; --y: 92%;"></div> <!-- 11 -->
+                    <div class="dot" style="--x: 71%; --y: 74%;"></div> <!-- 9 -->
+                    <div class="dot" style="--x: 90%; --y: 86%;"></div> <!-- 10 -->
+                    <div class="dot" style="--x: 99%; --y: 71%;"></div> <!-- 11 -->
+                    <div class="dot" style="--x: 105%; --y: 89%;"></div> <!-- 12 -->
 
-                    <div class="dot" style="--x: 18%; --y: 83%;"></div> <!-- 12 -->
-                    <div class="dot" style="--x: 30%; --y: 95%;"></div> <!-- 13 -->
-                    <div class="dot" style="--x: 42%; --y: 88%;"></div> <!-- 14 -->
-                    <div class="dot" style="--x: 40%; --y: 93%;"></div> <!-- 15 -->
+                    <div class="dot" style="--x: 28%; --y: 83%;"></div> <!-- 13 -->
+                    <div class="dot" style="--x: 40%; --y: 95%;"></div> <!-- 14 -->
+                    <div class="dot" style="--x: 52%; --y: 88%;"></div> <!-- 15 -->
+                    <div class="dot" style="--x: 50%; --y: 93%;"></div> <!-- 16 -->
 
 
 
@@ -74,7 +75,7 @@
                     <div class="line" data-from="1" data-to="2"></div>
                     <div class="line" data-from="2" data-to="0"></div>
 
-                    <div class="line" data-from="3" data-to="4"></div>
+                    <div class="line" data-from="4" data-to="7"></div>
                     <div class="line" data-from="4" data-to="6"></div>
                     <div class="line" data-from="6" data-to="8"></div>
                     <div class="line" data-from="7" data-to="8"></div>
@@ -83,11 +84,13 @@
 
                     <div class="line" data-from="9" data-to="10"></div>
                     <div class="line" data-from="10" data-to="11"></div>
+                    <div class="line" data-from="11" data-to="12"></div>
+                    <div class="line" data-from="12" data-to="9"></div>
 
-                    <div class="line" data-from="12" data-to="13"></div>
                     <div class="line" data-from="13" data-to="14"></div>
                     <div class="line" data-from="14" data-to="15"></div>
-                    <div class="line" data-from="15" data-to="12"></div>
+                    <div class="line" data-from="15" data-to="16"></div>
+                    <div class="line" data-from="16" data-to="13"></div>
 
 
 
@@ -102,7 +105,12 @@
         <div class="LandingContainer" id="LandingContainer">
             <canvas id="canvas_1" width="1280" height="800"></canvas>
             <div class="LandingPageText">
-                <div class="HeadLineText font_Display">&lt;WELCOME_/&gt;</div>
+                <div>
+                    <div class="HeadLineText_1 font_Display">WELCOME</div>
+                    <div class="HeadLineText_1 font_Display">&nbsp;&nbsp;TO&nbsp;MY</div>
+                    <div class="HeadLineText_2 font_Display">&nbsp;&nbsp;&nbsp;&nbsp;GALAXY</div>
+                </div>
+
             </div>
         </div>
 
@@ -184,9 +192,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="Project_2 font_H2">
-                            Under Construction!
+                        <div class="Project_2">
+                            <div class="Project_Title font_H2">Under Construction!</div>
+                            <div class="Project_2_Body">
+                                <img class="Project_2_Image" src="/Assets/astronaut-ingravity_inverted-01.svg"
+                                    alt="Project 2 Image">
+                                    <div class="Project_1_Text">
+                                        <p class="ProjectText font_H5">This is where the other project's text would come.</p>
+                                        <p class="ProjectText font_H5">Well. It is not ready yet. I know, you really want to see it, but it needs a bit more time in the oven to be presentable. 
+                                            Those bits (and bobs?) can be very unpredictable on how they react. After all, they make up everything around here!
+                                        </p>
+                                        <p class="ProjectText font_H5">But promise, it'll be delicious!</p>
+                                    </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="ContactContainer main_Container" id="ContactContainer">
