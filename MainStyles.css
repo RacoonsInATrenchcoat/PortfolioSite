@@ -174,9 +174,8 @@ body {
 }
 
 .Header {
-    display: grid;
-    grid-template-columns: 60px auto;
-    grid-template-rows: auto;
+    display:grid;
+    justify-content: center;
     /*Horizontal align*/
     background-color: rgba(181, 0, 252, 0.2);
 }
@@ -399,7 +398,6 @@ body {
     z-index: -1;
 }
 
-.Footer {}
 
 .BodyContainer {
     display: grid;
@@ -794,5 +792,9 @@ body {
 }
 
 .ContactContainer {
-    z-index: -2;
+    z-index: -1;
+}
+
+.Footer {
+    margin:0;
 }

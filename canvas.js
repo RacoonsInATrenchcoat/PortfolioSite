@@ -4,8 +4,6 @@ function getRandomNumber() {
     return number
 }
 
-
-
 //1, Select the HTML element in JS:
 const canvas_1 = document.getElementById("canvas_1"); //JS value is linked, so the correct gets updated
 const landingContainer = document.getElementById("LandingContainer");
@@ -61,36 +59,36 @@ class Circle {
             const distance = Math.sqrt(dx * dx + dy * dy);
 
             const repelDistance = 100;
-    
+
             if (distance < repelDistance && distance > 0) {
                 // If the distance is very small, give it a higher escape momentum.
                 const escapeMomentum = distance < 20 ? 10 : 5;
-            
+
                 const nx = dx / distance;
                 const ny = dy / distance;
-            
+
                 const dot = this.vx * nx + this.vy * ny;
-            
+
                 // Reflect velocity and add the escape momentum to move out of the radius
                 this.vx = this.vx - 2 * dot * nx;
                 this.vy = this.vy - 2 * dot * ny;
-            
+
                 // Push the particle out
                 this.x += this.vx + escapeMomentum * nx;
                 this.y += this.vy + escapeMomentum * ny;
             }
         }
-    
+
         // Continue standard velocity motion
         this.x += this.vx;
         this.y += this.vy;
-    
+
         // Bounce off canvas walls
         if (this.x - this.radius <= 0 || this.x + this.radius >= canvasWidth) {
             this.vx *= -1;
             this.x = Math.max(this.radius, Math.min(this.x, canvasWidth - this.radius));
         }
-    
+
         if (this.y - this.radius <= 0 || this.y + this.radius >= canvasHeight) {
             this.vy *= -1;
             this.y = Math.max(this.radius, Math.min(this.y, canvasHeight - this.radius));
@@ -143,7 +141,7 @@ function drawForContainer1() {
 
         //Parameters, randomised here for variety
         const radius = 4
-        const colors = ['rgb(238, 196, 255)',/*'white', blue', 'yellow',  'green', 'orange', 'purple'*/]; //Add whatever colors wanted
+        const colors = ['rgb(255, 255, 255)',/*'white', blue', 'yellow',  'green', 'orange', 'purple'*/]; //Add whatever colors wanted
         const color = colors[Math.floor(Math.random() * colors.length)];
 
         currentItemList.push(new Circle(x, y, radius, { color }));

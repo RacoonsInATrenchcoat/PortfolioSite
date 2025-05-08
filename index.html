@@ -19,7 +19,6 @@
 <body>
 
     <div class="Header">
-        <img class="Logo" src="/Assets/Logo_Inverted.png" alt="Logo">
         <div class="Header_Menu">
             <div class="nav_Button_Container">
                 <a class="nav_Button font_H5" data-target="#AboutMeContainer">About Me</a>
@@ -58,7 +57,7 @@
                     <div class="dot" style="--x: 105%; --y: 50%;"></div> <!-- 7 -->
                     <div class="dot" style="--x: 109%; --y: 60%;"></div> <!-- 8 -->
 
-                    <div class="dot" style="--x: 71%; --y: 74%;"></div> <!-- 9 -->
+                    <div class="dot" style="--x: 81%; --y: 68%;"></div> <!-- 9 -->
                     <div class="dot" style="--x: 90%; --y: 86%;"></div> <!-- 10 -->
                     <div class="dot" style="--x: 99%; --y: 71%;"></div> <!-- 11 -->
                     <div class="dot" style="--x: 105%; --y: 89%;"></div> <!-- 12 -->
@@ -97,7 +96,19 @@
                 </div>
                 <div class="Background_Projects" id="Background_Projects">
                 </div>
-                <div class="Background_Contact" id="Background_Contact">
+                <div class="Background_Contact dot-container" id="Background_Contact">
+                    <div class="dot" style="--x: 105%; --y: -10%;"></div> <!-- 0 -->
+                    <div class="dot" style="--x: 110%; --y: 20%;"></div> <!-- 1 -->
+                    <div class="dot" style="--x: 105%; --y: 40%;"></div> <!-- 2 -->
+                    <div class="dot" style="--x: 110%; --y: 80%;"></div> <!-- 3 -->
+                    <div class="dot" style="--x: 115%; --y: 65%;"></div> <!-- 4 -->
+
+
+                    <!-- Line between dot 1 and 2 -->
+                    <div class="line" data-from="0" data-to="1"></div>
+                    <div class="line" data-from="1" data-to="2"></div>
+                    <div class="line" data-from="2" data-to="3"></div>
+                    <div class="line" data-from="3" data-to="4"></div>
                 </div>
             </div>
         </div>
@@ -118,27 +129,26 @@
             <div class="LeftSide" id="LeftSide">
                 <div class="LeftEmpty"></div>
                 <div class="Arrows dot-container" id="Arrows">
-                    <div class="dot" style="--x: 50%; --y: 0%;"></div> <!-- 0 -->
-                    <div class="dot dot_title" style="--x: 50%; --y: 9%;"></div> <!-- 1 -->
-                    <div class="dot dot_title" style="--x: 50%; --y: 40.5%;"></div> <!-- 2 -->
-                    <div class="dot dot_title" style="--x: 50%; --y: 85%;"></div> <!-- 3 -->
+                    <div class="dot dot_title" style="--x: 50%; --y: 9%;"></div> <!-- 0 -->
+                    <div class="dot dot_title" style="--x: 50%; --y: 40.5%;"></div> <!-- 1 -->
+                    <div class="dot dot_title" style="--x: 50%; --y: 85%;"></div> <!-- 2 -->
 
-                    <div class="dot" style="--x: 65%; --y: 90%;"></div> <!-- 4, hidden -->
-                    <div class="dot" style="--x: 165%; --y: 90%;"></div> <!-- 5 -->
+                    <div class="dot" style="--x: 65%; --y: 90%;"></div> <!-- 3, hidden -->
+                    <div class="dot" style="--x: 165%; --y: 89.2%;"></div> <!-- 4 -->
 
-                    <div class="dot" style="--x: 50%; --y: 93%;"></div> <!-- 6, hidden -->
-                    <div class="dot" style="--x: 200%; --y: 94%;"></div> <!-- 7 -->
+                    <div class="dot" style="--x: 50%; --y: 93%;"></div> <!-- 5, hidden -->
+                    <div class="dot" style="--x: 200%; --y: 93.3%;"></div> <!-- 6 -->
 
-                    <div class="dot" style="--x: 50%; --y: 97%;"></div> <!-- 8, hidden -->
-                    <div class="dot" style="--x: 235%; --y: 97.5%;"></div> <!-- 9 -->
+                    <div class="dot" style="--x: 50%; --y: 97%;"></div> <!-- 7, hidden -->
+                    <div class="dot" style="--x: 235%; --y: 97.3%;"></div> <!-- 8 -->
 
-                    <div class="line" data-from="0" data-to="1"></div> <!-- To AboutMe-->
-                    <div class="line" data-from="3" data-via="4" data-to="5"></div> <!-- Curved, to AboutMe-->
-                    <div class="line" data-from="1" data-to="2"></div> <!-- To Projects-->
-                    <div class="line" data-from="2" data-to="3"></div> <!-- To Contacts-->
-                    <div class="line" data-from="3" data-via="4" data-to="5"></div> <!-- Curved, to Email-->
-                    <div class="line" data-from="3" data-via="6" data-to="7"></div> <!-- Curved, to Phone-->
-                    <div class="line" data-from="3" data-via="8" data-to="9"></div> <!-- Curved, to LinkedIn-->
+
+                    <div class="line" data-from="2" data-via="3" data-to="4"></div> <!-- Curved, to AboutMe-->
+                    <div class="line" data-from="0" data-to="1"></div> <!-- To Projects-->
+                    <div class="line" data-from="1" data-to="2"></div> <!-- To Contacts-->
+                    <div class="line" data-from="2" data-via="3" data-to="4"></div> <!-- Curved, to Email-->
+                    <div class="line" data-from="2" data-via="5" data-to="6"></div> <!-- Curved, to Phone-->
+                    <div class="line" data-from="2" data-via="7" data-to="8"></div> <!-- Curved, to LinkedIn-->
 
 
                 </div>
@@ -170,7 +180,7 @@
                 <div class="ProjectsContainer main_Container" id="ProjectsContainer">
                     <div class="ProjectsGroup1">
                         <div class="ProjectsTitle font_H1">Projects</div>
-                        <div class="ProjectsImage">Image</div>
+                        <div class="ProjectsImage"></div>
                     </div>
                     <div class="ProjectsGroup2">
                         <div class="Project_1">
@@ -197,13 +207,16 @@
                             <div class="Project_2_Body">
                                 <img class="Project_2_Image" src="/Assets/astronaut-ingravity_inverted-01.svg"
                                     alt="Project 2 Image">
-                                    <div class="Project_1_Text">
-                                        <p class="ProjectText font_H5">This is where the other project's text would come.</p>
-                                        <p class="ProjectText font_H5">Well. It is not ready yet. I know, you really want to see it, but it needs a bit more time in the oven to be presentable. 
-                                            Those bits (and bobs?) can be very unpredictable on how they react. After all, they make up everything around here!
-                                        </p>
-                                        <p class="ProjectText font_H5">But promise, it'll be delicious!</p>
-                                    </div>
+                                <div class="Project_1_Text">
+                                    <p class="ProjectText font_H5">This is where the other project's text would come.
+                                    </p>
+                                    <p class="ProjectText font_H5">Well. It is not ready yet. I know, you really want to
+                                        see it, but it needs a bit more time in the oven to be presentable.
+                                        Those bits (and bobs?) can be very unpredictable on how they react. After all,
+                                        they make up everything around here!
+                                    </p>
+                                    <p class="ProjectText font_H5">But promise, it'll be delicious!</p>
+                                </div>
                             </div>
                         </div>
 
@@ -235,8 +248,7 @@
         </div>
 
     </div>
-    <div class="Footer">
-
+    <div class="Footer" id="Footer">
     </div>
 
     <!--Main use-->
