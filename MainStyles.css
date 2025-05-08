@@ -8,6 +8,8 @@
     --grid-Margin: 32px;
     --grid-Gap: 32px;
 
+
+
     --mobile-Width: 768px;
 
     /*For debugging*/
@@ -161,6 +163,60 @@
     font-weight: var(--font-micro-weight);
     letter-spacing: var(--font-micro-spacing);
     line-height: var(--font-micro-line-height);
+}
+
+@media (max-width: 768px) {
+    :root {
+        --grid-Margin: 16px;
+        --grid-Gap: 16px;
+    }
+}
+
+
+/*Grid placement shortcuts*/
+.C1R1 {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.C1R2 {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.C1R3 {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.C2R1 {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.C2R2 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.C2R3 {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.C3R1 {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.C3R2 {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.C3R3 {
+    grid-column: 3;
+    grid-row: 3;
 }
 
 
@@ -498,9 +554,7 @@ body {
     .BodyContainer {
         display: grid;
         grid-template-columns:
-            15vw
-            /*LeftSide*/
-            84vw
+            94vw
             /*MiddleBody*/
             1vw
             /*Rightside*/
@@ -508,7 +562,8 @@ body {
         min-width: 0;
         grid-template-rows: auto;
         justify-content: space-between;
-        /*Horizontal align*/
+        /*Ideally it would be a leftside column, but it breaks the code. No idea, to check later.*/
+        margin-left: var(--grid-Margin);
     }
 }
 
@@ -522,6 +577,12 @@ body {
         var(--grid-Gap)
         /*Rightside*/
     ;
+}
+
+@media (max-width: 768px) {
+    .LeftSide {
+        display: none;
+    }
 }
 
 .RightSide {}
@@ -549,8 +610,18 @@ body {
     position: relative;
     z-index: 2;
     color: white;
-    padding: 50px;
-    border-radius: 25px;
+    padding: var(--grid-Margin);
+}
+
+@media (max-width: 768px) {
+    .LandingPageText {
+        position: relative;
+        z-index: 2;
+        color: white;
+        padding: var(--grid-Margin);
+
+
+    }
 }
 
 
@@ -564,6 +635,21 @@ body {
 .HeadLineText_2 {
     letter-spacing: 25px;
     text-wrap: nowrap;
+}
+
+@media (max-width: 768px) {
+
+    .HeadLineText_1,
+    .HeadLineText_2 {
+        letter-spacing: calc(25px / 2);
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .HeadLineText_2 {
+    }
 }
 
 .HeadLineText::before {
@@ -599,12 +685,6 @@ body {
         backdrop-filter: blur(5px);
         outline: 1px solid rgb(136, 136, 136, 0.5);
     }
-}
-
-.AboutMePortrait {
-    height: 300px;
-    width: auto;
-    margin: var(--grid-Margin);
 }
 
 
@@ -692,35 +772,46 @@ body {
     /* behind main line */
 }
 
-.AboutMeGroup1 {
-    display: grid;
-    grid-template-columns:
-        3fr
-        /*LeftSide*/
-        1fr
-        /*Rightside*/
-    ;
-    grid-template-rows: auto;
-    justify-content: space-between;
-    /*Horizontal align*/
-    align-items: space-between;
-    /*Vertical align*/
-}
+.AboutMeContainer {}
+
 
 .AboutMeTitle {
-    margin: var(--grid-Margin)
+    margin: var(--grid-Margin);
+    min-width: 0;
+    max-width: fit-content;
+
+}
+
+.AboutMePortrait {
+    height: 300px;
+    width: auto;
+    margin: var(--grid-Margin);
+
+    border-radius: 20px;
+
+}
+
+@media (max-width: 768px) {
+    .AboutMePortrait {
+        height: 50vw;
+        width: auto;
+        margin: var(--grid-Margin);
+        border-radius: 20px;
+
+    }
+
 }
 
 .AboutMeText {
     margin: var(--grid-Margin)
 }
 
-.AboutMeGroup2 {
+.AboutMeGroup1 {
     display: grid;
     grid-template-columns:
-        1fr
+        5fr
         /*LeftSide*/
-        3fr
+        50fr
         /*Rightside*/
     ;
     grid-template-rows: auto;
@@ -729,6 +820,20 @@ body {
     align-items: space-between;
     /*Vertical align*/
 }
+
+@media (max-width: 768px) {
+    .AboutMeGroup1 {
+        display: grid;
+        grid-template-columns: 100fr;
+        grid-template-rows: auto auto auto auto;
+        justify-content: space-between;
+        /*Horizontal align*/
+        align-items: space-between;
+        /*Vertical align*/
+        grid-auto-flow: column;
+    }
+}
+
 
 .ProjectsTitle {
     margin: var(--grid-Margin)
@@ -774,9 +879,9 @@ body {
         grid-template-columns: auto;
         grid-template-rows:
             /*1st*/
-            50fr
+            auto
             /*2nd*/
-            50fr;
+            auto;
         grid-auto-flow: column;
         justify-content: space-between;
         /*Horizontal align*/
@@ -800,6 +905,25 @@ body {
     /*Vertical align*/
 
     margin: var(--grid-Margin)
+}
+
+@media (max-width: 768px) {
+    .Project_1_Body {
+        display: grid;
+        grid-template-columns:
+            auto
+            /*LeftSide*/
+            auto
+            /*Rightside*/
+        ;
+        grid-template-rows: auto;
+        justify-content: space-between;
+        /*Horizontal align*/
+        align-items: space-between;
+        /*Vertical align*/
+
+        margin: var(--grid-Margin)
+    }
 }
 
 .Project_1_Image {
@@ -867,7 +991,7 @@ body {
     /*Vertical align*/
 
     margin: var(--grid-Margin);
-    margin-left: calc(var(--grid-Margin)*2);
+    margin-left: calc(var(--grid-Margin)*3);
 }
 
 .Contact_Phone {
@@ -885,7 +1009,7 @@ body {
     /*Vertical align*/
 
     margin: var(--grid-Margin);
-    margin-left: calc(var(--grid-Margin)*3);
+    margin-left: calc(var(--grid-Margin)*4);
 }
 
 
@@ -904,7 +1028,7 @@ body {
     /*Vertical align*/
 
     margin: var(--grid-Margin);
-    margin-left: calc(var(--grid-Margin)*4);
+    margin-left: calc(var(--grid-Margin)*5);
 }
 
 .Contact_Icon {
