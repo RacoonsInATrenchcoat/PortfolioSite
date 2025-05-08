@@ -37,6 +37,17 @@ landingContainer.addEventListener('mouseleave', () => {
     mouseY = null;
 });
 
+//Needed for mobile views
+function resizeCanvas() {
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    // Only shrink if viewport is smaller than 1280px
+    canvas_1.width = viewportWidth < 1280 ? viewportWidth : 1280;
+    canvas_1.height = viewportHeight < 720 ? viewportHeight : 720;
+}
+
+
 //2, Create the re-useable Constructors in JS:
 class Circle {
     constructor(x, y, radius, options = {}) {
@@ -129,8 +140,14 @@ class Circle {
 
 };
 
-//4, Create an item and actually call the above function to fill it:
 
+//Running the window size check for mobile, otherwise it will stretch
+resizeCanvas()
+window.addEventListener('resize', () => {
+    resizeCanvas();
+});
+
+//4, Create an item and actually call the above function to fill it:
 function drawForContainer1() {
 
     for (let i = 0; i < amountOfItems_1; i++) {

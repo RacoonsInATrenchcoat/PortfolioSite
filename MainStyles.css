@@ -7,6 +7,12 @@
 
     --grid-Margin: 32px;
     --grid-Gap: 32px;
+
+    --mobile-Width: 768px;
+
+    /*For debugging*/
+    outline: 1px solid rgba(255, 0, 0, 0.3);
+
     /*Fonts
 1REM = 16px */
 
@@ -159,7 +165,7 @@
 
 
 body {
-    margin: 0;
+    margin: 0px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows:
@@ -173,8 +179,23 @@ body {
     position: relative;
 }
 
+@media (max-width: 768px) {
+    body {
+        margin: 0px;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows:
+            3.5rem auto 4.5rem;
+        padding: 0px;
+        background-color: black;
+        position: relative;
+        min-width: 0;
+    }
+}
+
+
 .Header {
-    display:grid;
+    display: grid;
     justify-content: center;
     /*Horizontal align*/
     background-color: rgba(181, 0, 252, 0.2);
@@ -189,6 +210,19 @@ body {
     align-items: center;
     /*Vertical align*/
     gap: var(--grid-Gap)
+}
+
+@media (max-width: 768px) {
+    .Header_Menu {
+        display: grid;
+        grid-template-columns: 30vw 30vw 30vw;
+        grid-template-rows: auto;
+        justify-content: space-between;
+        /*Horizontal align*/
+        align-items: center;
+        /*Vertical align*/
+        gap: var(--grid-Gap)
+    }
 }
 
 .Logo {
@@ -214,6 +248,7 @@ body {
     text-decoration: none;
     cursor: pointer;
     overflow: visible;
+    text-wrap: nowrap;
 }
 
 .nav_Button::before,
@@ -253,6 +288,17 @@ body {
     z-index: -2;
 }
 
+@media (max-width: 768px) {
+    .Parallax_Container {
+        height: 100%;
+        width: 100vw;
+        min-width: 0;
+        position: fixed;
+        pointer-events: none;
+        z-index: -2;
+    }
+}
+
 .Parallax1,
 .Parallax2,
 .Parallax3 {
@@ -261,6 +307,20 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+@media (max-width: 768px) {
+
+    .Parallax1,
+    .Parallax2,
+    .Parallax3 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-width: 0;
+        height: 100%;
+    }
 }
 
 .star {
@@ -371,6 +431,13 @@ body {
     /* Place the blurred curve behind the original one */
 }
 
+.Background_Body {}
+
+@media (max-width: 768px) {
+    .Background_Body {
+        display: none;
+    }
+}
 
 .Background_Landing {
     height: 90vh;
@@ -382,6 +449,16 @@ body {
     position: absolute;
     z-index: -1;
     width: 1280px;
+}
+
+@media (max-width: 768px) {
+    .Background_Container {
+        margin-left: 0px;
+
+        position: absolute;
+        z-index: -1;
+        width: 100vw;
+    }
 }
 
 .dot-container {
@@ -417,6 +494,24 @@ body {
 
 }
 
+@media (max-width: 768px) {
+    .BodyContainer {
+        display: grid;
+        grid-template-columns:
+            15vw
+            /*LeftSide*/
+            84vw
+            /*MiddleBody*/
+            1vw
+            /*Rightside*/
+        ;
+        min-width: 0;
+        grid-template-rows: auto;
+        justify-content: space-between;
+        /*Horizontal align*/
+    }
+}
+
 .LeftSide {
     display: grid;
     grid-template-columns:
@@ -433,7 +528,7 @@ body {
 
 .LandingContainer {
     position: relative;
-    display:grid;
+    display: grid;
     place-items: center;
     z-index: 2;
 }
@@ -446,7 +541,8 @@ body {
 
 #canvas_1,
 .LandingPageText {
-    grid-area: 1 / 1;     /* Place both items in the same grid cell */
+    grid-area: 1 / 1;
+    /* Place both items in the same grid cell */
 }
 
 .LandingPageText {
@@ -494,6 +590,17 @@ body {
     outline: 1px solid rgb(136, 136, 136, 0.5);
 }
 
+@media (max-width: 768px) {
+    .main_Container {
+        min-width: 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 25px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        outline: 1px solid rgb(136, 136, 136, 0.5);
+    }
+}
+
 .AboutMePortrait {
     height: 300px;
     width: auto;
@@ -507,7 +614,8 @@ body {
     height: 8px;
     background: #ffffff;
     border-radius: 50%;
-    top: calc(var(--y) - 4px); /* 4px = half of .dot height */
+    top: calc(var(--y) - 4px);
+    /* 4px = half of .dot height */
     left: calc(var(--x) - 4px);
     transform: none;
 }
@@ -562,10 +670,11 @@ body {
 }
 
 .line {
-  position: absolute;
-  height: 2px;
-  background: #ffffff;
-  transform-origin: 0 50%; /* roration is from middle of line, to match JS */
+    position: absolute;
+    height: 2px;
+    background: #ffffff;
+    transform-origin: 0 50%;
+    /* roration is from middle of line, to match JS */
 }
 
 
@@ -658,6 +767,24 @@ body {
     gap: var(--grid-Margin);
 }
 
+
+@media (max-width: 768px) {
+    .ProjectsGroup2 {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows:
+            /*1st*/
+            50fr
+            /*2nd*/
+            50fr;
+        grid-auto-flow: column;
+        justify-content: space-between;
+        /*Horizontal align*/
+        align-items: space-between;
+        /*Vertical align*/
+    }
+}
+
 .Project_1_Body {
     display: grid;
     grid-template-columns:
@@ -683,8 +810,7 @@ body {
     margin: var(--grid-Margin)
 }
 
-.Project_2{
-}
+.Project_2 {}
 
 .Project_2_Body {
     display: grid;
@@ -796,5 +922,5 @@ body {
 }
 
 .Footer {
-    margin:0;
+    margin: 0;
 }
