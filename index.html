@@ -179,7 +179,7 @@
                     </div>
                     <div class="ProjectsGroup2">
                         <div class="Project_1">
-                            <div class="Project_Title font_H2">Dino Dash</div>
+                            <div class="Project_name font_H2">Dino Dash</div>
                             <div class="Project_1_Body">
                                 <img class="Project_1_Image" src="/Assets/lizardwizard_150x150.png"
                                     alt="Project 1 Image">
@@ -198,7 +198,7 @@
                             </div>
                         </div>
                         <div class="Project_2">
-                            <div class="Project_Title font_H2">Under Construction!</div>
+                            <div class="Project_name font_H2">Under <br>Construction!</div>
                             <div class="Project_2_Body">
                                 <img class="Project_2_Image" src="/Assets/astronaut-ingravity_inverted-01.svg"
                                     alt="Project 2 Image">
@@ -218,32 +218,49 @@
                     </div>
                 </div>
                 <div class="ContactContainer main_Container" id="ContactContainer">
-                    <div class="Contact_Top">
-                        <div class="Contact_Title font_H1">Contact</div>
-                        <div class="Contact_Image"></div>
-                    </div>
                     <div class="Contact_Body">
                         <div class="Contact_LeftSide">
-                            <div class="Contact_Email">
-                                <img class="Contact_Icon" src="/Assets/Icons/Mail - Inverted.svg" alt="Email Icon">
-                                <div class="Contact_Text">tabitamas91@gmail.com</div>
-                            </div>
-                            <div class="Contact_Phone">
-                                <img class="Contact_Icon" src="/Assets/Icons/Phone - Inverted.svg" alt="Phone Icon">
-                                <div class="Contact_Text">07990 803 405</div>
-                            </div>
-                            <div class="Contact_LinkedIn">
-                                <img class="Contact_Icon" src="/Assets/Icons/LinkedIn - Inverted.svg"
-                                    alt="LinkedIn Icon">
-                                <div class="Contact_Text">/tamas-tabi/</div>
+                            <div class="Contact_Title font_H1">Contact</div>
+                            <div class="Contact_types">
+                                <div class="Contact_Email">
+                                    <img class="Contact_Icon" src="/Assets/Icons/Mail - Inverted.svg" alt="Email Icon">
+                                    <div class="Contact_Text">tabitamas91@gmail.com</div>
+                                </div>
+                                <div class="Contact_Phone">
+                                    <img class="Contact_Icon" src="/Assets/Icons/Phone - Inverted.svg" alt="Phone Icon">
+                                    <div class="Contact_Text">07990 803 405</div>
+                                </div>
+                                <div class="Contact_LinkedIn">
+                                    <img class="Contact_Icon" src="/Assets/Icons/LinkedIn - Inverted.svg"
+                                        alt="LinkedIn Icon">
+                                    <div class="Contact_Text">/tamas-tabi/</div>
+                                </div>
                             </div>
                         </div>
                         <div class="Contact_RightSide">
-                            <div class="SendContact_Container">
-                                <div class="Send_Name"></div>
-                                <div class="Send_Email"></div>
-                                <div class="Send_Text"></div>
-                            </div>
+                            <form id="contactForm" class="SendContact_Container">
+                                <div class="contact_Pair">
+                                    <label for="nameInput" class="Send_Name">Name</label>
+                                    <input type="text" id="nameInput" name="name" placeholder="Your name" required />
+                                </div>
+                                <div class="contact_Pair">
+                                    <label for="phoneInput" class="Send_Phone">Optional Phone</label>
+                                    <input type="tel" id="phoneInput" name="phone" placeholder="e.g. +44 7123 456789" />
+                                </div>
+                                <div class="contact_Pair">
+                                    <label for="emailInput" class="Send_Email">Email</label>
+                                    <input type="email" id="emailInput" name="email" placeholder="you@example.com"
+                                        required />
+                                </div>
+                                <div class="contact_Pair">
+                                    <label for="contact_messageInput" class="Send_Text">Message</label>
+                                    <textarea class="contact_messageInput" id="contact_messageInput" name="message"
+                                        rows="4" placeholder="Your message…" required></textarea>
+                                </div>
+                                <button type="submit" class="Send_Button">
+                                    Send
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

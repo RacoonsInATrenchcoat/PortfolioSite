@@ -258,23 +258,24 @@ body {
 }
 
 .Header_Menu {
-    display:grid;
+    display: grid;
     grid-template-columns: 50vw 50vw;
     grid-template-rows: auto;
 }
-.Header_Menu_Left{
+
+.Header_Menu_Left {
     display: grid;
-    justify-content:start;
+    justify-content: start;
     align-items: center;
     gap: var(--grid-Gap);
     margin-left: var(--grid-Margin);
 }
 
-.Header_Menu_Right{
+.Header_Menu_Right {
     display: grid;
-    grid-template-columns:minmax(50px, 10vw) minmax(50px, 10vw) minmax(50px, 10vw);
+    grid-template-columns: minmax(50px, 10vw) minmax(50px, 10vw) minmax(50px, 10vw);
     grid-template-rows: auto;
-    justify-content:end;
+    justify-content: end;
     /*Horizontal align*/
     align-items: center;
     /*Vertical align*/
@@ -661,8 +662,7 @@ body {
 
 @media (max-width: 768px) {
 
-    .HeadLineText_2 {
-    }
+    .HeadLineText_2 {}
 }
 
 .HeadLineText::before {
@@ -733,7 +733,7 @@ body {
     transform: translate(-50%, -50%);
     pointer-events: none;
     /* Allows clicks to pass through the glow */
-    
+
 }
 
 .dot_title {
@@ -763,7 +763,7 @@ body {
     /* Allows clicks to pass through the glow */
 }
 
-.dot_ontop{
+.dot_ontop {
     z-index: 1;
 }
 
@@ -853,7 +853,7 @@ body {
     }
 }
 
-.Name_Text{
+.Name_Text {
     display: grid;
     letter-spacing: 10px;
     justify-self: center;
@@ -863,6 +863,17 @@ body {
 .ProjectsTitle {
     margin: var(--grid-Margin)
 }
+
+.Project_1,
+.Project_2 {
+    display: grid;
+}
+
+.Project_name {
+    justify-self: center;
+}
+
+
 
 .ProjectsGroup1 {
     display: grid;
@@ -877,6 +888,14 @@ body {
     /*Horizontal align*/
     align-items: space-between;
     /*Vertical align*/
+}
+
+/* every item in the 2nd column gets a divider on its left */
+.ProjectsGroup2>*:nth-child(2),
+.grid>*:nth-child(4),
+.grid>*:nth-child(6) {
+    border-left: 1px solid #ccc;
+    padding-left: 1rem;
 }
 
 .ProjectsGroup2 {
@@ -984,21 +1003,24 @@ body {
     height: 150px;
 }
 
-.Contact_Top {
+.Contact_LeftSide {
     display: grid;
     grid-template-columns:
-        3fr
-        /*LeftSide*/
-        1fr
-        /*Rightside*/
-    ;
-    grid-template-rows: auto;
-    justify-content: space-between;
-    /*Horizontal align*/
-    align-items: space-between;
-    /*Vertical align*/
+        auto;
+    grid-template-rows: 30fr 70fr;
 
-    margin: var(--grid-Margin)
+}
+
+.Contact_Title {
+    justify-self: center;
+    align-self: center;
+}
+
+.Contact_types {}
+
+.contact_Pair {
+    display:grid;
+    margin: calc(var(--grid-Margin)/2);
 }
 
 .Contact_Email {
@@ -1067,11 +1089,59 @@ body {
 }
 
 .ContactContainer {
+    display: grid;
+    grid-template-columns:
+        auto auto;
+    grid-template-rows:
+        auto auto;
+}
+
+.Contact_Body {
+    display: grid;
+    grid-template-columns:
+        35fr
+        /*LeftSide*/
+        65fr
+        /*Rightside*/
+    ;
+    grid-template-rows: auto;
+}
+
+.Contact_RightSide {
+    display: grid;
+    gap: var(--grid-Gap);
+    margin: var(--grid-Margin);
+}
+
+.SendContact_Container {
+    display: grid;
+    grid-template-columns:
+        100fr;
+    grid-template-rows: auto;
+}
+
+.contact_messageInput {
+    resize: none;
+}
+
+#nameInput,
+#phoneInput,
+#emailInput,
+#contact_messageInput,
+.Send_Button {
+    background-color: rgb(65, 65, 65);
+    color: #ffffff;
+    border-radius: 7px;
+}
+
+.Send_Button{
+    justify-self: center;
+    width: 50%;
 }
 
 .Footer {
     margin: 0;
-    display:grid;
+    display: grid;
     justify-content: center;
     margin-top: 20px;
 }
