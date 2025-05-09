@@ -19,15 +19,21 @@
 <body>
 
     <div class="Header">
+
         <div class="Header_Menu">
-            <div class="nav_Button_Container">
-                <a class="nav_Button font_H5" data-target="#AboutMeContainer">About Me</a>
+            <div class="Header_Menu_Left">
+                <div class="font_H4 Name_Text">TAMAS<br>TABI</div>
             </div>
-            <div class="nav_Button_Container">
-                <a class="nav_Button font_H5" data-target="#ProjectsContainer">Projects</a>
-            </div>
-            <div class="nav_Button_Container">
-                <a class="nav_Button font_H5" data-target="#ContactContainer">Contact</a>
+            <div class="Header_Menu_Right">
+                <div class="nav_Button_Container">
+                    <a class="nav_Button font_H5" data-target="#AboutMeContainer">About Me</a>
+                </div>
+                <div class="nav_Button_Container">
+                    <a class="nav_Button font_H5" data-target="#ProjectsContainer">Projects</a>
+                </div>
+                <div class="nav_Button_Container">
+                    <a class="nav_Button font_H5" data-target="#ContactContainer">Contact</a>
+                </div>
             </div>
         </div>
     </div>
@@ -46,26 +52,21 @@
                 <div class="Background_AboutMe dot-container" id="Background_AboutMe">
                     <!-- Dots and locations compared to container -->
                     <!-- X is horizontal >, Y is vertical ^          -->
-                    <div class="dot" style="--x: 65%; --y: -5%;"></div> <!-- 0 -->
-                    <div class="dot" style="--x: 75%; --y: -10%;"></div> <!-- 1 -->
-                    <div class="dot" style="--x: 88%; --y: 4%;"></div> <!-- 2 -->
+                    <div class="dot" style="--x: 85%; --y: 5%;"></div> <!-- 0 -->
+                    <div class="dot" style="--x: 114%; --y: 10%;"></div> <!-- 1 -->
+                    <div class="dot" style="--x: 108%; --y: 24%;"></div> <!-- 2 -->
 
-                    <div class="dot" style="--x: 111%; --y: 30%;"></div> <!-- 3 -->
-                    <div class="dot" style="--x: 115%; --y: 40%;"></div> <!-- 4 -->
-                    <div class="dot" style="--x: 105%; --y: 40%;"></div> <!-- 5 -->
-                    <div class="dot" style="--x: 115%; --y: 50%;"></div> <!-- 6 -->
-                    <div class="dot" style="--x: 105%; --y: 50%;"></div> <!-- 7 -->
-                    <div class="dot" style="--x: 109%; --y: 60%;"></div> <!-- 8 -->
+                    <div class="dot" style="--x: 111%; --y: 50%;"></div> <!-- 3 -->
+                    <div class="dot" style="--x: 115%; --y: 60%;"></div> <!-- 4 -->
+                    <div class="dot" style="--x: 105%; --y: 60%;"></div> <!-- 5 -->
+                    <div class="dot" style="--x: 115%; --y: 70%;"></div> <!-- 6 -->
+                    <div class="dot" style="--x: 105%; --y: 70%;"></div> <!-- 7 -->
+                    <div class="dot" style="--x: 109%; --y: 80%;"></div> <!-- 8 -->
 
-                    <div class="dot" style="--x: 81%; --y: 68%;"></div> <!-- 9 -->
-                    <div class="dot" style="--x: 90%; --y: 86%;"></div> <!-- 10 -->
-                    <div class="dot" style="--x: 99%; --y: 71%;"></div> <!-- 11 -->
-                    <div class="dot" style="--x: 105%; --y: 89%;"></div> <!-- 12 -->
-
-                    <div class="dot" style="--x: 28%; --y: 83%;"></div> <!-- 13 -->
-                    <div class="dot" style="--x: 40%; --y: 95%;"></div> <!-- 14 -->
-                    <div class="dot" style="--x: 52%; --y: 88%;"></div> <!-- 15 -->
-                    <div class="dot" style="--x: 50%; --y: 93%;"></div> <!-- 16 -->
+                    <div class="dot" style="--x: 88%; --y: 73%;"></div> <!-- 9 -->
+                    <div class="dot" style="--x: 70%; --y: 95%;"></div> <!-- 10 -->
+                    <div class="dot" style="--x: 94%; --y: 83%;"></div> <!-- 11 -->
+                    <div class="dot" style="--x: 90%; --y: 93%;"></div> <!-- 12 -->
 
 
 
@@ -85,13 +86,6 @@
                     <div class="line" data-from="10" data-to="11"></div>
                     <div class="line" data-from="11" data-to="12"></div>
                     <div class="line" data-from="12" data-to="9"></div>
-
-                    <div class="line" data-from="13" data-to="14"></div>
-                    <div class="line" data-from="14" data-to="15"></div>
-                    <div class="line" data-from="15" data-to="16"></div>
-                    <div class="line" data-from="16" data-to="13"></div>
-
-
 
                 </div>
                 <div class="Background_Projects" id="Background_Projects">
@@ -117,9 +111,9 @@
             <canvas id="canvas_1" width="1280" height="800"></canvas>
             <div class="LandingPageText">
 
-                    <div class="HeadLineText_1 font_Display">WELCOME</div>
-                    <div class="HeadLineText_1 font_Display">&nbsp;&nbsp;TO&nbsp;MY</div>
-                    <div class="HeadLineText_2 font_Display">&nbsp;&nbsp;&nbsp;&nbsp;GALAXY</div>
+                <div class="HeadLineText_1 font_Display">WELCOME</div>
+                <div class="HeadLineText_1 font_Display">&nbsp;&nbsp;TO&nbsp;MY</div>
+                <div class="HeadLineText_2 font_Display">&nbsp;&nbsp;&nbsp;&nbsp;GALAXY</div>
 
 
             </div>
@@ -134,13 +128,13 @@
                     <div class="dot dot_title" style="--x: 50%; --y: 85%;"></div> <!-- 2 -->
 
                     <div class="dot" style="--x: 65%; --y: 90%;"></div> <!-- 3, hidden -->
-                    <div class="dot" style="--x: 165%; --y: 89.2%;"></div> <!-- 4 -->
+                    <div class="dot dot_ontop" style="--x: 165%; --y: 89.2%;"></div> <!-- 4 -->
 
                     <div class="dot" style="--x: 50%; --y: 93%;"></div> <!-- 5, hidden -->
-                    <div class="dot" style="--x: 200%; --y: 93.3%;"></div> <!-- 6 -->
+                    <div class="dot dot_ontop" style="--x: 200%; --y: 93.3%;"></div> <!-- 6 -->
 
                     <div class="dot" style="--x: 50%; --y: 97%;"></div> <!-- 7, hidden -->
-                    <div class="dot" style="--x: 235%; --y: 97.3%;"></div> <!-- 8 -->
+                    <div class="dot dot_ontop" style="--x: 235%; --y: 97.3%;"></div> <!-- 8 -->
 
 
                     <div class="line" data-from="2" data-via="3" data-to="4"></div> <!-- Curved, to AboutMe-->
@@ -164,14 +158,17 @@
                         <p class="AboutMeText font_H4">An insightful Frontend Developer with expertise in HTML,
                             CSS,
                             JavaScript, and modern frameworks such as React, Bootstrap and Firebase.</p>
-                        <p class="AboutMeText font_H4">Leveraging prior experience as a Business Analyst and
+                        <p class="AboutMeText font_H4">
+                            Leveraging prior experience as a Business Analyst and
                             Project
                             Manager, I excel at bridging the gap between technical development and business
-                            strategy, aligning teams around high-level goals.<br><br>
+                            strategy, aligning teams around high-level goals.
+                            <br> <br>
                             When not coding, I can usually be found at events for board
                             games, organizing them or instructing newcomers to the hobby.
                             Alternatively, I have an interest in UX and system designs, while listening to various
-                            science podcasts.</p>
+                            science podcasts.
+                        </p>
 
                     </div>
                 </div>
@@ -226,17 +223,27 @@
                         <div class="Contact_Image"></div>
                     </div>
                     <div class="Contact_Body">
-                        <div class="Contact_Email">
-                            <img class="Contact_Icon" src="/Assets/Icons/Mail - Inverted.svg" alt="Email Icon">
-                            <div class="Contact_Text">tabitamas91@gmail.com</div>
+                        <div class="Contact_LeftSide">
+                            <div class="Contact_Email">
+                                <img class="Contact_Icon" src="/Assets/Icons/Mail - Inverted.svg" alt="Email Icon">
+                                <div class="Contact_Text">tabitamas91@gmail.com</div>
+                            </div>
+                            <div class="Contact_Phone">
+                                <img class="Contact_Icon" src="/Assets/Icons/Phone - Inverted.svg" alt="Phone Icon">
+                                <div class="Contact_Text">07990 803 405</div>
+                            </div>
+                            <div class="Contact_LinkedIn">
+                                <img class="Contact_Icon" src="/Assets/Icons/LinkedIn - Inverted.svg"
+                                    alt="LinkedIn Icon">
+                                <div class="Contact_Text">/tamas-tabi/</div>
+                            </div>
                         </div>
-                        <div class="Contact_Phone">
-                            <img class="Contact_Icon" src="/Assets/Icons/Phone - Inverted.svg" alt="Phone Icon">
-                            <div class="Contact_Text">07990 803 405</div>
-                        </div>
-                        <div class="Contact_LinkedIn">
-                            <img class="Contact_Icon" src="/Assets/Icons/LinkedIn - Inverted.svg" alt="LinkedIn Icon">
-                            <div class="Contact_Text">/tamas-tabi/</div>
+                        <div class="Contact_RightSide">
+                            <div class="SendContact_Container">
+                                <div class="Send_Name"></div>
+                                <div class="Send_Email"></div>
+                                <div class="Send_Text"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

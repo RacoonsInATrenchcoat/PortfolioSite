@@ -158,7 +158,7 @@ function drawForContainer1() {
 
         //Parameters, randomised here for variety
         const radius = 4
-        const colors = ['rgb(255, 255, 255)',/*'white', blue', 'yellow',  'green', 'orange', 'purple'*/]; //Add whatever colors wanted
+        const colors = ['rgba(255, 255, 255, 0.9)',/*'white', blue', 'yellow',  'green', 'orange', 'purple'*/]; //Add whatever colors wanted
         const color = colors[Math.floor(Math.random() * colors.length)];
 
         currentItemList.push(new Circle(x, y, radius, { color }));
@@ -206,7 +206,7 @@ function animate() {
                 context_1.lineTo(b.x, b.y);
                 context_1.lineWidth = lineWidth; // Slightly wider than main line
                 context_1.strokeStyle = 'rgba(181, 0, 252, 0.9)';
-                context_1.shadowColor = 'rgba(255, 255, 255, 0.8)';
+                context_1.shadowColor = 'rgb(255, 255, 255)';
                 context_1.shadowBlur = 12;
                 context_1.stroke();
 

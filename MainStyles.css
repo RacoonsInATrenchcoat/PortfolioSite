@@ -258,10 +258,23 @@ body {
 }
 
 .Header_Menu {
-    display: grid;
-    grid-template-columns: minmax(50px, 10vw) minmax(50px, 10vw) minmax(50px, 10vw);
+    display:grid;
+    grid-template-columns: 50vw 50vw;
     grid-template-rows: auto;
-    justify-content: center;
+}
+.Header_Menu_Left{
+    display: grid;
+    justify-content:start;
+    align-items: center;
+    gap: var(--grid-Gap);
+    margin-left: var(--grid-Margin);
+}
+
+.Header_Menu_Right{
+    display: grid;
+    grid-template-columns:minmax(50px, 10vw) minmax(50px, 10vw) minmax(50px, 10vw);
+    grid-template-rows: auto;
+    justify-content:end;
     /*Horizontal align*/
     align-items: center;
     /*Vertical align*/
@@ -720,6 +733,7 @@ body {
     transform: translate(-50%, -50%);
     pointer-events: none;
     /* Allows clicks to pass through the glow */
+    
 }
 
 .dot_title {
@@ -747,6 +761,10 @@ body {
     transform: translate(-50%, -50%);
     pointer-events: none;
     /* Allows clicks to pass through the glow */
+}
+
+.dot_ontop{
+    z-index: 1;
 }
 
 .line {
@@ -809,9 +827,9 @@ body {
 .AboutMeGroup1 {
     display: grid;
     grid-template-columns:
-        5fr
+        30fr
         /*LeftSide*/
-        50fr
+        70fr
         /*Rightside*/
     ;
     grid-template-rows: auto;
@@ -819,6 +837,7 @@ body {
     /*Horizontal align*/
     align-items: space-between;
     /*Vertical align*/
+    grid-auto-flow: row;
 }
 
 @media (max-width: 768px) {
@@ -834,6 +853,12 @@ body {
     }
 }
 
+.Name_Text{
+    display: grid;
+    letter-spacing: 10px;
+    justify-self: center;
+    line-height: 1.3;
+}
 
 .ProjectsTitle {
     margin: var(--grid-Margin)
@@ -1042,9 +1067,11 @@ body {
 }
 
 .ContactContainer {
-    z-index: -1;
 }
 
 .Footer {
     margin: 0;
+    display:grid;
+    justify-content: center;
+    margin-top: 20px;
 }
