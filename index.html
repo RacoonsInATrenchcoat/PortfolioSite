@@ -24,6 +24,12 @@
             <div class="Header_Menu_Left">
                 <div class="font_H4 Name_Text">TAMAS<br>TABI</div>
             </div>
+
+            <!-- Only for mobile.-->
+            <button class="hamburger_menu" aria-label="Menu Toggle" aria-expanded="false">
+                ☰
+            </button>
+
             <div class="Header_Menu_Right">
                 <div class="nav_Button_Container">
                     <a class="nav_Button font_H5" data-target="#AboutMeContainer">About Me</a>
@@ -128,13 +134,13 @@
                     <div class="dot dot_title" style="--x: 50%; --y: 85%;"></div> <!-- 2 -->
 
                     <div class="dot" style="--x: 65%; --y: 90%;"></div> <!-- 3, hidden -->
-                    <div class="dot dot_ontop" style="--x: 165%; --y: 89.2%;"></div> <!-- 4 -->
+                    <div class="dot dot_ontop" style="--x: 190%; --y: 87.5%;"></div> <!-- 4 -->
 
                     <div class="dot" style="--x: 50%; --y: 93%;"></div> <!-- 5, hidden -->
-                    <div class="dot dot_ontop" style="--x: 200%; --y: 93.3%;"></div> <!-- 6 -->
+                    <div class="dot dot_ontop" style="--x: 221%; --y: 91.5%;"></div> <!-- 6 -->
 
                     <div class="dot" style="--x: 50%; --y: 97%;"></div> <!-- 7, hidden -->
-                    <div class="dot dot_ontop" style="--x: 235%; --y: 97.3%;"></div> <!-- 8 -->
+                    <div class="dot dot_ontop" style="--x: 256%; --y: 95.5%;"></div> <!-- 8 -->
 
 
                     <div class="line" data-from="2" data-via="3" data-to="4"></div> <!-- Curved, to AboutMe-->
@@ -244,7 +250,7 @@
                                     <input type="text" id="nameInput" name="name" placeholder="Your name" required />
                                 </div>
                                 <div class="contact_Pair">
-                                    <label for="phoneInput" class="Send_Phone">Optional Phone</label>
+                                    <label for="phoneInput" class="Send_Phone">Phone (optional)</label>
                                     <input type="tel" id="phoneInput" name="phone" placeholder="e.g. +44 7123 456789" />
                                 </div>
                                 <div class="contact_Pair">
@@ -257,9 +263,11 @@
                                     <textarea class="contact_messageInput" id="contact_messageInput" name="message"
                                         rows="4" placeholder="Your message…" required></textarea>
                                 </div>
-                                <button type="submit" class="Send_Button">
-                                    Send
-                                </button>
+                                <div class="contact_Pair">
+                                    <button type="submit" class="Send_Button">
+                                        Send
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>

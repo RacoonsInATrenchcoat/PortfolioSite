@@ -9,7 +9,8 @@
     --grid-Gap: 32px;
 
 
-
+    /*Standard to use. 
+Basic CSS cant use variables for media queries, so mainly here as reminder.*/
     --mobile-Width: 768px;
 
     /*For debugging*/
@@ -252,7 +253,6 @@ body {
 
 .Header {
     display: grid;
-    justify-content: center;
     /*Horizontal align*/
     background-color: rgba(181, 0, 252, 0.2);
 }
@@ -263,12 +263,33 @@ body {
     grid-template-rows: auto;
 }
 
+@media (max-width: 768px) {
+    .Header_Menu {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto;
+        justify-content: space-between;
+        /*Horizontal align*/
+        align-items: center;
+        /*Vertical align*/
+        gap: var(--grid-Gap)
+    }
+}
+
 .Header_Menu_Left {
     display: grid;
     justify-content: start;
     align-items: center;
     gap: var(--grid-Gap);
     margin-left: var(--grid-Margin);
+}
+
+@media (max-width: 768px) {
+    .Header_Menu_Left {
+        display: grid;
+        gap: var(--grid-Gap);
+        margin-left: calc(var(--grid-Margin)/2);
+    }
 }
 
 .Header_Menu_Right {
@@ -283,15 +304,57 @@ body {
 }
 
 @media (max-width: 768px) {
-    .Header_Menu {
+    .Header_Menu_Right {
         display: grid;
-        grid-template-columns: 30vw 30vw 30vw;
+        grid-template-columns: auto auto auto;
         grid-template-rows: auto;
-        justify-content: space-between;
+        justify-content: end;
         /*Horizontal align*/
         align-items: center;
         /*Vertical align*/
         gap: var(--grid-Gap)
+    }
+}
+
+.hamburger_menu {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .hamburger_menu {
+        display: block;
+        position: absolute;
+        font-size: 2rem;
+        background: none;
+        border: none;
+        color: inherit;
+        z-index: 10;
+
+        right: 1rem;
+
+        margin: calc(var(--grid-Margin)/2);
+        margin-top: 0px;
+    }
+
+    /* By default, hide the menu on mobile */
+    .Header_Menu_Right {
+        display: none;
+        position: absolute;
+        top: 4rem;
+        right: 1rem;
+        background: black;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* When 'show' class is added (via JS), use this CSS */
+    .Header_Menu_Right.show {
+        display: flex;
+        background-color: rgb(50, 0, 70);
+        border-radius: 20px;
     }
 }
 
@@ -349,6 +412,7 @@ body {
 .nav_Button:hover::after {
     width: 75%;
 }
+
 
 .Parallax_Container {
     height: 100%;
@@ -891,19 +955,22 @@ body {
 }
 
 /* every item in the 2nd column gets a divider on its left */
-.ProjectsGroup2>*:nth-child(2),
-.grid>*:nth-child(4),
-.grid>*:nth-child(6) {
-    border-left: 1px solid #ccc;
-    padding-left: 1rem;
+@media (min-width: 768px) {
+
+    .ProjectsGroup2>*:nth-child(2),
+    .grid>*:nth-child(4),
+    .grid>*:nth-child(6) {
+        border-left: 1px solid #ccc;
+        padding-left: 1rem;
+    }
 }
 
 .ProjectsGroup2 {
     display: grid;
     grid-template-columns:
-        1fr
+        50%
         /*LeftSide*/
-        1fr
+        50%
         /*Rightside*/
     ;
     grid-template-rows: auto;
@@ -1019,7 +1086,7 @@ body {
 .Contact_types {}
 
 .contact_Pair {
-    display:grid;
+    display: grid;
     margin: calc(var(--grid-Margin)/2);
 }
 
@@ -1088,24 +1155,37 @@ body {
     align-self: center;
 }
 
-.ContactContainer {
-    display: grid;
-    grid-template-columns:
-        auto auto;
-    grid-template-rows:
-        auto auto;
-}
+.ContactContainer {}
 
 .Contact_Body {
     display: grid;
     grid-template-columns:
-        35fr
+        50%
         /*LeftSide*/
-        65fr
+        50%
         /*Rightside*/
     ;
     grid-template-rows: auto;
 }
+
+@media (min-width: 768px) {
+    .Contact_Body>*:nth-child(2) {
+        border-left: 1px solid #ccc;
+        padding-left: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .Contact_Body {
+        display: grid;
+        grid-template-columns:
+            auto;
+        grid-template-rows: auto auto;
+        grid-auto-flow: row;
+    }
+}
+
+
 
 .Contact_RightSide {
     display: grid;
@@ -1118,6 +1198,7 @@ body {
     grid-template-columns:
         100fr;
     grid-template-rows: auto;
+    width: 100%;
 }
 
 .contact_messageInput {
@@ -1134,7 +1215,8 @@ body {
     border-radius: 7px;
 }
 
-.Send_Button{
+
+.Send_Button {
     justify-self: center;
     width: 50%;
 }
