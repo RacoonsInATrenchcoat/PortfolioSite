@@ -116,6 +116,7 @@ const syncPairs = [
   ['LandingContainer', 'Background_Landing'],
   ['AboutMeContainer', 'Background_AboutMe'],
   ['ProjectsContainer', 'Background_Projects'],
+  ['SkillsContainer', 'Background_Skills'],
   ['ContactContainer', 'Background_Contact'],
   ['LeftSide', 'Background_Container']
 ];
@@ -276,25 +277,25 @@ function smoothScroll(target, duration) {
 //Default CSS works too, but is way too fast. This allows me to adjust the speed, much better for the eye.
 function smoothScroll(selector, duration) {
   const scrollRoot = document.scrollingElement || document.documentElement;
-  const target     = document.querySelector(selector);
+  const target = document.querySelector(selector);
   if (!target) return;
 
-  const startY  = scrollRoot.scrollTop;
-  const endY    = target.getBoundingClientRect().top + startY;
-  const change  = endY - startY;
+  const startY = scrollRoot.scrollTop;
+  const endY = target.getBoundingClientRect().top + startY;
+  const change = endY - startY;
   const startTs = performance.now();
 
   function easeInOutQuad(t) {
     return t < 0.5
-      ? 2*t*t
-      : -1 + (4 - 2*t)*t;
+      ? 2 * t * t
+      : -1 + (4 - 2 * t) * t;
   }
 
   function tick(now) {
     const elapsed = now - startTs;
-    const t       = Math.min(1, elapsed / duration);
+    const t = Math.min(1, elapsed / duration);
     // clamp so we never overshoot
-    let current   = startY + change * easeInOutQuad(t);
+    let current = startY + change * easeInOutQuad(t);
     if (change > 0 && current > endY) current = endY;
     if (change < 0 && current < endY) current = endY;
 
@@ -331,7 +332,6 @@ hamburger.addEventListener('click', () => {
 
 //Contact for details and emailing via Firebase/google
 const endpoint_URL = "https://europe-west1-portfoliosite-f7714.cloudfunctions.net/sendContactEmail"
-
 
 //Waits until all DOM are loaded. Good practice to use.
 document.addEventListener('DOMContentLoaded', () => {
@@ -381,4 +381,47 @@ document.addEventListener('DOMContentLoaded', () => {
       sendButton.textContent = 'Send';
     }
   });
+});
+
+
+//Carousel movement for the SKILLS part
+document.addEventListener('DOMContentLoaded', () => {
+  // Cache the arrow buttons and panels
+  const btnPrev = document.querySelector('.carousel-arrow--left');
+  const btnNext = document.querySelector('.carousel-arrow--right');
+  const panels = Array.from(document.querySelectorAll('.skills-panel'));
+
+  if (!btnPrev || !btnNext) {
+    console.warn('Carousel arrows not found – check your .carousel-arrow class names.');
+    return;
+  }
+  if (panels.length !== 3) {
+    console.warn(
+      `Expected 3 .skills-panel elements, but found ${panels.length}.`
+    );
+    return;
+  }
+
+  // Utility to rotate the panels array and re-apply classes
+  function rotatePanels(direction) {
+    // panels are [prev, active, next]
+    let [prev, active, next] = panels;
+    let newOrder = direction === 'forward'
+      ? [active, next, prev]
+      : [next, prev, active];
+
+    // mutate the original array so future clicks see the updated order
+    panels.splice(0, panels.length, ...newOrder);
+
+    // re-assign modifier classes
+    panels.forEach((panel, idx) => {
+      panel.classList.toggle('skills-panel--prev',    idx === 0);
+      panel.classList.toggle('skills-panel--active',  idx === 1);
+      panel.classList.toggle('skills-panel--next',    idx === 2);
+    });
+  }
+
+  // Attach click handlers
+  btnNext.addEventListener('click', () => rotatePanels('forward'));
+  btnPrev.addEventListener('click', () => rotatePanels('backward'));
 });

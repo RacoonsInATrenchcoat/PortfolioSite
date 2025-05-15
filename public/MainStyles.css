@@ -282,7 +282,7 @@ body {
     align-items: center;
     gap: var(--grid-Gap);
     margin-left: var(--grid-Margin);
-    
+
 }
 
 @media (max-width: 768px) {
@@ -855,6 +855,7 @@ body {
     /* behind main line */
 }
 
+/* ABOUT ME */
 .AboutMeContainer {}
 
 
@@ -925,6 +926,123 @@ body {
     line-height: 1.3;
 }
 
+/* SKILLS */
+/* === Container === */
+.SkillsContainer {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+    min-height: 18rem;
+    /* Ensures layout doesn't collapse */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* === Carousel Window (holds all panels) === */
+.carousel-window {
+    position: relative;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* === Panels (each slides into one grid column) === */
+.skills-panel {
+    padding: 1rem;
+    opacity: 0.3;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /*Forces to have 1 row, otherwise they jump to row2 by default.*/
+    grid-row: 1;
+}
+
+/* Correct placement */
+.skills-panel--prev {
+    grid-column: 1;
+    opacity: 0.4;
+    transform: scale(0.7);
+    text-align: left;
+    padding-left: 1rem;
+
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%);
+    mask-image: linear-gradient(to right, transparent 0%, black 30%);
+    /*Extra masking on the right. Not mirroring correctly, but needed for the text to not hardcut, since we read from left to right. */
+        -webkit-mask-image: linear-gradient(to left, transparent 0%, black 30%);
+    mask-image: linear-gradient(to left, transparent 0%, black 30%);
+      -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.skills-panel--active {
+    grid-column: 2;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.skills-panel--next {
+    grid-column: 3;
+    opacity: 0.4;
+    transform: scale(0.7);
+    text-align: right;
+    padding-right: 1rem;
+
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, black 30%);
+    mask-image: linear-gradient(to left, transparent 0%, black 30%);
+      -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* === Arrows === */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.carousel-arrow--left {
+    left: 1rem;
+}
+
+.carousel-arrow--right {
+    right: 1rem;
+}
+
+/* === Fadeout edges === */
+.SkillsContainer::before,
+.SkillsContainer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3rem;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.SkillsContainer::before {
+    left: 0;
+}
+
+.SkillsContainer::after {
+    right: 0;
+}
+
+
+
+/* PROJECTS */
 .ProjectsTitle {
     margin: var(--grid-Margin)
 }
@@ -1071,6 +1189,8 @@ body {
     width: 150px;
     height: 150px;
 }
+
+/* CONTACT */
 
 .Contact_LeftSide {
     display: grid;
