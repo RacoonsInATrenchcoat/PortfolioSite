@@ -1,61 +1,78 @@
-const functions = require("firebase-functions");
-const { google } = require("googleapis");
-const nodemailer = require("nodemailer");
+// functions/index.js
 
-// Retrieve Gmail credentials from functions config
-//.condfig is marked deprecated but still works.
-const gmailConfig = functions.config().gmail;
+// 1) Only import what Firebase needs to register the function
+const { onRequest } = require("firebase-functions/v2/https");
+const cors = require("cors");
+const { defineSecret } = require("firebase-functions/params");
 
-const oAuth2Client = new google.auth.OAuth2(
-  gmailConfig.client_id,
-  gmailConfig.client_secret,
-  "https://developers.google.com/oauthplayground" // This must match the one used to get your refresh token
-);
+// 2) Define your secrets (no heavy work here)
+const GMAIL_USER          = defineSecret("GMAIL_USER");
+const GMAIL_CLIENT_ID     = defineSecret("GMAIL_CLIENT_ID");
+const GMAIL_CLIENT_SECRET = defineSecret("GMAIL_CLIENT_SECRET");
+const GMAIL_REFRESH_TOKEN = defineSecret("GMAIL_REFRESH_TOKEN");
 
-oAuth2Client.setCredentials({
-  refresh_token: gmailConfig.refresh_token,
-});
+// 3) Prepare CORS middleware
+const corsHandler = cors({ origin: true });
 
-// Main email-sending function
-exports.sendContactEmail = functions.https.onRequest(async (req, res) => {
-  // Allow only POST
-  if (req.method !== "POST") {
-    return res.status(405).send("Method Not Allowed");
-  }
+// 4) Export the function (VERY lightweight on module load)
+exports.sendContactEmail = onRequest({
+  region:       "europe-west1",
+  timeoutSeconds: 60,
+  memory:       "256MiB",
+  secrets: [
+    GMAIL_USER,
+    GMAIL_CLIENT_ID,
+    GMAIL_CLIENT_SECRET,
+    GMAIL_REFRESH_TOKEN
+  ]
+}, async (req, res) => {
+  // 5) Defer all the heavy lifting until a request comes in:
+  corsHandler(req, res, async () => {
+    if (req.method !== "POST") {
+      return res.status(405).send("Method Not Allowed");
+    }
 
-  const { name, email, message } = req.body;
+    const { google } = require("googleapis");
+    const { Buffer } = require("buffer"); // built-in
 
-  if (!name || !email || !message) {
-    return res.status(400).send("Missing fields");
-  }
+    const { name, email, message } = req.body;
+    if (!name || !email || !message) {
+      return res.status(400).send("Missing fields");
+    }
 
-  try {
-    const accessToken = await oAuth2Client.getAccessToken();
+    try {
+      // a) Spin up OAuth2 client
+      const oAuth2 = new google.auth.OAuth2(
+        GMAIL_CLIENT_ID.value(),
+        GMAIL_CLIENT_SECRET.value()
+      );
+      oAuth2.setCredentials({ refresh_token: GMAIL_REFRESH_TOKEN.value() });
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        type: "OAuth2",
-        user: gmailConfig.user,
-        clientId: gmailConfig.client_id,
-        clientSecret: gmailConfig.client_secret,
-        refreshToken: gmailConfig.refresh_token,
-        accessToken: accessToken.token,
-      },
-    });
+      // b) Grab an access token
+      const { token: accessToken } = await oAuth2.getAccessToken();
 
-    const mailOptions = {
-      from: `"${name}" <${email}>`,
-      to: gmailConfig.user,
-      subject: "New Contact Form Submission",
-      text: `From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-    };
+      // c) Build Gmail API
+      const gmail = google.gmail({ version: "v1", auth: oAuth2 });
 
-    await transporter.sendMail(mailOptions);
+      // d) Construct the mail in raw RFC2822
+      const raw = Buffer.from(
+        `From: "${name}" <${GMAIL_USER.value()}>\r\n` +
+        `Reply-To: ${email}\r\n` +
+        `To: ${GMAIL_USER.value()}\r\n` +
+        `Subject: New Contact from ${name}\r\n\r\n` +
+        `${message}`
+      ).toString("base64url");
 
-    return res.status(200).send("Email sent successfully");
-  } catch (error) {
-    console.error("Email sending error:", error);
-    return res.status(500).send("Internal Server Error");
-  }
+      // e) Send via REST
+      await gmail.users.messages.send({
+        userId: "me",
+        requestBody: { raw }
+      });
+
+      res.status(200).send("Email sent successfully.");
+    } catch (err) {
+      console.error("Gmail API error:", err);
+      res.status(500).send("Internal Server Error");
+    }
+  });
 });

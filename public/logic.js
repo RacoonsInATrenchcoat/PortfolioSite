@@ -271,15 +271,52 @@ function smoothScroll(target, duration) {
   scroll();
 }
 
-// Attach event listener to all navigation buttons
-document.querySelectorAll('.nav_Button').forEach(button => {
-  button.addEventListener('click', function (e) {
-    e.preventDefault(); // Prevent default anchor behavior
-    const targetId = this.getAttribute('data-target'); // Get the target section
-    smoothScroll(targetId, 2500); // Adjust the duration (in ms) for smoother scrolling
+
+//Long story short, smooth scrolling is not consistent between browsers and breaks easily.
+//Default CSS works too, but is way too fast. This allows me to adjust the speed, much better for the eye.
+function smoothScroll(selector, duration) {
+  const scrollRoot = document.scrollingElement || document.documentElement;
+  const target     = document.querySelector(selector);
+  if (!target) return;
+
+  const startY  = scrollRoot.scrollTop;
+  const endY    = target.getBoundingClientRect().top + startY;
+  const change  = endY - startY;
+  const startTs = performance.now();
+
+  function easeInOutQuad(t) {
+    return t < 0.5
+      ? 2*t*t
+      : -1 + (4 - 2*t)*t;
+  }
+
+  function tick(now) {
+    const elapsed = now - startTs;
+    const t       = Math.min(1, elapsed / duration);
+    // clamp so we never overshoot
+    let current   = startY + change * easeInOutQuad(t);
+    if (change > 0 && current > endY) current = endY;
+    if (change < 0 && current < endY) current = endY;
+
+    scrollRoot.scrollTop = current;
+
+    if (t < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      scrollRoot.scrollTop = endY; // ensure exact final position
+    }
+  }
+
+  requestAnimationFrame(tick);
+}
+
+//Then to actually use the above details:
+document.querySelectorAll('.nav_Button').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    smoothScroll(btn.getAttribute('data-target'), 1500);
   });
 });
-
 
 //Logic for hamburger menu switch on navbar
 const hamburger = document.querySelector('.hamburger_menu');
@@ -289,4 +326,59 @@ hamburger.addEventListener('click', () => {
   const expanded = hamburger.getAttribute('aria-expanded') === 'true';
   hamburger.setAttribute('aria-expanded', !expanded);
   menu.classList.toggle('show');
+});
+
+
+//Contact for details and emailing via Firebase/google
+const endpoint_URL = "https://europe-west1-portfoliosite-f7714.cloudfunctions.net/sendContactEmail"
+
+
+//Waits until all DOM are loaded. Good practice to use.
+document.addEventListener('DOMContentLoaded', () => {
+  //Load the html form and button, listen for the submitting. Different that click as it checks the form as well.
+  const form = document.getElementById('contactForm');
+  const sendButton = form.querySelector('.Send_Button');
+
+  form.addEventListener('submit', async (e) => {
+    // Stop default form submit (full page reload)
+    e.preventDefault();
+    //Button is disabled to avoid multi-sends until cleared.
+    sendButton.disabled = true;
+    sendButton.textContent = 'Sending…';
+
+    // Collect form data from the "contactForm" + combine into one object.
+    // Add validation later if needed.
+    const data = {
+      name: form.name.value.trim(),
+      phone: form.phone.value.trim(),
+      email: form.email.value.trim(),
+      message: form.message.value.trim()
+    };
+
+    try {
+      // Replace this URL with  Cloud Function endpoint later
+      const response = await fetch(endpoint_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      //Check for built-in errors (not within 200-299 status)
+      if (!response.ok) throw new Error('Failed to send');
+
+      // Show success (can style this into a popup or div later)
+      alert('Your message was sent successfully!\n' +
+        'Voyager 1 will now re-route your information to the correct location.');
+      form.reset();
+    } catch (err) {
+      alert('There was an error sending your message. Please try again or send manually.');
+      console.error(err);
+    } finally {
+      //Cleanup and reset the send button.
+      sendButton.disabled = false;
+      sendButton.textContent = 'Send';
+    }
+  });
 });

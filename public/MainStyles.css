@@ -3,7 +3,6 @@
     font-optical-sizing: auto;
     font-style: normal;
     color: white;
-    scroll-behavior: smooth;
 
     --grid-Margin: 32px;
     --grid-Gap: 32px;
@@ -13,8 +12,9 @@
 Basic CSS cant use variables for media queries, so mainly here as reminder.*/
     --mobile-Width: 768px;
 
-    /*For debugging*/
-    outline: 1px solid rgba(255, 0, 0, 0.3);
+    /*For debugging
+    outline: 1px solid rgba(255, 0, 0, 0.3); 
+    */
 
     /*Fonts
 1REM = 16px */
@@ -259,7 +259,7 @@ body {
 
 .Header_Menu {
     display: grid;
-    grid-template-columns: 50vw 50vw;
+    grid-template-columns: 48vw 48vw;
     grid-template-rows: auto;
 }
 
@@ -282,6 +282,7 @@ body {
     align-items: center;
     gap: var(--grid-Gap);
     margin-left: var(--grid-Margin);
+    
 }
 
 @media (max-width: 768px) {
@@ -962,6 +963,7 @@ body {
     .grid>*:nth-child(6) {
         border-left: 1px solid #ccc;
         padding-left: 1rem;
+        height: 95%;
     }
 }
 
