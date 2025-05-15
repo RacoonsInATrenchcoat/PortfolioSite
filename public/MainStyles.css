@@ -927,117 +927,75 @@ body {
 }
 
 /* SKILLS */
-/* === Container === */
+/* === Main container === */
 .SkillsContainer {
-    position: relative;
-    width: 100%;
-    max-width: 100vw;
-    overflow: hidden;
-    min-height: 18rem;
-    /* Ensures layout doesn't collapse */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  min-height: 18rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* === Carousel Window (holds all panels) === */
+/* === Carousel window (holds panels) === */
 .carousel-window {
-    position: relative;
-    display: grid;
-    grid-template-columns: 15% 70% 15%;
-    grid-template-rows: 1fr;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    transition: all 0.3s ease;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-/* === Panels (each slides into one grid column) === */
+/* === Each panel === */
 .skills-panel {
-    padding: 1rem;
-    opacity: 0.3;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    /*Forces to have 1 row, otherwise they jump to row2 by default.*/
-    grid-row: 1;
+  position: absolute;
+  width: 70%;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.7);
+  z-index: 1;
 }
 
-/* Correct placement */
-.skills-panel--prev {
-    grid-column: 1;
-    opacity: 0.4;
-    transform: scale(0.7);
-    text-align: left;
-    padding-left: 1rem;
-
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%);
-    mask-image: linear-gradient(to right, transparent 0%, black 30%);
-    /*Extra masking on the right. Not mirroring correctly, but needed for the text to not hardcut, since we read from left to right. */
-        -webkit-mask-image: linear-gradient(to left, transparent 0%, black 30%);
-    mask-image: linear-gradient(to left, transparent 0%, black 30%);
-      -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
+/* === Active, Prev, Next Classes === */
 .skills-panel--active {
-    grid-column: 2;
-    opacity: 1;
-    transform: scale(1);
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+  z-index: 3;
+}
+
+.skills-panel--prev {
+  opacity: 0.4;
+  transform: translateX(-100%) scale(0.7);
+  z-index: 2;
 }
 
 .skills-panel--next {
-    grid-column: 3;
-    opacity: 0.4;
-    transform: scale(0.7);
-    text-align: right;
-    padding-right: 1rem;
-
-    -webkit-mask-image: linear-gradient(to left, transparent 0%, black 30%);
-    mask-image: linear-gradient(to left, transparent 0%, black 30%);
-      -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
+  opacity: 0.4;
+  transform: translateX(100%) scale(0.7);
+  z-index: 2;
 }
 
 /* === Arrows === */
 .carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 2;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 5;
 }
 
 .carousel-arrow--left {
-    left: 1rem;
+  left: 1rem;
 }
 
 .carousel-arrow--right {
-    right: 1rem;
-}
-
-/* === Fadeout edges === */
-.SkillsContainer::before,
-.SkillsContainer::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 3rem;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.SkillsContainer::before {
-    left: 0;
-}
-
-.SkillsContainer::after {
-    right: 0;
+  right: 1rem;
 }
 
 

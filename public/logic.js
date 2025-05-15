@@ -386,42 +386,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //Carousel movement for the SKILLS part
 document.addEventListener('DOMContentLoaded', () => {
-  // Cache the arrow buttons and panels
   const btnPrev = document.querySelector('.carousel-arrow--left');
   const btnNext = document.querySelector('.carousel-arrow--right');
   const panels = Array.from(document.querySelectorAll('.skills-panel'));
 
-  if (!btnPrev || !btnNext) {
-    console.warn('Carousel arrows not found – check your .carousel-arrow class names.');
-    return;
-  }
-  if (panels.length !== 3) {
-    console.warn(
-      `Expected 3 .skills-panel elements, but found ${panels.length}.`
-    );
+  if (!btnPrev || !btnNext || panels.length !== 3) {
+    console.warn('Missing carousel elements or not exactly 3 panels.');
     return;
   }
 
-  // Utility to rotate the panels array and re-apply classes
-  function rotatePanels(direction) {
-    // panels are [prev, active, next]
-    let [prev, active, next] = panels;
-    let newOrder = direction === 'forward'
-      ? [active, next, prev]
-      : [next, prev, active];
+  // Initial order: [prev, active, next]
+  let currentOrder = [0, 1, 2];
 
-    // mutate the original array so future clicks see the updated order
-    panels.splice(0, panels.length, ...newOrder);
-
-    // re-assign modifier classes
+  function applyClasses() {
     panels.forEach((panel, idx) => {
-      panel.classList.toggle('skills-panel--prev',    idx === 0);
-      panel.classList.toggle('skills-panel--active',  idx === 1);
-      panel.classList.toggle('skills-panel--next',    idx === 2);
+      panel.classList.remove('skills-panel--prev', 'skills-panel--active', 'skills-panel--next');
     });
+
+    panels[currentOrder[0]].classList.add('skills-panel--prev');
+    panels[currentOrder[1]].classList.add('skills-panel--active');
+    panels[currentOrder[2]].classList.add('skills-panel--next');
   }
 
-  // Attach click handlers
-  btnNext.addEventListener('click', () => rotatePanels('forward'));
-  btnPrev.addEventListener('click', () => rotatePanels('backward'));
+  function rotate(direction) {
+    if (direction === 'forward') {
+      currentOrder.push(currentOrder.shift()); // Move first to last
+    } else if (direction === 'backward') {
+      currentOrder.unshift(currentOrder.pop()); // Move last to first
+    }
+    applyClasses();
+  }
+
+  // Init
+  applyClasses();
+
+  // Events
+  btnNext.addEventListener('click', () => rotate('forward'));
+  btnPrev.addEventListener('click', () => rotate('backward'));
 });
