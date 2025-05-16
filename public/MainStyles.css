@@ -932,7 +932,9 @@ body {
     position: relative;
     width: 100%;
     overflow: hidden;
-    min-height: 20rem;
+    /*This is to ensure all 3 containers are the same height, otherwise always jumps based on fontsize alone.
+    To adjust if more are added! */
+    min-height: 37rem;
     display: flex;
     align-items: center;
     justify-content: center;
