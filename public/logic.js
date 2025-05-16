@@ -104,7 +104,7 @@ const ContactContainer = document.getElementById('contact-container');
 const SkillsContainer = document.getElementById('skills-container');
 
 //To change
-const Background_AboutMe = document.getElementById('background-aboutMe');
+const Background_AboutMe = document.getElementById('background-about-me');
 const Background_Projects = document.getElementById('background-projects');
 const Background_Contact = document.getElementById('background-contact');
 const Background_Skills = document.getElementById('background-skills');
@@ -240,7 +240,6 @@ window.addEventListener('load', () => {
 
 
 // Smooth scrolling (default CSS is too jumpy and fast)
-
 function smoothScroll(target, duration) {
   const targetElement = document.querySelector(target);
   const startPosition = window.pageYOffset;
@@ -317,9 +316,10 @@ function smoothScroll(selector, duration) {
 document.querySelectorAll('.nav-button').forEach(btn => {
   btn.addEventListener('click', e => {
     e.preventDefault();
-    smoothScroll(btn.getAttribute('data-target'), 1500);
+    smoothScroll(btn.getAttribute('href'), 1500);
   });
 });
+
 
 //Logic for hamburger menu switch on navbar
 const hamburger = document.querySelector('.hamburger-menu');

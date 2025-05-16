@@ -5,8 +5,8 @@ function getRandomNumber() {
 }
 
 //1, Select the HTML element in JS:
-const canvas_1 = document.getElementById("canvas_1"); //JS value is linked, so the correct gets updated
-const landingContainer = document.getElementById("LandingContainer");
+const canvas_1 = document.getElementById("canvas-1"); //JS value is linked, so the correct gets updated
+const landingContainer = document.getElementById("landing-container");
 const context_1 = canvas_1.getContext("2d");              //Default command, so it knows to interpret as 2D drawing.
 
 const currentItemList = [];

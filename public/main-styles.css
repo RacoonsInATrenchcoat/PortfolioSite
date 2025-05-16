@@ -261,7 +261,7 @@ body {
 
 .header-menu-right {
     display: grid;
-    grid-template-columns: minmax(50px, 10vw) minmax(50px, 10vw) minmax(50px, 10vw);
+    grid-template-columns: minmax(50px, 10vw) minmax(50px, 10vw) minmax(50px, 10vw) minmax(50px, 10vw);
     grid-template-rows: auto;
     justify-content: end;
     /*Horizontal align*/
@@ -915,6 +915,7 @@ body {
     align-items: center;
 }
 
+
 /* === Each panel === */
 .skills-panel {
     position: absolute;
@@ -926,6 +927,11 @@ body {
     transform: scale(0.7);
     z-index: 1;
 }
+
+@media (max-width: 768px) {
+    .skills-list {
+text-align: start;
+    }}
 
 .skills-panel-title {
     position: relative;
@@ -983,6 +989,22 @@ body {
     z-index: 2;
 }
 
+@media (max-width: 768px) {
+    .skills-panel--prev {
+        opacity: 0.4;
+        /*This % is to change for distance!*/
+        transform: translateX(-80%) scale(0.7);
+        z-index: 2;
+    }
+
+    .skills-panel--next {
+        opacity: 0.4;
+        /*This % is to change for distance!*/
+        transform: translateX(80%) scale(0.7);
+        z-index: 2;
+    }
+}
+
 /* === Arrows === */
 .carousel-arrow {
     position: absolute;
@@ -1026,8 +1048,14 @@ body {
 
 .project-name {
     justify-self: center;
+    /*Since it's a link, similar but readable blue*/
+    color: #2949fc
 }
 
+/*After the link has been clicked */
+.project-name:visited {
+    color: rgb(204, 0, 211);
+}
 
 
 .projects-group-1 {
@@ -1077,7 +1105,7 @@ body {
 
 
 @media (max-width: 768px) {
-    .projects-group2 {
+    .projects-group-2 {
         display: grid;
         grid-template-columns: auto;
         grid-template-rows:
