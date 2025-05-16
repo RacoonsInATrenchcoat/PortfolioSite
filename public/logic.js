@@ -101,11 +101,13 @@ window.addEventListener('resize', updateLines);
 const AboutMeContainer = document.getElementById('AboutMeContainer');
 const ProjectsContainer = document.getElementById('ProjectsContainer');
 const ContactContainer = document.getElementById('ContactContainer');
+const SkillsContainer = document.getElementById('SkillsContainer');
 
 //To change
 const Background_AboutMe = document.getElementById('Background_AboutMe');
 const Background_Projects = document.getElementById('Background_Projects');
 const Background_Contact = document.getElementById('Background_Contact');
+const Background_Skills = document.getElementById('Background_Skills');
 
 //Get the gap value. Originally 32px, multiplied by 4 later.
 const rootStyles = getComputedStyle(document.documentElement);

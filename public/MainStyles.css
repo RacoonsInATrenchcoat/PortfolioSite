@@ -929,73 +929,119 @@ body {
 /* SKILLS */
 /* === Main container === */
 .SkillsContainer {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  min-height: 18rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    min-height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* === Carousel window (holds panels) === */
 .carousel-window {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* === Each panel === */
 .skills-panel {
-  position: absolute;
-  width: 70%;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  text-align: center;
-  opacity: 0;
-  transform: scale(0.7);
-  z-index: 1;
+    position: absolute;
+    width: 70%;
+    height: auto;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.7);
+    z-index: 1;
+}
+
+.skills-panel__title {
+    position: relative;
+    letter-spacing: 10px;
+    padding-bottom: 0.5rem;
+}
+
+.skills-panel__title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    /* center anchor */
+    transform: translateX(-50%);
+    /* shift left by 50% of its own width */
+    width: 25%;
+    height: 1px;
+    background-color: #ffffff;
+}
+
+/*The list itself*/
+.skills-list {
+    display: grid;
+    gap: 15px;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    /* ensures vertical alignment */
+    gap: 1rem;
 }
 
 /* === Active, Prev, Next Classes === */
 .skills-panel--active {
-  opacity: 1;
-  transform: translateX(0%) scale(1);
-  z-index: 3;
+    position: relative;
+    opacity: 1;
+    transform: translateX(0%) scale(1);
+    z-index: 3;
 }
 
 .skills-panel--prev {
-  opacity: 0.4;
-  transform: translateX(-100%) scale(0.7);
-  z-index: 2;
+    opacity: 0.4;
+    /*This % is to change for distance!*/
+    transform: translateX(-50%) scale(0.7);
+    z-index: 2;
 }
 
 .skills-panel--next {
-  opacity: 0.4;
-  transform: translateX(100%) scale(0.7);
-  z-index: 2;
+    opacity: 0.4;
+    /*This % is to change for distance!*/
+    transform: translateX(50%) scale(0.7);
+    z-index: 2;
 }
 
 /* === Arrows === */
 .carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 5;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 4rem;
+    cursor: pointer;
+
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: rgb(0, 0, 0);
+    border-radius: 25px;
+    outline: 1px solid rgb(136, 136, 136, 0.5);
+    box-shadow: 0 4px 30px rgb(143, 143, 143, 0.5);
+
+    z-index: 5;
+    /*Because it's a letter/font, it has extra space on top as an "ascender" letter.
+    This makes it be in the middle as intended. */
+    padding-bottom: 1rem;
 }
 
 .carousel-arrow--left {
-  left: 1rem;
+    left: 0.5rem;
 }
 
 .carousel-arrow--right {
-  right: 1rem;
+    right: 0.5rem;
 }
 
 

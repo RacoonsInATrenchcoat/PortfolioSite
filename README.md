@@ -33,6 +33,16 @@ Space wallpaper: https://opengameart.org/content/seamless-space-backgrounds
 Icons:  https://www.svgrepo.com
         https://icons8.com/icon/jShwZ2RCyPSO/phone
         https://www.flaticon.com/free-icon/astronaut-ingravity_80643
+        HTML: https://www.flaticon.com/free-icon/html-5_5968267?term=html+5&page=1&position=2&origin=tag&related_id=5968267
+        CSS: https://www.flaticon.com/free-icon/css-3_5968242?term=css&page=1&position=3&origin=search&related_id=5968242
+        JS: https://www.flaticon.com/free-icon/js_5968292?term=javascript&page=1&position=3&origin=search&related_id=5968292
+        React: https://www.flaticon.com/free-icon/sciene_11305826?term=react&page=1&position=14&origin=search&related_id=11305826
+        Github: https://github.com/logos
+        Figma: https://www.flaticon.com/free-icon/figma_5968705?term=figma&page=1&position=2&origin=search&related_id=5968705
+        API: https://www.flaticon.com/free-icon/api_8297437?term=api&page=1&position=4&origin=search&related_id=8297437
+        NPM: https://www.flaticon.com/free-icon/programing_15484297?term=npm&page=1&position=2&origin=search&related_id=15484297
+        Interactive: https://www.flaticon.com/free-icon/interaction_1589513
+        Metadata: https://www.flaticon.com/free-icon/metadata_3344335?k=1747390692422&sign-up=google
 Logo:   https://www.flaticon.com/free-icon/circle_11068138
 
 
