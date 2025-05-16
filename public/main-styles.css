@@ -89,82 +89,48 @@ Basic CSS cant use variables for media queries, so mainly here as reminder.*/
 
 }
 
-.font_Display {
+.font-display {
     font-size: var(--font-display-size);
     font-weight: var(--font-display-weight);
     letter-spacing: var(--font-display-spacing);
     line-height: var(--font-display-line-height);
 }
 
-.font_H1 {
+.font-h1 {
     font-size: var(--font-h1-size);
     font-weight: var(--font-h1-weight);
     letter-spacing: var(--font-h1-spacing);
     line-height: var(--font-h1-line-height);
 }
 
-.font_H2 {
+.font-h2 {
     font-size: var(--font-h2-size);
     font-weight: var(--font-h2-weight);
     letter-spacing: var(--font-h2-spacing);
     line-height: var(--font-h2-line-height);
 }
 
-.font_H3 {
+.font-h3 {
     font-size: var(--font-h3-size);
     font-weight: var(--font-h3-weight);
     letter-spacing: var(--font-h3-spacing);
     line-height: var(--font-h3-line-height);
 }
 
-.font_H4 {
+.font-h4 {
     font-size: var(--font-h4-size);
     font-weight: var(--font-h4-weight);
     letter-spacing: var(--font-h4-spacing);
     line-height: var(--font-h4-line-height);
 }
 
-.font_H5 {
+.font-h5 {
     font-size: var(--font-h5-size);
     font-weight: var(--font-h5-weight);
     letter-spacing: var(--font-h5-spacing);
     line-height: var(--font-h5-line-height);
 }
 
-.font_Body_Large {
-    font-size: var(--font-body-large-size);
-    font-weight: var(--font-body-large-weight);
-    letter-spacing: var(--font-body-large-spacing);
-    line-height: var(--font-body-large-height);
-}
-
-.font_Body_Base {
-    font-size: var(--font-body-base-size);
-    font-weight: var(--font-body-base-weight);
-    letter-spacing: var(--font-body-base-spacing);
-    line-height: var(--font-body-base-height);
-}
-
-.font_Body_Small {
-    font-size: var(--font-body-small-size);
-    font-weight: var(--font-body-small-weight);
-    letter-spacing: var(--font-body-small-spacing);
-    line-height: var(--font-body-small-height);
-}
-
-.font_Caption {
-    font-size: var(--font-caption-size);
-    font-weight: var(--font-caption-weight);
-    letter-spacing: var(--font-caption-spacing);
-    line-height: var(--font-caption-height);
-}
-
-.font_Micro {
-    font-size: var(--font-micro-size);
-    font-weight: var(--font-micro-weight);
-    letter-spacing: var(--font-micro-spacing);
-    line-height: var(--font-micro-line-height);
-}
 
 @media (max-width: 768px) {
     :root {
@@ -251,20 +217,20 @@ body {
 }
 
 
-.Header {
+.header {
     display: grid;
     /*Horizontal align*/
     background-color: rgba(181, 0, 252, 0.2);
 }
 
-.Header_Menu {
+.header-menu {
     display: grid;
     grid-template-columns: 48vw 48vw;
     grid-template-rows: auto;
 }
 
 @media (max-width: 768px) {
-    .Header_Menu {
+    .header-menu {
         display: grid;
         grid-template-columns: auto auto;
         grid-template-rows: auto;
@@ -276,7 +242,7 @@ body {
     }
 }
 
-.Header_Menu_Left {
+.header-menu-left {
     display: grid;
     justify-content: start;
     align-items: center;
@@ -286,14 +252,14 @@ body {
 }
 
 @media (max-width: 768px) {
-    .Header_Menu_Left {
+    .header-menu-left {
         display: grid;
         gap: var(--grid-Gap);
         margin-left: calc(var(--grid-Margin)/2);
     }
 }
 
-.Header_Menu_Right {
+.header-menu-right {
     display: grid;
     grid-template-columns: minmax(50px, 10vw) minmax(50px, 10vw) minmax(50px, 10vw);
     grid-template-rows: auto;
@@ -305,7 +271,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .Header_Menu_Right {
+    .header-menu-right {
         display: grid;
         grid-template-columns: auto auto auto;
         grid-template-rows: auto;
@@ -317,12 +283,12 @@ body {
     }
 }
 
-.hamburger_menu {
+.hamburger-menu {
     display: none;
 }
 
 @media (max-width: 768px) {
-    .hamburger_menu {
+    .hamburger-menu {
         display: block;
         position: absolute;
         font-size: 2rem;
@@ -338,7 +304,7 @@ body {
     }
 
     /* By default, hide the menu on mobile */
-    .Header_Menu_Right {
+    .header-menu-right {
         display: none;
         position: absolute;
         top: 4rem;
@@ -352,29 +318,29 @@ body {
     }
 
     /* When 'show' class is added (via JS), use this CSS */
-    .Header_Menu_Right.show {
+    .header-menu-right.show {
         display: flex;
         background-color: rgb(50, 0, 70);
         border-radius: 20px;
     }
 }
 
-.Logo {
+.logo {
     height: 60px;
     width: 60px;
     margin-left: var(--grid-Margin);
 }
 
-.NavItem {
+.nav-item {
     justify-self: center;
 }
 
-.nav_Button_Container {
+.nav-button-container {
     display: grid;
     justify-self: center;
 }
 
-.nav_Button {
+.nav-button {
     position: relative;
     display: inline-block;
     color: #fff;
@@ -385,8 +351,8 @@ body {
     text-wrap: nowrap;
 }
 
-.nav_Button::before,
-.nav_Button::after {
+.nav-button::before,
+.nav-button::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -397,25 +363,25 @@ body {
     transform: translateX(-50%);
 }
 
-.nav_Button::before {
+.nav-button::before {
     top: -5px;
     /*Top distance from text*/
     border-radius: 2px;
 }
 
-.nav_Button::after {
+.nav-button::after {
     bottom: -5px;
     /*Bottom distance from text*/
     border-radius: 2px;
 }
 
-.nav_Button:hover::before,
-.nav_Button:hover::after {
+.nav-button:hover::before,
+.nav-button:hover::after {
     width: 75%;
 }
 
 
-.Parallax_Container {
+.parallax-container {
     height: 100%;
     width: 1280px;
     position: fixed;
@@ -424,7 +390,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .Parallax_Container {
+    .parallax-container {
         height: 100%;
         width: 100vw;
         min-width: 0;
@@ -434,9 +400,9 @@ body {
     }
 }
 
-.Parallax1,
-.Parallax2,
-.Parallax3 {
+.parallax-1,
+.parallax-2,
+.parallax-3 {
     position: absolute;
     top: 0;
     left: 0;
@@ -446,9 +412,9 @@ body {
 
 @media (max-width: 768px) {
 
-    .Parallax1,
-    .Parallax2,
-    .Parallax3 {
+    .parallax-1,
+    .parallax-2,
+    .parallax-3 {
         position: absolute;
         top: 0;
         left: 0;
@@ -466,35 +432,35 @@ body {
     height: 2px;
 }
 
-@scroll-timeline scrollParallax1 {
+@scroll-timeline scrollparallax-1 {
     source: auto;
     orientation: vertical;
     scroll-offsets: 0% 100%;
 }
 
-@scroll-timeline scrollParallax2 {
+@scroll-timeline scrollparallax-1 {
     source: auto;
     orientation: vertical;
     scroll-offsets: 0% 100%;
 }
 
-@scroll-timeline scrollParallax3 {
+@scroll-timeline scrollparallax-1 {
     source: auto;
     orientation: vertical;
     scroll-offsets: 0% 100%;
 }
 
-.Parallax1 {
+.parallax-1 {
     animation: move1 linear infinite;
     animation-timeline: scrollParallax1;
 }
 
-.Parallax2 {
+.parallax-2 {
     animation: move2 linear infinite;
     animation-timeline: scrollParallax2;
 }
 
-.Parallax3 {
+.parallax-3 {
     animation: move3 linear infinite;
     animation-timeline: scrollParallax3;
 }
@@ -530,14 +496,14 @@ body {
 }
 
 
-.Arrows {
+.arrows {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
 
-.curved_line_svg {
+.curved-line-svg {
     position: absolute;
     top: 0;
     left: 0;
@@ -566,19 +532,19 @@ body {
     /* Place the blurred curve behind the original one */
 }
 
-.Background_Body {}
+.background-body {}
 
 @media (max-width: 768px) {
-    .Background_Body {
+    .background-body {
         display: none;
     }
 }
 
-.Background_Landing {
+.background-landing {
     height: 90vh;
 }
 
-.Background_Container {
+.background-container {
     margin-left: 0px;
 
     position: absolute;
@@ -587,7 +553,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .Background_Container {
+    .background-container {
         margin-left: 0px;
 
         position: absolute;
@@ -602,16 +568,16 @@ body {
     height: 100%;
 }
 
-.Background_Projects {
+.background-projects {
     z-index: -1;
 }
 
-.Background_Contact {
+.background-contact {
     z-index: -1;
 }
 
 
-.BodyContainer {
+.body-container {
     display: grid;
     grid-template-columns:
         1fr
@@ -630,7 +596,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .BodyContainer {
+    .body-container {
         display: grid;
         grid-template-columns:
             94vw
@@ -646,7 +612,7 @@ body {
     }
 }
 
-.LeftSide {
+.left-side {
     display: grid;
     grid-template-columns:
         9fr
@@ -659,33 +625,33 @@ body {
 }
 
 @media (max-width: 768px) {
-    .LeftSide {
+    .left-side {
         display: none;
     }
 }
 
-.RightSide {}
+.right-side {}
 
-.LandingContainer {
+.landing-container {
     position: relative;
     display: grid;
     place-items: center;
     z-index: 2;
 }
 
-#canvas_1 {
+#canvas-1 {
 
     object-fit: cover;
     z-index: 0;
 }
 
-#canvas_1,
-.LandingPageText {
+#canvas-1,
+.landing-page-text {
     grid-area: 1 / 1;
     /* Place both items in the same grid cell */
 }
 
-.LandingPageText {
+.landing-page-text {
     position: relative;
     z-index: 2;
     color: white;
@@ -693,7 +659,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .LandingPageText {
+    .landing-page-text {
         position: relative;
         z-index: 2;
         color: white;
@@ -705,21 +671,21 @@ body {
 
 
 
-.HeadLineText_1 {
+.headline-text-1 {
     letter-spacing: 25px;
     text-wrap: nowrap;
     --font-display-weight: 100;
 }
 
-.HeadLineText_2 {
+.headline-text-2 {
     letter-spacing: 25px;
     text-wrap: nowrap;
 }
 
 @media (max-width: 768px) {
 
-    .HeadLineText_1,
-    .HeadLineText_2 {
+    .headline-text-1,
+    .headline-text-2 {
         letter-spacing: calc(25px / 2);
         font-size: 2.5rem;
     }
@@ -727,17 +693,17 @@ body {
 
 @media (max-width: 768px) {
 
-    .HeadLineText_2 {}
+    .headline-text-2 {}
 }
 
-.HeadLineText::before {
+.headline-text::before {
     content: ' ';
     display: inline-block;
     width: 25px
         /*Same as the text spacing */
 }
 
-.MiddleBody {
+.middle-body {
     display: grid;
 
     max-width: 100%;
@@ -746,7 +712,7 @@ body {
 }
 
 
-.main_Container {
+.main-container {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 25px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -755,7 +721,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .main_Container {
+    .main-container {
         min-width: 0;
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 25px;
@@ -801,13 +767,13 @@ body {
 
 }
 
-.dot_title {
+.dot-title {
     width: 16px;
     height: 16px;
     z-index: 2;
 }
 
-.dot_title:after {
+.dot-title:after {
     content: '';
     position: absolute;
     top: 50%;
@@ -828,7 +794,7 @@ body {
     /* Allows clicks to pass through the glow */
 }
 
-.dot_ontop {
+.dot-ontop {
     z-index: 1;
 }
 
@@ -856,17 +822,17 @@ body {
 }
 
 /* ABOUT ME */
-.AboutMeContainer {}
+.about-me-container {}
 
 
-.AboutMeTitle {
+.about-me-title {
     margin: var(--grid-Margin);
     min-width: 0;
     max-width: fit-content;
 
 }
 
-.AboutMePortrait {
+.about-me-portrait {
     height: 300px;
     width: auto;
     margin: var(--grid-Margin);
@@ -876,7 +842,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .AboutMePortrait {
+    .about-me-portrait {
         height: 50vw;
         width: auto;
         margin: var(--grid-Margin);
@@ -886,11 +852,11 @@ body {
 
 }
 
-.AboutMeText {
+.about-me-text {
     margin: var(--grid-Margin)
 }
 
-.AboutMeGroup1 {
+.about-me-group1 {
     display: grid;
     grid-template-columns:
         30fr
@@ -907,7 +873,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .AboutMeGroup1 {
+    .about-me-group1 {
         display: grid;
         grid-template-columns: 100fr;
         grid-template-rows: auto auto auto auto;
@@ -919,7 +885,7 @@ body {
     }
 }
 
-.Name_Text {
+.name-text {
     display: grid;
     letter-spacing: 10px;
     justify-self: center;
@@ -928,7 +894,7 @@ body {
 
 /* SKILLS */
 /* === Main container === */
-.SkillsContainer {
+.skills-container {
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -961,13 +927,13 @@ body {
     z-index: 1;
 }
 
-.skills-panel__title {
+.skills-panel-title {
     position: relative;
     letter-spacing: 10px;
     padding-bottom: 0.5rem;
 }
 
-.skills-panel__title::after {
+.skills-panel-title::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -1049,22 +1015,22 @@ body {
 
 
 /* PROJECTS */
-.ProjectsTitle {
+.projects-title {
     margin: var(--grid-Margin)
 }
 
-.Project_1,
-.Project_2 {
+.project-1,
+.project-2 {
     display: grid;
 }
 
-.Project_name {
+.project-name {
     justify-self: center;
 }
 
 
 
-.ProjectsGroup1 {
+.projects-group-1 {
     display: grid;
     grid-template-columns:
         3fr
@@ -1082,7 +1048,7 @@ body {
 /* every item in the 2nd column gets a divider on its left */
 @media (min-width: 768px) {
 
-    .ProjectsGroup2>*:nth-child(2),
+    .projects-group-2>*:nth-child(2),
     .grid>*:nth-child(4),
     .grid>*:nth-child(6) {
         border-left: 1px solid #ccc;
@@ -1091,7 +1057,7 @@ body {
     }
 }
 
-.ProjectsGroup2 {
+.projects-group-2 {
     display: grid;
     grid-template-columns:
         50%
@@ -1111,7 +1077,7 @@ body {
 
 
 @media (max-width: 768px) {
-    .ProjectsGroup2 {
+    .projects-group2 {
         display: grid;
         grid-template-columns: auto;
         grid-template-rows:
@@ -1127,7 +1093,7 @@ body {
     }
 }
 
-.Project_1_Body {
+.project-1-body {
     display: grid;
     grid-template-columns:
         1fr
@@ -1145,7 +1111,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .Project_1_Body {
+    .project-1-body {
         display: grid;
         grid-template-columns:
             auto
@@ -1163,17 +1129,17 @@ body {
     }
 }
 
-.Project_1_Image {
+.project-1-image {
     align-self: center;
 }
 
-.ProjectText {
+.project-text {
     margin: var(--grid-Margin)
 }
 
-.Project_2 {}
+.project-2 {}
 
-.Project_2_Body {
+.project-2-body {
     display: grid;
     grid-template-columns:
         1fr
@@ -1190,7 +1156,7 @@ body {
     margin: var(--grid-Margin);
 }
 
-.Project_2_Image {
+.project-2-image {
     align-self: center;
     width: 150px;
     height: 150px;
@@ -1198,7 +1164,7 @@ body {
 
 /* CONTACT */
 
-.Contact_LeftSide {
+.contact-left-side {
     display: grid;
     grid-template-columns:
         auto;
@@ -1206,19 +1172,19 @@ body {
 
 }
 
-.Contact_Title {
+.contact-title {
     justify-self: center;
     align-self: center;
 }
 
-.Contact_types {}
+.contact-types {}
 
-.contact_Pair {
+.contact-pair {
     display: grid;
     margin: calc(var(--grid-Margin)/2);
 }
 
-.Contact_Email {
+.contact-email {
     display: grid;
     grid-template-columns:
         auto
@@ -1236,7 +1202,7 @@ body {
     margin-left: calc(var(--grid-Margin)*3);
 }
 
-.Contact_Phone {
+.contact-phone {
     display: grid;
     grid-template-columns:
         auto
@@ -1255,7 +1221,7 @@ body {
 }
 
 
-.Contact_LinkedIn {
+.contact-linkedIn {
     display: grid;
     grid-template-columns:
         auto
@@ -1273,19 +1239,19 @@ body {
     margin-left: calc(var(--grid-Margin)*5);
 }
 
-.Contact_Icon {
+.contact-icon {
     Height: 50px;
     Width: auto;
     margin-right: var(--grid-Margin);
 }
 
-.Contact_Text {
+.contact-text {
     align-self: center;
 }
 
-.ContactContainer {}
+.contact-container {}
 
-.Contact_Body {
+.contact-body {
     display: grid;
     grid-template-columns:
         50%
@@ -1297,14 +1263,14 @@ body {
 }
 
 @media (min-width: 768px) {
-    .Contact_Body>*:nth-child(2) {
+    .contact-body>*:nth-child(2) {
         border-left: 1px solid #ccc;
         padding-left: 1rem;
     }
 }
 
 @media (max-width: 768px) {
-    .Contact_Body {
+    .contact-body {
         display: grid;
         grid-template-columns:
             auto;
@@ -1315,13 +1281,13 @@ body {
 
 
 
-.Contact_RightSide {
+.contact-right-side {
     display: grid;
     gap: var(--grid-Gap);
     margin: var(--grid-Margin);
 }
 
-.SendContact_Container {
+.send-contact-container {
     display: grid;
     grid-template-columns:
         100fr;
@@ -1329,27 +1295,27 @@ body {
     width: 100%;
 }
 
-.contact_messageInput {
+.contact-message-input {
     resize: none;
 }
 
-#nameInput,
-#phoneInput,
-#emailInput,
-#contact_messageInput,
-.Send_Button {
+#name-input,
+#phone-input,
+#email-input,
+#contact-message-input,
+.send-button {
     background-color: rgb(65, 65, 65);
     color: #ffffff;
     border-radius: 7px;
 }
 
 
-.Send_Button {
+.send-button {
     justify-self: center;
     width: 50%;
 }
 
-.Footer {
+.footer {
     margin: 0;
     display: grid;
     justify-content: center;

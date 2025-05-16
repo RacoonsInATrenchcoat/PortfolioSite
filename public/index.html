@@ -1,61 +1,79 @@
+<!-- Declare it's HTML5 -->
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Tamas Tabi | Frontend Dev & Business Analyst</title>
+    <meta name="description" content="Portfolio website of Tamas Tabi. If you have found it, you deserve a cookie!">
 
-    <link rel="icon" type="image/x-icon" href="/Assets/Icons/Website - Light.svg">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/website-light-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="MainStyles.css" />
+    <link rel="stylesheet" href="main-styles.css" />
+
+    <!-- Mandatory Apple tax -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/website-light-icon.png">
+
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCPFQCDY4H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-KCPFQCDY4H');
+    </script>
 </head>
 
 <body>
 
-    <div class="Header">
+    <header class="header">
 
-        <div class="Header_Menu">
-            <div class="Header_Menu_Left">
-                <div class="font_H4 Name_Text">TAMAS<br>TABI</div>
+        <div class="header-menu">
+            <div class="header-menu-left">
+                <div class="font-h4 name-text">TAMAS<br>TABI</div>
             </div>
 
-            <!-- Only for mobile.-->
-            <button class="hamburger_menu" aria-label="Menu Toggle" aria-expanded="false">
+            <!-- Only for mobile. -->
+            <button class="hamburger-menu" aria-label="Toggle navigation" aria-controls="site-navigation"
+                aria-expanded="false">
                 ☰
             </button>
 
-            <div class="Header_Menu_Right">
-                <div class="nav_Button_Container">
-                    <a class="nav_Button font_H5" data-target="#AboutMeContainer">About Me</a>
+            <nav class="header-menu-right" id="site-navigation">
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="#about-me-container">About Me</a>
                 </div>
-                <div class="nav_Button_Container">
-                    <a class="nav_Button font_H5" data-target="#ProjectsContainer">Projects</a>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="#projects-container">Projects</a>
                 </div>
-                <div class="nav_Button_Container">
-                    <a class="nav_Button font_H5" data-target="#ContactContainer">Contact</a>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="#contact-container">Contact</a>
                 </div>
-            </div>
+            </nav>
         </div>
-    </div>
-    <div class="Body">
+    </header>
 
-        <div class="Background_Container" id="Background_Container">
-            <div class="Parallax_Container">
-                <div class="Parallax1"></div>
-                <div class="Parallax2"></div>
-                <div class="Parallax3"></div>
+    <main class="body">
+
+        <div class="background-container" id="background-container">
+            <div class="parallax-container">
+                <div class="parallax-1"></div>
+                <div class="parallax-2"></div>
+                <div class="parallax-3"></div>
             </div>
-            <div class="Background_Body">
-                <div class="Background_Landing" id="Background_Landing">
-
+            <div class="background-body">
+                <div class="background-landing" id="background-landing">
                 </div>
-                <div class="Background_AboutMe dot-container" id="Background_AboutMe">
+                <div class="background-about-me dot-container" id="background-about-me">
                     <!-- Dots and locations compared to container -->
                     <!-- X is horizontal >, Y is vertical ^          -->
                     <div class="dot" style="--x: 85%; --y: 5%;"></div> <!-- 0 -->
@@ -83,7 +101,7 @@
 
 
                 </div>
-                <div class="Background_Skills dot-container" id="Background_Skills">
+                <div class="background-skills dot-container" id="background-skills">
                     <div class="dot" style="--x: 103%; --y: 70%;"></div> <!-- 0 -->
                     <div class="dot" style="--x: 80%; --y: 90%;"></div> <!-- 1 -->
                     <div class="dot" style="--x: 104%; --y: 83%;"></div> <!-- 2 -->
@@ -94,9 +112,9 @@
                     <div class="line" data-from="2" data-to="3"></div>
                     <div class="line" data-from="3" data-to="0"></div>
                 </div>
-                <div class="Background_Projects" id="Background_Projects">
+                <div class="background-projects" id="background-projects">
                 </div>
-                <div class="Background_Contact dot-container" id="Background_Contact">
+                <div class="background-contact dot-container" id="background-contact">
                     <div class="dot" style="--x: 105%; --y: -10%;"></div> <!-- 0 -->
                     <div class="dot" style="--x: 110%; --y: 20%;"></div> <!-- 1 -->
                     <div class="dot" style="--x: 105%; --y: 40%;"></div> <!-- 2 -->
@@ -113,37 +131,33 @@
             </div>
         </div>
 
-        <div class="LandingContainer" id="LandingContainer">
-            <canvas id="canvas_1" width="1280" height="800"></canvas>
-            <div class="LandingPageText">
-
-                <div class="HeadLineText_1 font_Display">WELCOME</div>
-                <div class="HeadLineText_1 font_Display">&nbsp;&nbsp;TO&nbsp;MY</div>
-                <div class="HeadLineText_2 font_Display">&nbsp;&nbsp;&nbsp;&nbsp;GALAXY</div>
-
-
+        <div class="landing-container" id="landing-container">
+            <canvas id="canvas-1" width="1280" height="800"></canvas>
+            <div class="landing-page-text">
+                <div class="headline-text-1 font-display">WELCOME</div>
+                <div class="headline-text-1 font-display">&nbsp;&nbsp;TO&nbsp;MY</div>
+                <div class="headline-text-2 font-display">&nbsp;&nbsp;&nbsp;&nbsp;GALAXY</div>
             </div>
         </div>
 
-        <div class="BodyContainer">
-            <div class="LeftSide" id="LeftSide">
-                <div class="LeftEmpty"></div>
-                <div class="Arrows dot-container" id="Arrows">
-                    <div class="dot dot_title" style="--x: 50%; --y: 6.5%;"></div> <!-- 0, About Me -->
-                    <div class="dot dot_title" style="--x: 50%; --y: 28%;"></div> <!-- 1, Skills -->
-                    <div class="dot dot_title" style="--x: 50%; --y: 53.5%;"></div> <!-- 2, Projects -->
-                    <div class="dot dot_title" style="--x: 50%; --y: 86%;"></div> <!-- 3, Contact -->
+        <div class="body-container">
+            <div class="left-side" id="left-side">
+                <div class="left-empty"></div>
+
+                <div class="arrows dot-container" id="arrows">
+                    <div class="dot dot-title" style="--x: 50%; --y: 6.5%;"></div> <!-- 0, About Me -->
+                    <div class="dot dot-title" style="--x: 50%; --y: 28%;"></div> <!-- 1, Skills -->
+                    <div class="dot dot-title" style="--x: 50%; --y: 53.5%;"></div> <!-- 2, Projects -->
+                    <div class="dot dot-title" style="--x: 50%; --y: 86%;"></div> <!-- 3, Contact -->
 
                     <div class="dot" style="--x: 65%; --y: 90%;"></div> <!-- 4, hidden -->
-                    <div class="dot dot_ontop" style="--x: 190%; --y: 90.5%;"></div> <!-- 5 -->
+                    <div class="dot dot-ontop" style="--x: 190%; --y: 90.5%;"></div> <!-- 5 -->
 
                     <div class="dot" style="--x: 50%; --y: 93%;"></div> <!-- 6, hidden -->
-                    <div class="dot dot_ontop" style="--x: 221%; --y: 93.5%;"></div> <!-- 7 -->
+                    <div class="dot dot-ontop" style="--x: 221%; --y: 93.5%;"></div> <!-- 7 -->
 
                     <div class="dot" style="--x: 50%; --y: 97%;"></div> <!-- 8, hidden -->
-                    <div class="dot dot_ontop" style="--x: 256%; --y: 96.5%;"></div> <!-- 9 -->
-
-
+                    <div class="dot dot-ontop" style="--x: 256%; --y: 96.5%;"></div> <!-- 9 -->
 
                     <div class="line" data-from="0" data-to="1"></div> <!-- To Skills-->
                     <div class="line" data-from="1" data-to="2"></div> <!-- To Projects-->
@@ -153,19 +167,19 @@
                     <div class="line" data-from="3" data-via="8" data-to="9"></div> <!-- Curved, to LinkedIn-->
 
                 </div>
-                <div class="RightEmpty"></div>
+                <div class="right-empty"></div>
             </div>
 
-            <div class="MiddleBody">
-                <div class="AboutMeContainer main_Container" id="AboutMeContainer">
+            <div class="middle-body">
+                <div class="about-me-container main-container" id="about-me-container">
 
-                    <div class="AboutMeGroup1">
-                        <div class="AboutMeTitle font_H1 C1R1">About Me</div>
-                        <img class="AboutMePortrait C1R2" src="/Assets/racoon.webp" alt="Portrait Image">
-                        <p class="AboutMeText font_H4">An insightful Frontend Developer with expertise in HTML,
+                    <div class="about-me-group1">
+                        <div class="about-me-title font-h1 C1R1">About Me</div>
+                        <img class="about-me-portrait C1R2" src="/assets/racoon.webp" alt="Portrait Image">
+                        <p class="about-me-text font-h4">An insightful Frontend Developer with expertise in HTML,
                             CSS,
                             JavaScript, and modern frameworks such as React, Bootstrap and Firebase.</p>
-                        <p class="AboutMeText font_H4">
+                        <p class="about-me-text font-h4">
                             Leveraging prior experience as a Business Analyst and
                             Project
                             Manager, I excel at bridging the gap between technical development and business
@@ -179,7 +193,7 @@
 
                     </div>
                 </div>
-                <div class="SkillsContainer main_Container" id="SkillsContainer">
+                <div class="skills-container main-container" id="skills-container">
                     <!-- Left -->
                     <button class="carousel-arrow carousel-arrow--left" aria-label="Previous skills">
                         ‹
@@ -189,7 +203,7 @@
                     <div class="carousel-window">
                         <!-- Soft Skills panel (initially active, fully visible) -->
                         <div class="skills-panel skills-panel--prev">
-                            <h3 class="skills-panel__title font_H3">Soft Skills</h3>
+                            <h3 class="skills-panel__title font_h3">Soft Skills</h3>
                             <ul class="skills-list" data-role="soft">
                                 <li class="skill-item" id="skill-leading-meetings">
                                     <span class="skill-item__label">Leading Meetings</span>
@@ -227,58 +241,58 @@
 
                         <!-- Frontend Skills panel (initially previous, partially visible) -->
                         <div class="skills-panel skills-panel--active">
-                            <h3 class="skills-panel__title font_H3">Frontend Skills</h3>
+                            <h3 class="skills-panel__title font_h3">Frontend Skills</h3>
                             <ul class="skills-list" data-role="frontend">
                                 <li class="skill-item" id="skill-html5">
-                                    <img src="Assets/Icons/html.png" alt="HTML5 logo" width="32" height="32"
+                                    <img src="assets/icons/html.png" alt="HTML5 logo" width="32" height="32"
                                         class="skill-item__icon" />
                                     <span class="skill-item__label">HTML5</span>
                                 </li>
                                 <li class="skill-item" id="skill-css3">
-                                    <img src="Assets/Icons/css.png" alt="CSS3 logo" width="32" height="32"
+                                    <img src="assets/icons/css.png" alt="CSS3 logo" width="32" height="32"
                                         class="skill-item__icon" />
                                     <span class="skill-item__label">CSS3</span>
                                 </li>
                                 <li class="skill-item" id="skill-javascript">
-                                    <img src="Assets/Icons/js.png" alt="JavaScript logo" width="32" height="32"
+                                    <img src="assets/icons/js.png" alt="JavaScript logo" width="32" height="32"
                                         class="skill-item__icon" />
                                     <span class="skill-item__label">JavaScript (ES6+)</span>
                                 </li>
                                 <li class="skill-item" id="skill-react">
-                                    <img src="Assets/Icons/React.png" alt="React logo" width="32" height="32"
+                                    <img src="assets/icons/React.png" alt="React logo" width="32" height="32"
                                         class="skill-item__icon" />
                                     <span class="skill-item__label">React JS</span>
                                 </li>
                                 <li class="skill-item" id="skill-version-control-Github">
-                                    <img src="Assets/Icons/github-mark-white.png"
+                                    <img src="assets/icons/github-mark-white.png"
                                         alt="skill-version-control-/-Github logo" width="32" height="32"
                                         class="skill-item__icon" />
                                     <span class="skill-item__label">Version Control / Github</span>
                                 </li>
                                 <li class="skill-item" id="skill-figma-prototyping">
-                                    <img src="Assets/Icons/figma.png" alt="figma-prototyping logo" width="32"
+                                    <img src="assets/icons/figma.png" alt="figma-prototyping logo" width="32"
                                         height="32" class="skill-item__icon" />
                                     <span class="skill-item__label">Prototypes / Figma</span>
                                 </li>
                                 <li class="skill-item" id="skill-api-integration-rest">
-                                    <img src="Assets/Icons/api.png" alt="api-integration-(rest) logo" width="32"
+                                    <img src="assets/icons/api.png" alt="api-integration-(rest) logo" width="32"
                                         height="32" class="skill-item__icon" />
                                     <span class="skill-item__label">API intergrations / REST</span>
                                 </li>
                                 <li class="skill-item" id="skill-npm-management">
-                                    <img src="Assets/Icons/npm.png" alt="npm-management logo" width="32" height="32"
+                                    <img src="assets/icons/npm.png" alt="npm-management logo" width="32" height="32"
                                         class="skill-item__icon" />
                                     <span class="skill-item__label">NPM Management</span>
                                 </li>
                                 <li class="skill-item" id="skill-responsive-and-interactive-design">
-                                    <img src="Assets/Icons/interaction.png" alt="responsive-and-interactive-design logo"
+                                    <img src="assets/icons/interaction.png" alt="responsive-and-interactive-design logo"
                                         width="32" height="32" class="skill-item__icon" />
                                     <span class="skill-item__label">Responsive and Interactive Designs</span>
                                 </li>
-                                <li class="skill-item" id="skill-accessibility-and-metadata">
-                                    <img src="Assets/Icons/metadata.png" alt="accessibility-and-metadata logo"
-                                        width="32" height="32" class="skill-item__icon" />
-                                    <span class="skill-item__label">Accessibility and Metadata</span>
+                                <li class="skill-item" id="skill-metadata">
+                                    <img src="assets/icons/metadata.png" alt="metadata logo" width="32" height="32"
+                                        class="skill-item__icon" />
+                                    <span class="skill-item__label">Metadata configurations</span>
                                 </li>
                                 <!-- …more frontend skills… -->
                             </ul>
@@ -331,95 +345,100 @@
                     </button>
 
                 </div>
-                <div class="ProjectsContainer main_Container" id="ProjectsContainer">
-                    <div class="ProjectsGroup1">
-                        <div class="ProjectsTitle font_H1">Projects</div>
-                        <div class="ProjectsImage"></div>
+                <section class="projects-container main-container" id="projects-container" role="region"
+                    aria-label="Projects section">
+                    <div class="projects-group-1">
+                        <div class="projects-title font-h1">Projects</div>
+                        <div class="projects-image"></div>
                     </div>
-                    <div class="ProjectsGroup2">
-                        <div class="Project_1">
-                            <div class="Project_name font_H2">Dino Dash</div>
-                            <div class="Project_1_Body">
-                                <img class="Project_1_Image" src="/Assets/lizardwizard_150x150.png"
+                    <div class="projects-group-2">
+                        <div class="project-1">
+                            <div class="project-name font-h2">Dino Dash</div>
+                            <div class="project-1-body">
+                                <img class="project-1-image" src="/assets/lizardwizard_150x150.png"
                                     alt="Project 1 Image">
-                                <div class="Project_1_Text">
-                                    <p class="ProjectText font_H5">This was my personal pet project to have by the
+                                <div class="project-1-text">
+                                    <p class="project-text font-h5">This was my personal pet project to have by the
                                         end of the Frontend Developer
                                         course.</p>
-                                    <p class="ProjectText font_H5">Originally created as practice, it quickly became
+                                    <p class="project-text font-h5">Originally created as practice, it quickly became
                                         a testing ground for new
                                         skills, like layout design, mobile/desktop versions and especially
                                         functionality (physics can be complex!) were all knowledge that need to
                                         delve into and fiddle with the minute details to really understand. </p>
-                                    <p class="ProjectText font_H5">There is even a high score board for you to
+                                    <p class="project-text font-h5">There is even a high score board for you to
                                         conquer!</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="Project_2">
-                            <div class="Project_name font_H2">Under <br>Construction!</div>
-                            <div class="Project_2_Body">
-                                <img class="Project_2_Image" src="/Assets/astronaut-ingravity_inverted-01.svg"
-                                    alt="Project 2 Image">
-                                <div class="Project_1_Text">
-                                    <p class="ProjectText font_H5">This is where the other project's text would come.
+                        <div class="project-2">
+                            <div class="project-name font-h2">Under <br>Construction!</div>
+                            <div class="project-2-body">
+                                <img class="project-2-image" src="/assets/astronaut-ingravity_inverted-01.svg"
+                                    alt="project-2-image">
+                                <div class="project-1-text">
+                                    <p class="project-text font-h5">This is where the other project's text would come.
                                     </p>
-                                    <p class="ProjectText font_H5">Well. It is not ready yet. I know, you really want to
+                                    <p class="project-text font-h5">Well. It is not ready yet. I know, you really want
+                                        to
                                         see it, but it needs a bit more time in the oven to be presentable.
                                         Those bits (and bobs?) can be very unpredictable on how they react. After all,
                                         bits make up everything around here!
                                     </p>
-                                    <p class="ProjectText font_H5">But promise, it'll be out of this world!</p>
+                                    <p class="project-text font-h5">But promise, it'll be out of this world!</p>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                </div>
-                <div class="ContactContainer main_Container" id="ContactContainer">
-                    <div class="Contact_Body">
-                        <div class="Contact_LeftSide">
-                            <div class="Contact_Title font_H1">Contact</div>
-                            <div class="Contact_types">
-                                <div class="Contact_Email">
-                                    <img class="Contact_Icon" src="/Assets/Icons/Mail - Inverted.svg" alt="Email Icon">
-                                    <div class="Contact_Text">tabitamas91@gmail.com</div>
+                </section>
+
+                <div class="contact-container main-container" id="contact-container">
+                    <div class="contact-body">
+                        <div class="contact-left-side">
+                            <div class="contact-title font-h1">Contact</div>
+                            <div class="contact-types">
+                                <div class="contact-email">
+                                    <img class="contact-icon" src="/assets/icons/mail-inverted.svg" alt="Email Icon">
+                                    <div class="contact-text">tabitamas91@gmail.com</div>
                                 </div>
-                                <div class="Contact_Phone">
-                                    <img class="Contact_Icon" src="/Assets/Icons/Phone - Inverted.svg" alt="Phone Icon">
-                                    <div class="Contact_Text">07990 803 405</div>
+                                <div class="contact-phone">
+                                    <img class="contact-icon" src="/assets/icons/phone-inverted.svg" alt="Phone Icon">
+                                    <div class="contact-text">07990 803 405</div>
                                 </div>
-                                <div class="Contact_LinkedIn">
-                                    <img class="Contact_Icon" src="/Assets/Icons/LinkedIn - Inverted.svg"
+                                <div class="contact-linkedIn">
+                                    <img class="contact-icon" src="/assets/icons/linkedIn-inverted.svg"
                                         alt="LinkedIn Icon">
-                                    <div class="Contact_Text">/tamas-tabi/</div>
+                                    <div class="contact-text">/tamas-tabi/</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="Contact_RightSide">
-                            <form id="contactForm" class="SendContact_Container">
-                                <div class="contact_Pair">
-                                    <label for="nameInput" class="Send_Name">Name</label>
-                                    <input type="text" id="nameInput" name="name" placeholder="Your name" required />
+
+                        <div class="contact-rightSide">
+                            <form id="contact-form" class="send-contact-container">
+                                <div class="contact-pair">
+                                    <label for="name-input" class="send-name">Name</label>
+                                    <input type="text" id="name-input" name="name" placeholder="Your name" required />
                                 </div>
-                                <div class="contact_Pair">
-                                    <label for="phoneInput" class="Send_Phone">Phone (optional)</label>
-                                    <input type="tel" id="phoneInput" name="phone" placeholder="e.g. +44 7123 456789" />
+                                <div class="contact-pair">
+                                    <label for="phone-input" class="send-phone">Phone (optional)</label>
+                                    <input type="tel" id="phone-input" name="phone"
+                                        placeholder="e.g. +44 7123 456789" />
                                 </div>
-                                <div class="contact_Pair">
-                                    <label for="emailInput" class="Send_Email">Email</label>
-                                    <input type="email" id="emailInput" name="email" placeholder="you@example.com"
+                                <div class="contact-pair">
+                                    <label for="email-input" class="send-email">Email</label>
+                                    <input type="email" id="email-input" name="email" placeholder="you@example.com"
                                         required />
                                 </div>
-                                <div class="contact_Pair">
-                                    <label for="contact_messageInput" class="Send_Text">Message</label>
-                                    <textarea class="contact_messageInput" id="contact_messageInput" name="message"
+                                <div class="contact-pair">
+                                    <label for="contact-message-input" class="Send_Text">Message</label>
+                                    <textarea class="contact_message-input" id="contact_message-input" name="message"
                                         rows="4"
                                         placeholder="Your message here (maybe a new star that you have discovered?)"
                                         required></textarea>
                                 </div>
-                                <div class="contact_Pair">
-                                    <button type="submit" class="Send_Button">
+                                <div class="contact-pair">
+                                    <button type="submit" class="send-button">
                                         Send
                                     </button>
                                 </div>
@@ -428,18 +447,18 @@
                     </div>
                 </div>
             </div>
-            <div class="RightSide">
+            <div class="right-side">
             </div>
         </div>
 
-    </div>
-    <div class="Footer" id="Footer">
-    </div>
+        </div>
+        <div class="footer" id="footer">
+        </div>
 
-    <!--Main use-->
-    <script src="logic.js"></script>
-    <!--Canvas, drawing and animating parts -->
-    <script src="canvas.js"></script>
+        <!--Main use-->
+        <script src="logic.js"></script>
+        <!--Canvas, drawing and animating parts -->
+        <script src="canvas.js"></script>
 
 </body>
 

@@ -9,6 +9,11 @@ Reminders:
 - By default, Email address that is the target must be the same as the account that generated the tokens.
 - Using Gen1 Google Could Functions. 2 is standard today but requires more work and not needed.
 
+Reformatted to use "kebab-case" as a standard.
+
+Checklist to ensure standards:
+https://frontendchecklist.io
+
 Used 3rd parties:
  - Google Cloud + Google Secrets + Functions (emailing)
  - Firebase Hosting + Functions

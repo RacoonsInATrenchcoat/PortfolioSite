@@ -98,16 +98,16 @@ window.addEventListener('resize', updateLines);
 
 //Check values for background (live value, so resizing is also checked)
 // grab the elements
-const AboutMeContainer = document.getElementById('AboutMeContainer');
-const ProjectsContainer = document.getElementById('ProjectsContainer');
-const ContactContainer = document.getElementById('ContactContainer');
-const SkillsContainer = document.getElementById('SkillsContainer');
+const AboutMeContainer = document.getElementById('about-me-container');
+const ProjectsContainer = document.getElementById('projects-container');
+const ContactContainer = document.getElementById('contact-container');
+const SkillsContainer = document.getElementById('skills-container');
 
 //To change
-const Background_AboutMe = document.getElementById('Background_AboutMe');
-const Background_Projects = document.getElementById('Background_Projects');
-const Background_Contact = document.getElementById('Background_Contact');
-const Background_Skills = document.getElementById('Background_Skills');
+const Background_AboutMe = document.getElementById('background-aboutMe');
+const Background_Projects = document.getElementById('background-projects');
+const Background_Contact = document.getElementById('background-contact');
+const Background_Skills = document.getElementById('background-skills');
 
 //Get the gap value. Originally 32px, multiplied by 4 later.
 const rootStyles = getComputedStyle(document.documentElement);
@@ -115,12 +115,12 @@ const GapValue = parseFloat(rootStyles.getPropertyValue('--grid-Gap').trim());
 
 // Define pairs of [sourceId, targetId]
 const syncPairs = [
-  ['LandingContainer', 'Background_Landing'],
-  ['AboutMeContainer', 'Background_AboutMe'],
-  ['ProjectsContainer', 'Background_Projects'],
-  ['SkillsContainer', 'Background_Skills'],
-  ['ContactContainer', 'Background_Contact'],
-  ['LeftSide', 'Background_Container']
+  ['landing-container', 'background-landing'],
+  ['about-me-container', 'background-about-me'],
+  ['projects-container', 'background-projects'],
+  ['skills-container', 'background-skills'],
+  ['contact-container', 'background-contact'],
+  ['left-side', 'background-container']
 ];
 
 // Map them to actual elements
@@ -136,13 +136,13 @@ function syncBtoA() {
   syncElements.forEach(({ source, target }) => {
     if (source && target) {
       const height = source.getBoundingClientRect().height + (GapValue * 4) + 'px';
-      if (target.id != "Background_Container") {
+      if (target.id != "background-container") {
         target.style.height = height;
 
       }
 
       //Extra to ensure backgrounds are aligned with the leftSide's gap
-      if (target.id == "Background_Container") {
+      if (target.id == "background-container") {
         const leftSideWidth = source.getBoundingClientRect().width + 'px';
         target.style.marginLeft = leftSideWidth;
       }
@@ -168,17 +168,17 @@ window.addEventListener('load', syncBtoA);
 //Parallax effect for the background. Slower number  = less movement per scroll.
 // Speed configuration for each layer
 const layers = [
-  { selector: '.Parallax1', speed: 0.2 },
-  { selector: '.Parallax2', speed: 0.5 },
-  { selector: '.Parallax3', speed: 0.8 }
+  { selector: '.parallax-1', speed: 0.2 },
+  { selector: '.parallax-2', speed: 0.5 },
+  { selector: '.parallax-3', speed: 0.8 }
 ];
 
 // Fallback function (kept for reference; not used when looped version is active)
 function updateParallax() {
   const scrolled = window.scrollY;
-  document.querySelector('.Parallax1').style.transform = `translateY(${scrolled * 0.2}px)`;
-  document.querySelector('.Parallax2').style.transform = `translateY(${scrolled * 0.5}px)`;
-  document.querySelector('.Parallax3').style.transform = `translateY(${scrolled * 0.8}px)`;
+  document.querySelector('.parallax-1').style.transform = `translateY(${scrolled * 0.2}px)`;
+  document.querySelector('.parallax-2').style.transform = `translateY(${scrolled * 0.5}px)`;
+  document.querySelector('.parallax-3').style.transform = `translateY(${scrolled * 0.8}px)`;
 }
 
 //Randomise the star locations for Parralax Background
@@ -213,14 +213,14 @@ function updateParallaxLooped() {
 // Initialization on load
 window.addEventListener('load', () => {
   // Preserve initial zero-offset for any CSS-based fallback
-  document.querySelector('.Parallax1').style.transform = 'translateY(0)';
-  document.querySelector('.Parallax2').style.transform = 'translateY(0)';
-  document.querySelector('.Parallax3').style.transform = 'translateY(0)';
+  document.querySelector('.parallax-1').style.transform = 'translateY(0)';
+  document.querySelector('.parallax-2').style.transform = 'translateY(0)';
+  document.querySelector('.parallax-3').style.transform = 'translateY(0)';
 
   // Generate stars for each layer
-  generateStars('.Parallax1', 100);
-  generateStars('.Parallax2', 80);
-  generateStars('.Parallax3', 60);
+  generateStars('.parallax-1', 100);
+  generateStars('.parallax-2', 80);
+  generateStars('.parallax-3', 60);
 
   // Create and append clones for looping
   layers.forEach(({ selector }) => {
@@ -314,7 +314,7 @@ function smoothScroll(selector, duration) {
 }
 
 //Then to actually use the above details:
-document.querySelectorAll('.nav_Button').forEach(btn => {
+document.querySelectorAll('.nav-button').forEach(btn => {
   btn.addEventListener('click', e => {
     e.preventDefault();
     smoothScroll(btn.getAttribute('data-target'), 1500);
@@ -322,8 +322,8 @@ document.querySelectorAll('.nav_Button').forEach(btn => {
 });
 
 //Logic for hamburger menu switch on navbar
-const hamburger = document.querySelector('.hamburger_menu');
-const menu = document.querySelector('.Header_Menu_Right');
+const hamburger = document.querySelector('.hamburger-menu');
+const menu = document.querySelector('.header-menu-right');
 
 hamburger.addEventListener('click', () => {
   const expanded = hamburger.getAttribute('aria-expanded') === 'true';
@@ -338,8 +338,8 @@ const endpoint_URL = "https://europe-west1-portfoliosite-f7714.cloudfunctions.ne
 //Waits until all DOM are loaded. Good practice to use.
 document.addEventListener('DOMContentLoaded', () => {
   //Load the html form and button, listen for the submitting. Different that click as it checks the form as well.
-  const form = document.getElementById('contactForm');
-  const sendButton = form.querySelector('.Send_Button');
+  const form = document.getElementById('contact-form');
+  const sendButton = form.querySelector('.send-button');
 
   form.addEventListener('submit', async (e) => {
     // Stop default form submit (full page reload)
