@@ -973,6 +973,7 @@ text-align: start;
     opacity: 1;
     transform: translateX(0%) scale(1);
     z-index: 3;
+    font-size: 150%;
 }
 
 .skills-panel--prev {
@@ -1049,12 +1050,12 @@ text-align: start;
 .project-name {
     justify-self: center;
     /*Since it's a link, similar but readable blue*/
-    color: #2949fc
+    color: #12a0ff
 }
 
 /*After the link has been clicked */
 .project-name:visited {
-    color: rgb(204, 0, 211);
+    color: rgb(197, 5, 255);
 }
 
 
