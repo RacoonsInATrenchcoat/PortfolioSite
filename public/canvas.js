@@ -37,14 +37,46 @@ landingContainer.addEventListener('mouseleave', () => {
     mouseY = null;
 });
 
-//Needed for mobile views
-function resizeCanvas() {
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+//Debugging needed as each method is different amount FOR DIFFERENT BROWSERS!
+//Firefox and Chrome are not pixel-perfect same, sometimes having completely different values.
+//The "document.documentElement.clientWidth" method is used later as the only good solution. Does not include scrollbars!
+/*
+function debugCanvas() {
+    const rect = canvas_1.getBoundingClientRect();
 
-    // Only shrink if viewport is smaller than 1280px
-    canvas_1.width = viewportWidth < 1280 ? viewportWidth : 1280;
-    canvas_1.height = viewportHeight < 720 ? viewportHeight : 720;
+    const vw1 = Math.floor(rect.width);
+    const vh1 = Math.floor(rect.height);
+    console.log("method 1, rect.width", vw1)
+    const vw2 = document.documentElement.clientWidth;
+    const vh2 = document.documentElement.clientHeight;
+    console.log("method 2, document.documentElement.clientWidth", vw2)
+    const vw3 = window.innerWidth;
+    const vh3 = window.innerHeight;
+    console.log("method 3, window.innerWidth", vw3)
+    const vw4 = screen.width;
+    const vh4 = screen.height;
+    console.log("method 4, screen.width", vw4)
+    const vw5 = window.visualViewport.width;
+    const vh5 = window.visualViewport.height;
+    console.log("method 5, window.visualViewport.width", vw5)
+}
+debugCanvas()
+*/
+
+function getViewportSize() {
+    return {
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight
+    };
+}
+
+//Resizes for mobile width based on viewport.
+function resizeCanvas() {
+    const { width: vw, height: vh } = getViewportSize();
+    canvas_1.width = Math.min(vw, 1280);
+    canvas_1.height = Math.min(vh, 720);
+    canvas_1.style.width = canvas_1.width + 'px';
+    canvas_1.style.height = canvas_1.height + 'px';
 }
 
 

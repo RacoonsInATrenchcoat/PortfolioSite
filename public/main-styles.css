@@ -643,6 +643,8 @@ body {
 
     object-fit: cover;
     z-index: 0;
+    /*Added these */
+    aspect-ratio: unset;
 }
 
 #canvas-1,
@@ -930,8 +932,9 @@ body {
 
 @media (max-width: 768px) {
     .skills-list {
-text-align: start;
-    }}
+        text-align: start;
+    }
+}
 
 .skills-panel-title {
     position: relative;
