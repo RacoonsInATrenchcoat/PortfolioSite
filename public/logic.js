@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       //Check for built-in errors (not within 200-299 status)
       if (!response.ok) throw new Error('Failed to send');
-
+      
       // Show success (can style this into a popup or div later)
       alert('Your message was sent successfully!\n' +
         'Voyager 1 will now re-route your information to the correct location.');

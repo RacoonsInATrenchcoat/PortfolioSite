@@ -834,14 +834,53 @@ body {
 
 }
 
+/*Tricky case. Using basic HTML/CSS to switch the files doesnt pre-load it, even after told so.
+Need to use this basic element + before + after to have it all load and transition correctly. */
 .about-me-portrait {
     height: 300px;
-    width: auto;
     margin: var(--grid-Margin);
-
     border-radius: 20px;
+    overflow: hidden; /* Required to clip pseudo-elements to rounded corners */
+    position: relative; /* Required for absolute positioning of ::before/::after */
 
+    /* GPU layer forced to load by will-change */
+    will-change: transform;
+    transform: translateZ(0);
 }
+
+/* Base image layer */
+.about-me-portrait::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/portrait_bnw.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    opacity: 1;
+}
+
+
+/* Hover image overlay */
+.about-me-portrait::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/portrait_purple.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+    opacity: 0;
+}
+
+.about-me-portrait:hover::after {
+    opacity: 1;
+}
+
 
 @media (max-width: 768px) {
     .about-me-portrait {
