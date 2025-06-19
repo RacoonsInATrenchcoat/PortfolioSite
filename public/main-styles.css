@@ -1085,7 +1085,8 @@ Need to use this basic element + before + after to have it all load and transiti
 }
 
 .project-1,
-.project-2 {
+.project-2,
+.project-3 {
     display: grid;
 }
 
@@ -1228,6 +1229,31 @@ Need to use this basic element + before + after to have it all load and transiti
 }
 
 .project-2-image {
+    align-self: center;
+    width: 150px;
+    height: 150px;
+}
+
+.project-3 {}
+
+.project-3-body {
+    display: grid;
+    grid-template-columns:
+        1fr
+        /*LeftSide*/
+        3fr
+        /*Rightside*/
+    ;
+    grid-template-rows: auto;
+    justify-content: space-between;
+    /*Horizontal align*/
+    align-items: space-between;
+    /*Vertical align*/
+
+    margin: var(--grid-Margin);
+}
+
+.project-3-image {
     align-self: center;
     width: 150px;
     height: 150px;
