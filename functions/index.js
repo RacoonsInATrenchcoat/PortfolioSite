@@ -76,3 +76,28 @@ exports.sendContactEmail = onRequest({
     }
   });
 });
+
+//Used to ensure the refresh token does not invalide due to no useage.
+
+exports.sendContactEmail = onRequest({
+  region: "europe-west1",
+  timeoutSeconds: 60,
+  memory: "256MiB",
+  secrets: [ /* your secret names */ ]
+}, async (req, res) => {
+
+  /* ────── KEEP‑ALIVE PING ────── */
+  if (req.body && req.body.ping === true) {
+    try {
+      await oAuth2Client.getAccessToken();      // refreshes silently
+      console.log("✅ token keep‑alive succeeded");
+      return res.status(204).send();
+    } catch (err) {
+      console.error("❌ token keep‑alive failed", err.message);
+      return res.status(500).send("token refresh failed");
+    }
+  }
+  /* ─── continue with normal contact‑form logic below ─── */
+
+  // ... existing validation, Gmail API send, etc.
+});

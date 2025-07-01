@@ -4,10 +4,11 @@ Main website for Portfolio
 Reminders: 
 - use "tree /F > structure.txt" to save structure.
 - "firebase functions:config:get" to check currently setup config.
-- If the refresh token breaks for some reason, goto OAuth Playground to re-generate and use "firebase functions:config:set gmail.refresh_token="NEW_REFRESH_TOKEN"
 - Firebase SDK is not added yet, as no DB or any bonus functionality are used. 
 - By default, Email address that is the target must be the same as the account that generated the tokens.
 - Using Gen1 Google Could Functions. 2 is standard today but requires more work and not needed.
+- Cloud Scheduler used twice a week to ensure the refresh token is not invalided.
+- If the refresh token breaks for some reason, goto OAuth Playground to re-generate and use "firebase functions:config:set gmail.refresh_token="NEW_REFRESH_TOKEN" then add it.
 
 Reformatted to use "kebab-case" as a standard.
 
@@ -23,6 +24,7 @@ Google cloud:
 Invocations: 2 million per month - logic and handling of emails sent. assumed 1 per mail.
 Compute Time: 400,000 GB-seconds per month
 Outbound Networking: 5 GB per month  - emails sent. assumed max 50kb per mail.
+Cloud Scheduler: 93 count per month - Currently twice per week = 8 per month.
 
 Firestore:
 Stored Data: 1 GiB
