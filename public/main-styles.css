@@ -1170,7 +1170,6 @@ Need to use this basic element + before + after to have it all load and transiti
             auto
             /*2nd*/
             auto;
-        grid-auto-flow: column;
         justify-content: space-between;
         /*Horizontal align*/
         align-items: space-between;
