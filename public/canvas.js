@@ -11,7 +11,18 @@ const context_1 = canvas_1.getContext("2d");              //Default command, so 
 
 const currentItemList = [];
 const speedMultiplier = 1;
-const amountOfItems_1 = 30;
+
+//Amount of Stars, detect and have less if on mobile
+let amountOfItems_1 = 30;
+const mq = window.matchMedia('(max-width: 768px)');
+function updateAmountOfItems(e) {
+    // e.matches is true whenever the viewport is ≤ 768 px
+    amountOfItems_1 = e.matches ? 15 : 30;
+}
+// set it on page load
+updateAmountOfItems(mq);
+// keep it in sync when size changes                 
+mq.addEventListener('change', updateAmountOfItems);
 
 //Needed for mouse repelling to work
 let mouseX = null;

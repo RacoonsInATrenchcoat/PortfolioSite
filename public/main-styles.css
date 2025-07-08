@@ -223,6 +223,13 @@ body {
     background-color: rgba(181, 0, 252, 0.2);
 }
 
+@media (max-width: 768px) {
+    .header {
+        --grid-Margin: 0px;
+        --grid-Gap: 0px;
+    }
+}
+
 .header-menu {
     display: grid;
     grid-template-columns: 48vw 48vw;
@@ -255,7 +262,7 @@ body {
     .header-menu-left {
         display: grid;
         gap: var(--grid-Gap);
-        margin-left: calc(var(--grid-Margin)/2);
+        margin-left: 12px;
     }
 }
 
@@ -291,13 +298,14 @@ body {
     .hamburger-menu {
         display: block;
         position: absolute;
-        font-size: 2rem;
+        font-size: 2.5rem;
         background: none;
         border: none;
         color: inherit;
         z-index: 10;
 
         right: 1rem;
+        top: 0rem;
 
         margin: calc(var(--grid-Margin)/2);
         margin-top: 0px;
