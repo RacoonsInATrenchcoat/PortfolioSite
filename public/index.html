@@ -122,11 +122,13 @@
                 <div class="background-projects" id="background-projects">
                 </div>
                 <div class="background-contact dot-container" id="background-contact">
-                    <div class="dot" style="--x: 105%; --y: -10%;"></div> <!-- 0 -->
-                    <div class="dot" style="--x: 110%; --y: 20%;"></div> <!-- 1 -->
-                    <div class="dot" style="--x: 105%; --y: 40%;"></div> <!-- 2 -->
-                    <div class="dot" style="--x: 110%; --y: 80%;"></div> <!-- 3 -->
-                    <div class="dot" style="--x: 115%; --y: 65%;"></div> <!-- 4 -->
+                    <div class="dot" style="--x: 55%; --y: 0%;"></div> <!-- 0 -->
+                    <div class="dot" style="--x: 60%; --y: 15%;"></div> <!-- 1 -->
+                    <div class="dot" style="--x: 70%; --y: 25%;"></div> <!-- 2 -->
+                    <div class="dot" style="--x: 80%; --y: 30%;"></div> <!-- 3 -->
+                    <div class="dot" style="--x: 96%; --y: 15%;"></div> <!-- 4 -->
+                    <div class="dot" style="--x: 98%; --y: 40%;"></div> <!-- 5 -->
+                    <div class="dot" style="--x: 80%; --y: 55%;"></div> <!-- 6 -->
 
 
                     <!-- Line between dot 1 and 2 -->
@@ -134,6 +136,9 @@
                     <div class="line" data-from="1" data-to="2"></div>
                     <div class="line" data-from="2" data-to="3"></div>
                     <div class="line" data-from="3" data-to="4"></div>
+                    <div class="line" data-from="4" data-to="5"></div>
+                    <div class="line" data-from="5" data-to="6"></div>
+                    <div class="line" data-from="6" data-to="3"></div>
                 </div>
             </div>
         </div>
@@ -442,36 +447,7 @@
                             </div>
                         </div>
 
-                        <div class="contact-rightSide">
-                            <form id="contact-form" class="send-contact-container">
-                                <div class="contact-pair">
-                                    <label for="name-input" class="send-name">Name</label>
-                                    <input type="text" id="name-input" name="name" placeholder="Your name" required />
-                                </div>
-                                <div class="contact-pair">
-                                    <label for="phone-input" class="send-phone">Phone (optional)</label>
-                                    <input type="tel" id="phone-input" name="phone"
-                                        placeholder="e.g. +44 7123 456789" />
-                                </div>
-                                <div class="contact-pair">
-                                    <label for="email-input" class="send-email">Email</label>
-                                    <input type="email" id="email-input" name="email" placeholder="you@example.com"
-                                        required />
-                                </div>
-                                <div class="contact-pair">
-                                    <label for="contact-message-input" class="Send_Text">Message</label>
-                                    <textarea class="contact-message-input" id="contact-message-input" name="message"
-                                        rows="4"
-                                        placeholder="Your message here (maybe a new star that you have discovered?)"
-                                        required></textarea>
-                                </div>
-                                <div class="contact-pair">
-                                    <button type="submit" class="send-button">
-                                        Send
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

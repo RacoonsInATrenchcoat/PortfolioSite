@@ -1369,17 +1369,12 @@ Need to use this basic element + before + after to have it all load and transiti
     color: #fff;
 }
 
-.contact-container {}
+.contact-container {
+    width: 600px;
+}
 
 .contact-body {
-    display: grid;
-    grid-template-columns:
-        50%
-        /*LeftSide*/
-        50%
-        /*Rightside*/
-    ;
-    grid-template-rows: auto;
+
 }
 
 @media (min-width: 768px) {
