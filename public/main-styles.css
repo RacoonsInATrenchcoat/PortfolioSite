@@ -1096,9 +1096,10 @@ Need to use this basic element + before + after to have it all load and transiti
 
 .project-1,
 .project-2,
-.project-3
-.project-4  {
+.project-3,
+.project-4 {
     display: grid;
+    margin: calc(var(--grid-Margin) / 2);
 }
 
 .project-name {
@@ -1128,48 +1129,18 @@ Need to use this basic element + before + after to have it all load and transiti
     /*Vertical align*/
 }
 
-/* every item in the 2nd column gets a divider on its left */
-@media (min-width: 768px) {
-
-    .projects-group-2>*:nth-child(2),
-    .grid>*:nth-child(4),
-    .grid>*:nth-child(6) {
-        border-left: 1px solid #ccc;
-        padding-left: 1rem;
-        height: 95%;
-    }
-}
-
-/* every item in the after the 1st row gets a divider on its top */
-@media (min-width: 768px) {
-
-    .projects-group-2>*:nth-child(3),
-    .grid>*:nth-child(4),
-    .grid>*:nth-child(5),
-    .grid>*:nth-child(6) {
-        border-top: 1px solid #ccc;
-        padding-top: 2rem;
-        height: 95%;
-    }
-}
-
 .projects-group-2 {
     display: grid;
-    grid-template-columns:
-        50%
-        /*LeftSide*/
-        50%
-        /*Rightside*/
-    ;
+    grid-template-columns: 1fr var(--grid-Margin) 1fr;
+    /*Left side, middle divider, right side */
     grid-template-rows: auto;
     justify-content: space-between;
-    /*Horizontal align*/
-    align-items: space-between;
-    /*Vertical align*/
+    align-items: start;
     margin-left: var(--grid-Margin);
     margin-right: var(--grid-Margin);
     gap: var(--grid-Margin);
 }
+
 
 
 @media (max-width: 768px) {
@@ -1183,8 +1154,40 @@ Need to use this basic element + before + after to have it all load and transiti
             auto;
         justify-content: space-between;
         /*Horizontal align*/
-        align-items: space-between;
+        align-items: start;
         /*Vertical align*/
+    }
+}
+
+.project-divider-vertical,
+.project-divider-horizontal {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .project-divider-vertical {
+        display: block;
+        grid-column: 2;
+        grid-row: 1 / 4;
+        width: 2px;
+        align-self: stretch;
+        background: linear-gradient(to bottom,
+                transparent 5%,
+                #ccc 5%,
+                #ccc 95%,
+                transparent 95%);
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .project-divider-horizontal {
+        display: block;
+        grid-column: 1 / -1;
+        grid-row: 2;
+        height: 2px;
+        background-color: #ccc;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 }
 
@@ -1220,7 +1223,7 @@ Need to use this basic element + before + after to have it all load and transiti
         align-items: space-between;
         /*Vertical align*/
 
-        margin: var(--grid-Margin)
+        margin: calc(var(--grid-Margin) / 2);
     }
 }
 
@@ -1229,7 +1232,7 @@ Need to use this basic element + before + after to have it all load and transiti
 }
 
 .project-text {
-    margin: var(--grid-Margin)
+    margin: calc(var(--grid-Margin) / 2);
 }
 
 .project-2 {}
@@ -1248,7 +1251,7 @@ Need to use this basic element + before + after to have it all load and transiti
     align-items: space-between;
     /*Vertical align*/
 
-    margin: var(--grid-Margin);
+    margin: calc(var(--grid-Margin) / 2);
 }
 
 .project-2-image {
@@ -1275,7 +1278,7 @@ Need to use this basic element + before + after to have it all load and transiti
     align-items: space-between;
     /*Vertical align*/
 
-    margin: var(--grid-Margin);
+    margin: calc(var(--grid-Margin) / 2);
 }
 
 .project-3-image {
@@ -1300,7 +1303,7 @@ Need to use this basic element + before + after to have it all load and transiti
     align-items: space-between;
     /*Vertical align*/
 
-    margin: var(--grid-Margin);
+    margin: calc(var(--grid-Margin) / 2);
 }
 
 .project-4-image {
@@ -1308,6 +1311,36 @@ Need to use this basic element + before + after to have it all load and transiti
     width: 150px;
     height: 150px;
 }
+
+.project-1 {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.project-2 {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.project-3 {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.project-4 {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+/*Any future projects go here with this template:
+
+.project-x {
+    grid-column: x; (1 or 2)
+    grid-row: y; (which row)
+}
+
+*/
+
 
 /* CONTACT */
 
@@ -1401,9 +1434,7 @@ Need to use this basic element + before + after to have it all load and transiti
     width: 600px;
 }
 
-.contact-body {
-
-}
+.contact-body {}
 
 @media (min-width: 768px) {
     .contact-body>*:nth-child(2) {

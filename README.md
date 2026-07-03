@@ -50,6 +50,7 @@ Icons:  https://www.svgrepo.com
         NPM: https://www.flaticon.com/free-icon/programing_15484297?term=npm&page=1&position=2&origin=search&related_id=15484297
         Interactive: https://www.flaticon.com/free-icon/interaction_1589513
         Metadata: https://www.flaticon.com/free-icon/metadata_3344335?k=1747390692422&sign-up=google
+        Mahjong icon: https://commons.wikimedia.org/wiki/File:MJt1-.svg
 Logo:   https://www.flaticon.com/free-icon/circle_11068138
 
 
