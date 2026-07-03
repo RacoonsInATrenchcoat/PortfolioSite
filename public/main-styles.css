@@ -1096,7 +1096,8 @@ Need to use this basic element + before + after to have it all load and transiti
 
 .project-1,
 .project-2,
-.project-3 {
+.project-3
+.project-4  {
     display: grid;
 }
 
@@ -1139,11 +1140,13 @@ Need to use this basic element + before + after to have it all load and transiti
     }
 }
 
+/* every item in the after the 1st row gets a divider on its top */
 @media (min-width: 768px) {
 
     .projects-group-2>*:nth-child(3),
+    .grid>*:nth-child(4),
     .grid>*:nth-child(5),
-    .grid>*:nth-child(7) {
+    .grid>*:nth-child(6) {
         border-top: 1px solid #ccc;
         padding-top: 2rem;
         height: 95%;
@@ -1276,6 +1279,31 @@ Need to use this basic element + before + after to have it all load and transiti
 }
 
 .project-3-image {
+    align-self: center;
+    width: 150px;
+    height: 150px;
+}
+
+.project-4 {}
+
+.project-4-body {
+    display: grid;
+    grid-template-columns:
+        1fr
+        /*LeftSide*/
+        3fr
+        /*Rightside*/
+    ;
+    grid-template-rows: auto;
+    justify-content: space-between;
+    /*Horizontal align*/
+    align-items: space-between;
+    /*Vertical align*/
+
+    margin: var(--grid-Margin);
+}
+
+.project-4-image {
     align-self: center;
     width: 150px;
     height: 150px;
