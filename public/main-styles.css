@@ -1094,26 +1094,6 @@ Need to use this basic element + before + after to have it all load and transiti
     margin: var(--grid-Margin)
 }
 
-.project-1,
-.project-2,
-.project-3,
-.project-4 {
-    display: grid;
-    margin: calc(var(--grid-Margin) / 2);
-}
-
-.project-name {
-    justify-self: center;
-    /*Since it's a link, similar but readable blue*/
-    color: #12a0ff
-}
-
-/*After the link has been clicked */
-.project-name:visited {
-    color: rgb(197, 5, 255);
-}
-
-
 .projects-group-1 {
     display: grid;
     grid-template-columns:
@@ -1129,218 +1109,141 @@ Need to use this basic element + before + after to have it all load and transiti
     /*Vertical align*/
 }
 
-.projects-group-2 {
+/* Card grid: flows automatically. Reorder by moving <article> blocks in the HTML. */
+.projects-grid {
     display: grid;
-    grid-template-columns: 1fr var(--grid-Margin) 1fr;
-    /*Left side, middle divider, right side */
-    grid-template-rows: auto;
-    justify-content: space-between;
-    align-items: start;
-    margin-left: var(--grid-Margin);
-    margin-right: var(--grid-Margin);
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(var(--grid-Margin) * 2);
+    align-items: stretch;
+    /* stretch = paired cards share a height, so the vertical divider spans the whole row cleanly */
+    margin: var(--grid-Margin);
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--grid-Margin);
+    }
+}
+
+/* A single reusable project card */
+.project-card {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--grid-Margin) / 2);
+    position: relative;
+    /* anchor for the divider pseudo-elements */
+}
+
+/* Header row: thumbnail image + title, side by side */
+.project-card-header {
+    display: flex;
+    align-items: center;
     gap: var(--grid-Margin);
 }
 
+/* Contained thumbnail. object-fit: contain keeps logos and the one photo undistorted.
+   The faint background frames every image consistently and hides any letterboxing. */
+.project-card-image {
+    width: 110px;
+    height: 110px;
+    flex-shrink: 0;
+    object-fit: contain;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06);
+}
 
+/* Default title colour is white (used for projects with no link, e.g. Under Construction) */
+.project-card-title {
+    color: #ffffff;
+}
 
+/* When the title IS a link, use the readable blue, and purple once visited */
+a.project-card-title {
+    color: #12a0ff;
+}
+
+a.project-card-title:visited {
+    color: rgb(197, 5, 255);
+}
+
+/* Body: paragraphs stacked full width, evenly spaced by the gap */
+.project-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--grid-Margin) / 2);
+}
+
+.project-card-text {
+    margin: 0;
+}
+
+/* Optional: adds extra breathing room ABOVE a single paragraph,
+   on top of the normal body gap. */
+.project-card-text--gap-above {
+    margin-top: calc(var(--grid-Margin) * 1.0)
+}
+
+.project-card-stack {
+    margin: 0;
+}
+
+/* ---- Adaptive project dividers --------------------------------------
+   Lines are drawn by pseudo-elements sitting inside the grid gap, so they
+   appear between cards automatically for any number of projects. Nothing
+   needs changing when you add project 7, 8, and so on.
+------------------------------------------------------------------------ */
+
+/* Vertical divider: on every left-column card (odd position in a 2-column
+   grid), skipping a lonely last card that has no right-hand neighbour. */
+.project-card:nth-child(odd):not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    /* half the gap minus half the 2px line = centred in the gap channel */
+    margin-left: calc(var(--grid-Margin) - 1px);
+    width: 2px;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            #ccc 15%,
+            #ccc 85%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+/* Horizontal divider: under any card that has a card beneath it. In a
+   2-column grid the card below is 2 positions later, so a card has a
+   neighbour below whenever at least 2 cards follow it, i.e. it is the
+   3rd-from-last card or earlier. :nth-last-child(n+3) matches exactly
+   that, and so skips the final row for both even and odd counts. */
+.project-card:nth-last-child(n+3)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-top: calc(var(--grid-Margin) - 1px);
+    height: 2px;
+    background: linear-gradient(to right,
+            transparent 0%,
+            #ccc 15%,
+            #ccc 85%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+/* Mobile is a single column, so there is no gap channel for a vertical
+   line and stacked cards do not need a cross pattern. Turn both off,
+   matching the original mobile look (which had no project dividers). */
 @media (max-width: 768px) {
-    .projects-group-2 {
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows:
-            /*1st*/
-            auto
-            /*2nd*/
-            auto;
-        justify-content: space-between;
-        /*Horizontal align*/
-        align-items: start;
-        /*Vertical align*/
+    .project-card::before,
+    .project-card::after {
+        display: none;
     }
 }
-
-.project-divider-vertical,
-.project-divider-horizontal {
-    display: none;
-}
-
-@media (min-width: 768px) {
-    .project-divider-vertical {
-        display: block;
-        grid-column: 2;
-        grid-row: 1 / 4;
-        width: 2px;
-        align-self: stretch;
-        background: linear-gradient(to bottom,
-                transparent 5%,
-                #ccc 5%,
-                #ccc 95%,
-                transparent 95%);
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-
-    .project-divider-horizontal {
-        display: block;
-        grid-column: 1 / -1;
-        grid-row: 2;
-        height: 2px;
-        background-color: #ccc;
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-}
-
-.project-1-body {
-    display: grid;
-    grid-template-columns:
-        1fr
-        /*LeftSide*/
-        3fr
-        /*Rightside*/
-    ;
-    grid-template-rows: auto;
-    justify-content: space-between;
-    /*Horizontal align*/
-    align-items: space-between;
-    /*Vertical align*/
-
-    margin: var(--grid-Margin)
-}
-
-@media (max-width: 768px) {
-    .project-1-body {
-        display: grid;
-        grid-template-columns:
-            auto
-            /*LeftSide*/
-            auto
-            /*Rightside*/
-        ;
-        grid-template-rows: auto;
-        justify-content: space-between;
-        /*Horizontal align*/
-        align-items: space-between;
-        /*Vertical align*/
-
-        margin: calc(var(--grid-Margin) / 2);
-    }
-}
-
-.project-1-image {
-    align-self: center;
-}
-
-.project-text {
-    margin: calc(var(--grid-Margin) / 2);
-}
-
-.project-2 {}
-
-.project-2-body {
-    display: grid;
-    grid-template-columns:
-        1fr
-        /*LeftSide*/
-        3fr
-        /*Rightside*/
-    ;
-    grid-template-rows: auto;
-    justify-content: space-between;
-    /*Horizontal align*/
-    align-items: space-between;
-    /*Vertical align*/
-
-    margin: calc(var(--grid-Margin) / 2);
-}
-
-.project-2-image {
-    align-self: center;
-    width: 150px;
-    height: 150px;
-
-    border-radius: 25px;
-}
-
-.project-3 {}
-
-.project-3-body {
-    display: grid;
-    grid-template-columns:
-        1fr
-        /*LeftSide*/
-        3fr
-        /*Rightside*/
-    ;
-    grid-template-rows: auto;
-    justify-content: space-between;
-    /*Horizontal align*/
-    align-items: space-between;
-    /*Vertical align*/
-
-    margin: calc(var(--grid-Margin) / 2);
-}
-
-.project-3-image {
-    align-self: center;
-    width: 150px;
-    height: 150px;
-}
-
-.project-4 {}
-
-.project-4-body {
-    display: grid;
-    grid-template-columns:
-        1fr
-        /*LeftSide*/
-        3fr
-        /*Rightside*/
-    ;
-    grid-template-rows: auto;
-    justify-content: space-between;
-    /*Horizontal align*/
-    align-items: space-between;
-    /*Vertical align*/
-
-    margin: calc(var(--grid-Margin) / 2);
-}
-
-.project-4-image {
-    align-self: center;
-    width: 150px;
-    height: 150px;
-}
-
-.project-1 {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.project-2 {
-    grid-column: 3;
-    grid-row: 1;
-}
-
-.project-3 {
-    grid-column: 1;
-    grid-row: 3;
-}
-
-.project-4 {
-    grid-column: 3;
-    grid-row: 3;
-}
-
-/*Any future projects go here with this template:
-
-.project-x {
-    grid-column: x; (1 or 2)
-    grid-row: y; (which row)
-}
-
-*/
-
 
 /* CONTACT */
 

@@ -5,10 +5,6 @@ Reminders:
 - use "tree /F > structure.txt" to save structure.
 - "firebase functions:config:get" to check currently setup config.
 - Firebase SDK is not added yet, as no DB or any bonus functionality are used. 
-- By default, Email address that is the target must be the same as the account that generated the tokens.
-- Using Gen1 Google Could Functions. 2 is standard today but requires more work and not needed.
-- Cloud Scheduler used twice a week to ensure the refresh token is not invalided.
-- If the refresh token breaks for some reason, goto OAuth Playground to re-generate and use "firebase functions:config:set gmail.refresh_token="NEW_REFRESH_TOKEN" then add it.
 
 Reformatted to use "kebab-case" as a standard.
 
@@ -51,6 +47,8 @@ Icons:  https://www.svgrepo.com
         Interactive: https://www.flaticon.com/free-icon/interaction_1589513
         Metadata: https://www.flaticon.com/free-icon/metadata_3344335?k=1747390692422&sign-up=google
         Mahjong icon: https://commons.wikimedia.org/wiki/File:MJt1-.svg
+        Product work icon: https://thenounproject.com/icon/command-prompt-4139429/
+        Sim City 4 icon: https://www.steamgriddb.com/icon/47120
 Logo:   https://www.flaticon.com/free-icon/circle_11068138
 
 

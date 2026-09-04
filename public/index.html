@@ -363,103 +363,274 @@
                         <div class="projects-title font-h1">Projects</div>
                         <div class="projects-image"></div>
                     </div>
-                    <div class="projects-group-2">
+                    <div class="projects-grid">
 
-                        <div class="project-divider-vertical"></div>
 
-                        <div class="project-1">
-                            <a href="https://dino-dash-66723.web.app/" class="project-name font-h2">Dino Dash</a>
-                            <div class="project-1-body">
-                                <img class="project-1-image" src="/assets/lizardwizard_150x150.png"
-                                    alt="Project 1 Image">
-                                <div class="project-1-text">
-                                    <p class="project-text font-h5">This was my personal pet project to have by the
-                                        end of the Frontend Developer
-                                        course.</p>
-                                    <p class="project-text font-h5">
-                                        Originally created as practice, it quickly became
-                                        a testing ground for new skills, like layout design, mobile/desktop versions and
-                                        especially
-                                        functionality (physics can be complex!) were all knowledge that need to
-                                        delve into and fiddle with the minute details to really understand.
-                                        <br>There is even a high score board for you to
-                                        conquer!
-                                    </p>
-                                    <p class="project-text font-h5">
-                                    <b>Stack: React, Vite, Firebase Hosting, with plus raw JS & CSS written</p></b>
-                                    </p>
-                                </div>
+                        <article class="project-card">
+                            <header class="project-card-header">
+                                <img class="project-card-image" src="/assets/product_work.svg"
+                                    alt="short description of the image" width="150" height="150">
+                                <a class="project-card-title font-h2" href="https://claudecproject.web.app/">Product
+                                    work
+                                    with Claude Code</a>
+                            </header>
+                            <div class="project-card-body">
+                                <p class="project-card-text font-h3">My first product built end-to-end with an AI coding
+                                    agent.</p>
+                                <p class="project-card-text font-h5 project-card-text--gap-above">I wanted to test a
+                                    specific idea: that a product
+                                    manager's job in an AI-native team isn't to hand a tool a prompt and accept what
+                                    comes back, but to direct it with the same rigour you'd bring to a real engineering
+                                    workstream. <br>So I built a working fire-risk-assessment remedial-action tracker,
+                                    the
+                                    kind of tool the building-safety industry runs on, where each finding becomes an
+                                    action with an owner, a priority, and a target date, moving through a lifecycle that
+                                    forms the auditable record compliance depends on.
+                                <p class="project-card-text font-h5">The point wasn't the code itself, it was the
+                                    delivery. <br>I ran
+                                    it as a small work environment, not an ad-hoc AI session: versioned checkpoints, a
+                                    working agreement, conventional commits, and a dated decision log that tagged every
+                                    decision by type, whether I directed it, overrode the tool's output, or corrected
+                                    its process. My user stories were written to a reusable structure, so a fresh agent
+                                    session could pick up any one and build it with no re-explanation.</p>
+                                <p class="project-card-text font-h5">What it demonstrates: rapid prototyping of a
+                                    functional tool before committing engineering time; keeping high-level direction
+                                    across multiple steps; a living record of decisions rather than a static
+                                    spec; and, above all, the judgement to know when to trust an AI, when to challenge
+                                    it, and when a human call has to lead.</p>
+                                <p class="project-card-stack font-h5"><strong>Stack:</strong> HTML, CSS, TypeScript, no
+                                    framework, data in localStorage. Built with Claude Code, deployed on Firebase.</p>
                             </div>
-                        </div>
-                        <div class="project-2">
-                            <a href="https://racoonsinatrenchcoat.wordpress.com/"
-                                class="project-name font-h2">Raccafé!</a>
-                            <div class="project-2-body">
-                                <img class="project-2-image" src="/assets/Raccafe.jpg" alt="project-2-image">
-                                <div class="project-2-text">
-                                    <p class="project-text font-h5">A Wordpress website to sell coffee with a twist!
-                                    </p>
-                                    <p class="project-text font-h5">
-                                        This project was built as a learning exercise in
-                                        WordPress, without the use of plugins or external tools.
-                                        Every element, from layout to content, was crafted using native features, stock
-                                        imagery (some personally edited), and original copywriting as a creative
-                                        challenge.
-                                    </p>
-                                    <p class="project-text font-h5">Raccafé! Come for the coffee, stay for the puns.</p>
-                                </div>
-                            </div>
-                        </div>
+                        </article>
 
-                        <div class="project-divider-horizontal"></div>
-
-                        <div class="project-3">
-                            <a href="https://doman-mahjong.web.app/" class="project-name font-h2">Mahjong hand
-                                calculator</a>
-                            <div class="project-3-body">
-                                <img class="project-3-image" src="/assets/Mahjong.svg" alt="project-3-image">
-                                <div class="project-3-text">
-                                    <p class="project-text font-h5">
-                                        A fully client-side personal tool designed to reduce cognitive load during live play
-                                        of Doman Mahjong.
-                                    </p>
-                                    <p class="project-text font-h5">
-                                        Built to solve a personal problem: Doman Mahjong has dozens of
-                                        scoring combinations with complex interdependencies, and tracking them 
-                                        during live play is mentally taxing.
-                                        <br>
-                                        <br>A real-time decision support tool built in React and TypeScript, helping me
-                                        navigate the scoring complexity of Mahjong.
-                                        <br>It evaluates every possible scoring hand against my current tiles,
-                                        calculates how many exchanges I am from any shape, and even suggests which tile to
-                                        discard when drawing a 14th.
-                                        <br>
-                                        <br>Built iteratively across 21 sessions, with each feature scoped, researched, 
-                                        and formally documented in a living project brief before implementation, with end-to-end product ownership.
-                                    </p>
-                                    <p class="project-text font-h5"><b>Stack: React 18, TypeScript, Vite, Firebase Hosting,
-                                        Google Analytics</p></b>
-                                </div>
+                        <article class="project-card">
+                            <header class="project-card-header">
+                                <img class="project-card-image" src="/assets/product_tickets.svg"
+                                    alt="short description of the image" width="150" height="150">
+                                <a class="project-card-title font-h2"
+                                    href="https://app.notion.com/p/Riskhub-Homework-3ba5622169b5809c81e8f748804e0308">Product
+                                    work as scoping and ticketing</a>
+                            </header>
+                            <div class="project-card-body">
+                                <p class="project-card-text font-h3">Taking a product from "approved" to "ready for
+                                    build."</p>
+                                <p class="project-card-text font-h5 project-card-text--gap-above">The hardest, least
+                                    glamorous part of product management is the gap between a green-lit idea and an
+                                    engineer picking up a ticket: breaking a whole product into a logical structure of
+                                    features, epics and stories, then deciding what's deliberately in and out of scope.
+                                    I did exactly that for a document-management product in the UK building-safety
+                                    compliance space, working from a functioning prototype and its exported data rather
+                                    than a written spec.</p>
+                                <p class="project-card-text font-h5">I started with research, not decomposition. Before
+                                    splitting anything, I reverse-engineered the product's data model, its entity
+                                    relationships, and its boundaries from the prototype itself: which system owned
+                                    which data, what this product owned versus what it only consumed from adjacent
+                                    systems, and what fed off it downstream. <br>That boundary was the foundation,
+                                    because a
+                                    clean scope depends entirely on knowing where your product ends and someone else's
+                                    begins. Every assumption went into a tagged decision log, so the reasoning stayed
+                                    visible and I could show what I didn't know as clearly as what I did.</p>
+                                <p class="project-card-text font-h5">Only then did I decompose: the whole product into
+                                    features, each into epics with a priority, a rough size, an explicit in-and-out
+                                    scope, and a dependency-driven sequence. I chose one epic and detailed it to
+                                    refinement-ready quality, several user stories each with acceptance criteria,
+                                    business logic, UX notes, edge cases and test conditions, the level you'd take into
+                                    a session with engineering and design. <br>I went deliberately wide-and-shallow on
+                                    the
+                                    overall breakdown and deep on a single epic, because the skill is judgement about
+                                    where detail earns its place, not the ability to over-produce.</p>
+                                <p class="project-card-text font-h5"> What it demonstrates: breaking scope into
+                                    meaningful, logical units; making assumptions explicit and showing how they shape
+                                    decisions; documenting requirements across functional behaviour, business logic and
+                                    UX; and writing user stories an engineer can pick up and build without coming back
+                                    to ask what you meant..</p>
+                                <p class="project-card-stack font-h5"><strong>Stack:</strong> Notion, Google Sheets,
+                                    Visio, Claude</p>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="project-4">
-                            <div class="project-name font-h2">Under <br>Construction!</div>
-                            <div class="project-4-body">
-                                <img class="project-4-image" src="/assets/astronaut-ingravity_inverted-01.svg"
-                                    alt="project-4-image">
-                                <div class="project-4-text">
-                                    <p class="project-text font-h5">This is where the other project's text would come.
-                                    </p>
-                                    <p class="project-text font-h5">Well. It is not ready yet. I know, you really want
-                                        to see it, but it needs a bit more time in the oven to be presentable.
-                                        Those bits (and bobs?) can be very unpredictable on how they react. After all,
-                                        bits make up everything around here!
-                                    </p>
-                                    <p class="project-text font-h5">But I promise, it'll be out of this world!</p>
-                                </div>
+
+                        <!-- Project card: Mahjong hand calculator -->
+                        <article class="project-card">
+                            <header class="project-card-header">
+                                <img class="project-card-image" src="/assets/Mahjong.svg"
+                                    alt="Mahjong hand calculator logo" width="150" height="150">
+                                <a class="project-card-title font-h2" href="https://doman-mahjong.web.app/">Mahjong hand
+                                    calculator</a>
+                            </header>
+                            <div class="project-card-body">
+                                <p class="project-card-text font-h3">A personal tool during play of Mahjong.</p>
+                                <p class="project-card-text font-h5 project-card-text--gap-above">Built to solve a
+                                    personal problem: Doman Mahjong has
+                                    dozens of scoring combinations with complex interdependencies, and tracking them
+                                    during
+                                    live play is mentally taxing, which is a barrier to beginners.</p>
+
+                                <p class="project-card-text font-h5">So I've built a real-time, client-side support tool
+                                    built in React and TypeScript, helping me navigate the scoring complexity of
+                                    Mahjong.
+                                    <br>It evaluates every possible scoring hand against my current tiles, calculates
+                                    how many exchanges I am from any shape, and even suggests which tile to discard when
+                                    drawing a 14th.
+                                </p>
+
+                                <p class="project-card-text font-h5">Main challenge here was Delivery.
+                                    Contrary to my other projects where it had to be well Researched before starting,
+                                    Mahjong is very well documented in it's rules.
+                                    Those rules however, are quite complex and required many mathematical and processing
+                                    challenges.</p>
+
+                                <p class="project-card-text font-h5">Built iteratively across 21 sessions, with each
+                                    feature
+                                    scoped, researched, and formally documented in a living project brief before
+                                    implementation, with end-to-end product ownership.</p>
+                                <p class="project-card-stack font-h5"><strong>Stack:</strong> React 18, TypeScript,
+                                    Vite, Firebase Hosting, Google Analytics</p>
                             </div>
-                        </div>
+                        </article>
+
+                        <article class="project-card">
+                            <header class="project-card-header">
+                                <img class="project-card-image" src="/assets/SC4.png"
+                                    alt="short description of the image" width="150" height="150">
+                                <a class="project-card-title font-h2"
+                                    href="https://community.simtropolis.com/files/file/37590-region-sync/">Sim City 4
+                                    Sync Region</a>
+                            </header>
+                            <div class="project-card-body">
+                                <p class="project-card-text font-h3">My first official Mod for a game.</p>
+                                <p class="project-card-text font-h5 project-card-text--gap-above">You have heard of the
+                                    SimCity series, but not
+                                    everyone knows that even 20 years after its release, SimCity 4 is still a popular.
+                                    Possibly the best in its genre, I keep returning to it, and I have always wanted
+                                    better quality-of-life tools for it.</p>
+
+                                <p class="project-card-text font-h5">So I built one.</p>
+
+                                <p class="project-card-text font-h5">The mod uses the game engine's internal commands to
+                                    scan the region, then step through each city tile in turn: load it, run the
+                                    simulation
+                                    for a configurable number of months, save, and exit, repeating across the whole
+                                    region.
+                                    This resynchronises cross-border data that would otherwise only update through
+                                    manual
+                                    play.</p>
+
+                                <p class="project-card-text font-h5">The main challenge was working without
+                                    documentation.
+                                    I had to reverse-engineer the game's internal commands, piece together what
+                                    references
+                                    I could find, exchange notes with others on the modding forums, and work through
+                                    several
+                                    failed approaches before landing on one that was stable. <br>A recurring theme was
+                                    discovering why the obvious method crashed, and finding a safer route the game
+                                    itself
+                                    would accept. The result saves a great deal of clicking and time, and enables a
+                                    smoother
+                                    way to play a whole region, something several users have praised.</p>
+
+                                <p class="project-card-text font-h5">As of September 2026, it has been viewed by more
+                                    than
+                                    700
+                                    people and downloaded over 70 times.</p>
+                                </p>
+                                <p class="project-card-stack font-h5"><strong>Stack:</strong> C++ built in Visual
+                                    Studio, exported into a .dll and .ini file. Hosted on both Simtropolis and Github.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Project card: Dino Dash -->
+                        <article class="project-card">
+                            <header class="project-card-header">
+                                <img class="project-card-image" src="/assets/lizardwizard_150x150.png"
+                                    alt="Dino Dash logo" width="150" height="150">
+                                <a class="project-card-title font-h2" href="https://dino-dash-66723.web.app/">Dino
+                                    Dash</a>
+                            </header>
+                            <div class="project-card-body">
+                                <p class="project-card-text font-h3">This was my personal pet project for the end
+                                    of the
+                                    Frontend Developer course.</p>
+                                <p class="project-card-text font-h5 project-card-text--gap-above">Originally created as
+                                    practice, it quickly became a
+                                    testing ground for new skills, like layout design, mobile/desktop versions and
+                                    especially
+                                    functionality (physics can be complex!) were all knowledge that need to delve into
+                                    and
+                                    fiddle with the minute details to really understand.</p>
+
+                                <p class="project-card-text font-h5">There is even a high score board for you to
+                                    conquer!</p>
+                                <p class="project-card-stack font-h5"><strong>Stack:</strong> React, Vite, Firebase
+                                    Hosting, with
+                                    plus raw JS &amp; CSS</p>
+                            </div>
+                        </article>
+
+                        <!-- Project card: Raccafé! -->
+                        <article class="project-card">
+                            <header class="project-card-header">
+                                <img class="project-card-image" src="/assets/Raccafe.jpg" alt="Raccafé website preview"
+                                    width="150" height="150">
+                                <a class="project-card-title font-h2"
+                                    href="https://racoonsinatrenchcoat.wordpress.com/">Raccafé!</a>
+                            </header>
+                            <div class="project-card-body">
+                                <p class="project-card-text font-h3">A Wordpress website to sell coffee with a twist!
+                                </p>
+                                <p class="project-card-text font-h5 project-card-text--gap-above">This project was built
+                                    as a learning exercise in
+                                    WordPress, without the use of plugins or external tools. Every element, from layout
+                                    to
+                                    content, was crafted using native features, stock imagery (some personally edited),
+                                    and
+                                    original copywriting as a creative challenge.</p>
+
+                                <p class="project-card-text font-h5">Raccafé! Come for the coffee, stay for the puns.
+                                </p>
+                                <p class="project-card-text font-h5"><strong>Stack:</strong> Wordpress, stock images.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Project card: Under Construction (no live link yet) -->
+                        <article class="project-card">
+                            <header class="project-card-header">
+                                <img class="project-card-image" src="/assets/astronaut-ingravity_inverted-01.svg"
+                                    alt="Under construction astronaut illustration" width="150" height="150">
+                                <span class="project-card-title font-h2">Under <br>Construction!</span>
+                            </header>
+                            <div class="project-card-body">
+                                <p class="project-card-text font-h3">This is where the other project's text would come.
+                                </p>
+                                <p class="project-card-text font-h5 project-card-text--gap-above">Well. It is not ready
+                                    yet. I know, you really want
+                                    to see it,
+                                    but it needs a bit more time in the oven to be presentable. <br>Those bits (and
+                                    bobs?)
+                                    can be very
+                                    unpredictable on how they react. After all, bits make up everything around here!</p>
+                                <p class="project-card-text font-h5">But I promise, it'll be out of this world!</p>
+                            </div>
+                        </article>
+
+                        <!-- 
+                        Project card: TEMPLATE. Copy this whole block to add a new project.
+                        <article class="project-card">
+                            <header class="project-card-header">
+                                <img class="project-card-image" src="/assets/your-image-file"
+                                    alt="short description of the image" width="150" height="150">
+                                <a class="project-card-title font-h2" href="https://your-project-link/">Project Name</a>
+                            </header>
+                            <div class="project-card-body">
+                                <p class="project-card-text font-h3">First paragraph.</p>
+                                <p class="project-card-text font-h5 project-card-text--gap-above">Add as many paragraphs as you need.</p>
+                                <p class="project-card-stack font-h5"><strong>Stack:</strong> your tech list here</p>
+                            </div>
+                        </article>
+                        -->
+
                     </div>
                 </section>
 
