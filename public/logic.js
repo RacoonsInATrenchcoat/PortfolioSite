@@ -386,43 +386,63 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-//Carousel movement for the SKILLS part
+//Carousel movement for the SKILLS part.
+//Shows one panel centred with its neighbours dimmed at the sides.
+//Navigation is manual only (arrows + dots); the first panel (Product) is active on load.
 document.addEventListener('DOMContentLoaded', () => {
+  const panels = Array.from(document.querySelectorAll('.skills-panel'));
   const btnPrev = document.querySelector('.carousel-arrow--left');
   const btnNext = document.querySelector('.carousel-arrow--right');
-  const panels = Array.from(document.querySelectorAll('.skills-panel'));
+  const dotsContainer = document.querySelector('.skills-dots');
 
-  if (!btnPrev || !btnNext || panels.length !== 3) {
-    console.warn('Missing carousel elements or not exactly 3 panels.');
-    return;
-  }
+  // No panels means nothing to run; bail out quietly.
+  if (panels.length < 1) return;
 
-  // Initial order: [prev, active, next]
-  let currentOrder = [0, 1, 2];
+  const panelCount = panels.length;
+  let currentIndex = 0; // Product is first in the HTML, so it starts active.
 
-  function applyClasses() {
-    panels.forEach((panel, idx) => {
+  // Build one navigation dot per panel, labelled from that panel's title.
+  const dots = panels.map((panel, index) => {
+    const dot = document.createElement('button');
+    dot.className = 'skills-dot';
+    dot.type = 'button';
+    const title = panel.querySelector('.skills-panel-title');
+    dot.setAttribute('aria-label', title ? `Show ${title.textContent}` : `Show panel ${index + 1}`);
+    dot.addEventListener('click', () => goTo(index));
+    dotsContainer.appendChild(dot);
+    return dot;
+  });
+
+  // Apply the active / prev / next classes based on the current index.
+  function render() {
+    panels.forEach((panel, index) => {
       panel.classList.remove('skills-panel--prev', 'skills-panel--active', 'skills-panel--next');
+
+      if (index === currentIndex) {
+        panel.classList.add('skills-panel--active');
+      } else if (index === (currentIndex - 1 + panelCount) % panelCount) {
+        panel.classList.add('skills-panel--prev');
+      } else if (index === (currentIndex + 1) % panelCount) {
+        panel.classList.add('skills-panel--next');
+      }
+      // Any further panels (if more than 3 are ever added) stay hidden.
     });
 
-    panels[currentOrder[0]].classList.add('skills-panel--prev');
-    panels[currentOrder[1]].classList.add('skills-panel--active');
-    panels[currentOrder[2]].classList.add('skills-panel--next');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('skills-dot--active', index === currentIndex);
+    });
   }
 
-  function rotate(direction) {
-    if (direction === 'forward') {
-      currentOrder.push(currentOrder.shift()); // Move first to last
-    } else if (direction === 'backward') {
-      currentOrder.unshift(currentOrder.pop()); // Move last to first
-    }
-    applyClasses();
+  // Jump to a specific panel, wrapping around the ends.
+  function goTo(index) {
+    currentIndex = (index + panelCount) % panelCount;
+    render();
   }
 
-  // Init
-  applyClasses();
+  if (btnNext) btnNext.addEventListener('click', () => goTo(currentIndex + 1));
+  if (btnPrev) btnPrev.addEventListener('click', () => goTo(currentIndex - 1));
 
-  // Events
-  btnNext.addEventListener('click', () => rotate('forward'));
-  btnPrev.addEventListener('click', () => rotate('backward'));
+  // Defer the first render one frame so the browser paints the base state
+  // before the active/prev/next classes apply, avoiding a first-move jump.
+  requestAnimationFrame(render);
 });

@@ -715,7 +715,7 @@ body {
 
 .middle-body {
     display: grid;
-
+    grid-template-columns: 1fr;   /* explicit single column: children always stack */
     max-width: 100%;
     margin-top: calc(var(--grid-Gap)*4);
     gap: calc(var(--grid-Gap)*4);
@@ -836,15 +836,18 @@ body {
 
 
 .about-me-title {
+    grid-column: 1;
+    grid-row: 1;
     margin: var(--grid-Margin);
     min-width: 0;
     max-width: fit-content;
-
 }
 
 /*Tricky case. Using basic HTML/CSS to switch the files doesnt pre-load it, even after told so.
 Need to use this basic element + before + after to have it all load and transition correctly. */
 .about-me-portrait {
+    grid-column: 1;
+    grid-row: 2;
     height: 300px;
     margin: var(--grid-Margin);
     border-radius: 20px;
@@ -904,7 +907,7 @@ Need to use this basic element + before + after to have it all load and transiti
 }
 
 .about-me-text {
-    margin: var(--grid-Margin)
+    margin: 0;
 }
 
 .about-me-group1 {
@@ -925,15 +928,25 @@ Need to use this basic element + before + after to have it all load and transiti
 
 @media (max-width: 768px) {
     .about-me-group1 {
-        display: grid;
-        grid-template-columns: 100fr;
-        grid-template-rows: auto auto auto auto;
-        justify-content: space-between;
-        /*Horizontal align*/
-        align-items: space-between;
-        /*Vertical align*/
-        grid-auto-flow: column;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
     }
+
+    /* stack all three in one column on mobile, overriding the desktop placement */
+    .about-me-title,
+    .about-me-portrait,
+    .about-me-text-group {
+        grid-column: 1;
+        grid-row: auto;
+    }
+}
+.about-me-text-group {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    display: grid;
+    gap: var(--grid-Margin);
+    align-content: start;
+    margin: var(--grid-Margin);
 }
 
 .name-text {
@@ -948,30 +961,36 @@ Need to use this basic element + before + after to have it all load and transiti
 .skills-container {
     position: relative;
     width: 100%;
-    overflow: hidden;
-    /*This is to ensure all 3 containers are the same height, otherwise always jumps based on fontsize alone.
-    To adjust if more are added! */
-    min-height: 37rem;
+    /* box-sizing so the vertical padding does not add on top of the min-height */
+    box-sizing: border-box;
+    /* This is the height the section reserves in the page grid. Because the
+       panels inside are absolutely positioned, the section needs its own
+       height or the grid cannot place it. This is the one value to tune if
+       you change the number of skill items. */
+    min-height: 34rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: calc(var(--grid-Margin) * 1) 0;
 }
 
-/* === Carousel window (holds panels) === */
+/* === Carousel viewport (clips the dimmed side panels, holds the arrows) === */
 .carousel-window {
     position: relative;
     width: 100%;
+    /* fill the space the container reserves, instead of setting its own height */
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
-
 
 /* === Each panel === */
 .skills-panel {
     position: absolute;
     width: 70%;
-    height: auto;
     transition: transform 0.5s ease, opacity 0.5s ease;
     text-align: center;
     opacity: 0;
@@ -979,104 +998,101 @@ Need to use this basic element + before + after to have it all load and transiti
     z-index: 1;
 }
 
-@media (max-width: 768px) {
-    .skills-list {
-        text-align: start;
-    }
-}
-
+/* === Panel title (name now matches the HTML, so this actually applies) === */
 .skills-panel-title {
     position: relative;
-    letter-spacing: 10px;
+    letter-spacing: 5px;
     padding-bottom: 0.5rem;
+    margin-bottom: var(--grid-Margin);
 }
 
-.skills-panel-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    /* center anchor */
-    transform: translateX(-50%);
-    /* shift left by 50% of its own width */
-    width: 25%;
-    height: 1px;
-    background-color: #ffffff;
-}
 
-/*The list itself*/
+/* === The two 4-item lists === */
 .skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: grid;
     gap: 15px;
-    list-style-type: none;
     justify-content: center;
 }
 
 .skill-item {
-    display: flex;
-    align-items: center;
-    /* ensures vertical alignment */
-    gap: 1rem;
+    /* plain text items now, no icon row to align */
 }
 
-/* === Active, Prev, Next Classes === */
+/* === Divider between the two halves (soft fading ends, matching Projects) === */
+.skills-divider {
+    width: 20%;
+    height: 2px;
+    margin: var(--grid-Margin) auto;
+    background: linear-gradient(to right,
+            transparent 0%,
+            #ccc 20%,
+            #ccc 80%,
+            transparent 100%);
+}
+
+/* === Active / Prev / Next states === */
 .skills-panel--active {
     position: relative;
     opacity: 1;
-    transform: translateX(0%) scale(1);
+    /* scale up via transform (smoothly animatable) instead of font-size (which snaps) */
+    transform: translateX(0%) scale(1.15);
     z-index: 3;
-    font-size: 150%;
 }
 
 .skills-panel--prev {
     opacity: 0.4;
-    /*This % is to change for distance!*/
     transform: translateX(-50%) scale(0.7);
     z-index: 2;
 }
 
 .skills-panel--next {
     opacity: 0.4;
-    /*This % is to change for distance!*/
     transform: translateX(50%) scale(0.7);
     z-index: 2;
 }
 
 @media (max-width: 768px) {
+    .skills-list {
+        text-align: start;
+    }
+
     .skills-panel--prev {
-        opacity: 0.4;
-        /*This % is to change for distance!*/
         transform: translateX(-80%) scale(0.7);
-        z-index: 2;
     }
 
     .skills-panel--next {
-        opacity: 0.4;
-        /*This % is to change for distance!*/
         transform: translateX(80%) scale(0.7);
-        z-index: 2;
     }
 }
 
-/* === Arrows === */
+/* === Arrows  === */
 .carousel-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     font-size: 4rem;
     cursor: pointer;
-
     color: white;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: rgb(0, 0, 0);
+    /* Box hidden by default: transparent, no outline, no shadow */
+    background-color: transparent;
+    border: none;
     border-radius: 25px;
+    outline: 1px solid transparent;
+    box-shadow: none;
+    z-index: 5;
+    padding-bottom: 1rem;
+    /* Smoothly fade the box in and out on hover/focus */
+    transition: background-color 0.3s ease, outline-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible {
+    background-color: rgba(255, 255, 255, 0.1);
     outline: 1px solid rgb(136, 136, 136, 0.5);
     box-shadow: 0 4px 30px rgb(143, 143, 143, 0.5);
-
-    z-index: 5;
-    /*Because it's a letter/font, it has extra space on top as an "ascender" letter.
-    This makes it be in the middle as intended. */
-    padding-bottom: 1rem;
 }
 
 .carousel-arrow--left {
@@ -1085,6 +1101,35 @@ Need to use this basic element + before + after to have it all load and transiti
 
 .carousel-arrow--right {
     right: 0.5rem;
+}
+
+/* === Pagination dots === */
+.skills-dots {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: var(--grid-Margin);
+    z-index: 4;
+}
+
+.skills-dot {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.3);
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.skills-dot:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.skills-dot--active {
+    background: #ffffff;
+    transform: scale(1.3);
 }
 
 
