@@ -89,7 +89,12 @@ function updateLines() {
 
 // Initial render
 window.addEventListener('load', () => {
-  setTimeout(updateLines, 10); // 50ms to ensure all other stuff loads, was unreliable
+  // Anchor the seven title/contact dots to their targets first, THEN draw the
+  // lines so the curves connect to the dots' final positions. Runs once on load.
+  setTimeout(() => {
+    anchorArrowDots();
+    updateLines();
+  }, 10);
 });
 // Optional (Container is fixed currently): update on resize
 window.addEventListener('resize', updateLines);
@@ -369,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       //Check for built-in errors (not within 200-299 status)
       if (!response.ok) throw new Error('Failed to send');
-      
+
       // Show success (can style this into a popup or div later)
       alert('Your message was sent successfully!\n' +
         'Voyager 1 will now re-route your information to the correct location.');
@@ -446,3 +451,82 @@ document.addEventListener('DOMContentLoaded', () => {
   // before the active/prev/next classes apply, avoiding a first-move jump.
   requestAnimationFrame(render);
 });
+
+// --- Anchor the seven arrow dots to their target elements' vertical centres.
+// Runs once on load. Sets each dot's `top` only; horizontal stays driven by --x.
+// Skips entirely when the left side is hidden (mobile), and leaves every other
+// dot (background constellations, hidden via-dots) untouched.
+function anchorArrowDots() {
+  const arrows = document.getElementById('arrows');
+  if (!arrows) return;
+
+  // Left side hidden (mobile): do nothing.
+  if (arrows.offsetParent === null) return;
+
+  const arrowsRect = arrows.getBoundingClientRect();
+
+  // Helper: set a dot's top so its CENTRE lands at a given Y (relative to arrows).
+  function placeDotCentre(dot, centreY) {
+    const dotHalf = dot.offsetHeight / 2;
+    dot.style.setProperty('top', `${centreY - dotHalf}px`, 'important');
+  }
+
+  // Helper: a dot's current centre Y relative to the arrows container.
+  function dotCentreY(dot) {
+    const r = dot.getBoundingClientRect();
+    return r.top - arrowsRect.top + r.height / 2;
+  }
+
+  // Helper: a dot's current centre X relative to the arrows container.
+  function dotCentreX(dot) {
+    const r = dot.getBoundingClientRect();
+    return r.left - arrowsRect.left + r.width / 2;
+  }
+
+  // --- Part 1: anchor the four title dots to their headings (vertical only) ---
+  arrows.querySelectorAll('.dot[data-anchor-y]').forEach(dot => {
+    const target = document.querySelector(dot.getAttribute('data-anchor-y'));
+    if (!target) return;
+    const r = target.getBoundingClientRect();
+    placeDotCentre(dot, r.top - arrowsRect.top + r.height / 2);
+  });
+
+  // --- Part 2: anchor the three icon dots to their contact icons (vertical only) ---
+  arrows.querySelectorAll('.dot[data-anchor-icon]').forEach(dot => {
+    const target = document.querySelector(dot.getAttribute('data-anchor-icon'));
+    if (!target) return;
+    const r = target.getBoundingClientRect();
+    placeDotCentre(dot, r.top - arrowsRect.top + r.height / 2);
+  });
+
+  // --- Part 3: place each hidden control dot from its start + end dots ---
+  // Each hidden dot names its start dot, end dot, how far along the line to sit,
+  // and how far to bow sideways (in px). Tune "bow" once, by eye.
+  const dots = Array.from(arrows.querySelectorAll('.dot'));
+
+  arrows.querySelectorAll('.dot[data-control]').forEach(dot => {
+    const startIndex = +dot.dataset.start;
+    const endIndex = +dot.dataset.end;
+    const along = dot.dataset.along !== undefined ? +dot.dataset.along : 0.5;
+    const bow = dot.dataset.bow !== undefined ? +dot.dataset.bow : 0;
+    const drop = dot.dataset.drop !== undefined ? +dot.dataset.drop : 0;
+
+    const startDot = dots[startIndex];
+    const endDot = dots[endIndex];
+    if (!startDot || !endDot) return;
+
+    const sx = dotCentreX(startDot);
+    const sy = dotCentreY(startDot);
+    const ex = dotCentreX(endDot);
+    const ey = dotCentreY(endDot);
+
+    // Point partway along the start-to-end line, bow sideways, then drop down.
+    const px = sx + (ex - sx) * along + bow;
+    const py = sy + (ey - sy) * along + drop;
+
+    // Place both axes for control dots (they have no --x/--y meaning now).
+    const dotHalf = dot.offsetHeight / 2;
+    dot.style.setProperty('top', `${py - dotHalf}px`, 'important');
+    dot.style.setProperty('left', `${px - dot.offsetWidth / 2}px`, 'important');
+  });
+}

@@ -29,7 +29,6 @@ Document Writes: 20,000 per day - emails sent. assumed 1 per mail.
 Document Deletes: 20,000 per day
 Outbound Data Transfer: 10 GiB per month - site loading. Assumed 100~ mb per load.
 
-
 Attributes and sources:
 
 Space wallpaper: https://opengameart.org/content/seamless-space-backgrounds

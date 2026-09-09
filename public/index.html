@@ -157,19 +157,29 @@
                 <div class="left-empty"></div>
 
                 <div class="arrows dot-container" id="arrows">
-                    <div class="dot dot-title" style="--x: 50%; --y: 5.3%;"></div> <!-- 0, About Me -->
-                    <div class="dot dot-title" style="--x: 50%; --y: 23%;"></div> <!-- 1, Skills -->
-                    <div class="dot dot-title" style="--x: 50%; --y: 43.5%;"></div> <!-- 2, Projects -->
-                    <div class="dot dot-title" style="--x: 50%; --y: 90%;"></div> <!-- 3, Contact -->
+                    <div class="dot dot-title" data-anchor-y=".about-me-title" style="--x: 50%; --y: 5.3%;"></div>
+                    <!-- 0, About Me -->
+                    <div class="dot dot-title" data-anchor-y="#skills-anchor-title" style="--x: 50%; --y: 23%;"></div>
+                    <!-- 1, Skills -->
+                    <div class="dot dot-title" data-anchor-y=".projects-title" style="--x: 50%; --y: 43.5%;"></div>
+                    <!-- 2, Projects -->
+                    <div class="dot dot-title" data-anchor-y=".contact-title" style="--x: 50%; --y: 90%;"></div>
+                    <!-- 3, Contact -->
 
-                    <div class="dot" style="--x: 65%; --y: 91%;"></div> <!-- 4, hidden -->
-                    <div class="dot dot-ontop" style="--x: 190%; --y: 93.5%;"></div> <!-- 5 -->
+                    <div class="dot" data-control data-start="3" data-end="5" data-along="0.5" data-bow="-80"
+                        data-drop="45" style="--x: 65%; --y: 94%;"></div> <!-- 4, hidden control for Email curve -->
+                    <div class="dot dot-ontop" data-anchor-icon=".contact-email .contact-icon"
+                        style="--x: 190%; --y: 93.5%;"></div> <!-- 5, Email -->
 
-                    <div class="dot" style="--x: 50%; --y: 94%;"></div> <!-- 6, hidden -->
-                    <div class="dot dot-ontop" style="--x: 221%; --y: 96%;"></div> <!-- 7 -->
+                    <div class="dot" data-control data-start="3" data-end="7" data-along="0.5" data-bow="-80"
+                        data-drop="90" style="--x: 50%; --y: 94%;"></div> <!-- 6, hidden control for Phone curve -->
+                    <div class="dot dot-ontop" data-anchor-icon=".contact-phone .contact-icon"
+                        style="--x: 221%; --y: 96%;"></div> <!-- 7, Phone -->
 
-                    <div class="dot" style="--x: 50%; --y: 98%;"></div> <!-- 8, hidden -->
-                    <div class="dot dot-ontop" style="--x: 256%; --y: 98.4%;"></div> <!-- 9 -->
+                    <div class="dot" data-control data-start="3" data-end="9" data-along="0.5" data-bow="-80"
+                        data-drop="150" style="--x: 50%; --y: 98%;"></div> <!-- 8, hidden control for LinkedIn curve -->
+                    <div class="dot dot-ontop" data-anchor-icon=".contact-linkedIn .contact-icon"
+                        style="--x: 256%; --y: 98.4%;"></div> <!-- 9, LinkedIn -->
 
                     <div class="line" data-from="0" data-to="1"></div> <!-- To Skills-->
                     <div class="line" data-from="1" data-to="2"></div> <!-- To Projects-->
@@ -192,7 +202,7 @@
                         <div class="about-me-text-group">
                             <p class="about-me-text font-h2">A Product person who builds.</p>
 
-                            <p class="about-me-text font-h4">An Associate Product Manager who builds, with two years
+                            <p class="about-me-text font-h5">An Associate Product Manager who builds, with two years
                                 owning
                                 product workstreams from problem definition through to delivery. I came up through every
                                 level of
@@ -200,16 +210,16 @@
                                 know how
                                 a ticket or a workflow actually lands on the person using it.</p>
 
-                            <p class="about-me-text font-h4">That range lets me translate fluently between what a
+                            <p class="about-me-text font-h5">That range lets me translate fluently between what a
                                 business wants
                                 and what an engineer can build.</p>
 
-                            <p class="about-me-text font-h4">I do not just specify tools, I make them. I code in React,
+                            <p class="about-me-text font-h5">I do not just specify tools, I make them. I code in React,
                                 JavaScript, and TypeScript, and I work AI-natively with Claude to draft requirements,
                                 prototype
                                 flows, and ship real projects, several of which are below.</p>
 
-                            <p class="about-me-text font-h4">When not building, I can usually be found at board game
+                            <p class="about-me-text font-h5">When not building, I can usually be found at board game
                                 events,
                                 organising them or teaching newcomers, and I have a standing interest in UX and system
                                 design,
@@ -229,15 +239,12 @@
 
                         <!-- Panel 1: Product and Delivery (active on load) -->
                         <div class="skills-panel">
-                            <h3 class="skills-panel-title font-h3">Product and Delivery</h3>
+                            <h3 class="skills-panel-title font-h3" id="skills-anchor-title">Product and Delivery</h3>
                             <ul class="skills-list">
                                 <li class="skill-item">End-to-end product ownership</li>
                                 <li class="skill-item">User stories and acceptance criteria</li>
                                 <li class="skill-item">Backlog management and sprint planning</li>
                                 <li class="skill-item">Agile and Scrum delivery</li>
-                            </ul>
-                            <div class="skills-divider"></div>
-                            <ul class="skills-list">
                                 <li class="skill-item">Stakeholder management</li>
                                 <li class="skill-item">Data-informed decisions with feedback</li>
                                 <li class="skill-item">Problem breakdown into testable steps</li>
@@ -253,9 +260,6 @@
                                 <li class="skill-item">React, Vite, Firebase, Express, Bootstrap</li>
                                 <li class="skill-item">Excel VBA, Macro creation</li>
                                 <li class="skill-item">Git and GitHub version control</li>
-                            </ul>
-                            <div class="skills-divider"></div>
-                            <ul class="skills-list">
                                 <li class="skill-item">AI-assisted delivery with Claude and ChatGPT</li>
                                 <li class="skill-item">Builds and ships real tools, not just specifications</li>
                                 <li class="skill-item">Translating product vision into engineering constraints</li>
@@ -267,17 +271,14 @@
                         <div class="skills-panel">
                             <h3 class="skills-panel-title font-h3">Business Analysis</h3>
                             <ul class="skills-list">
+                                <li class="skill-item">Translating between business and technical teams</li>
                                 <li class="skill-item">Process mapping and workflow design</li>
                                 <li class="skill-item">Requirements gathering and problem framing</li>
                                 <li class="skill-item">Gap analysis and root-cause investigation</li>
                                 <li class="skill-item">Clear documentation in tickets, briefs, and updates</li>
-                            </ul>
-                            <div class="skills-divider"></div>
-                            <ul class="skills-list">
                                 <li class="skill-item">Flowcharts and RPA with Lucidchart, Visio, UIPath</li>
                                 <li class="skill-item">As-is and to-be process analysis</li>
                                 <li class="skill-item">UAT and impact assessment</li>
-                                <li class="skill-item">Translating between business and technical teams</li>
                             </ul>
                         </div>
 

@@ -848,7 +848,7 @@ Need to use this basic element + before + after to have it all load and transiti
 .about-me-portrait {
     grid-column: 1;
     grid-row: 2;
-    height: 300px;
+    height: 450px;
     margin: var(--grid-Margin);
     border-radius: 20px;
     overflow: hidden;
@@ -967,7 +967,7 @@ Need to use this basic element + before + after to have it all load and transiti
        panels inside are absolutely positioned, the section needs its own
        height or the grid cannot place it. This is the one value to tune if
        you change the number of skill items. */
-    min-height: 34rem;
+    min-height: 38rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1002,7 +1002,7 @@ Need to use this basic element + before + after to have it all load and transiti
 .skills-panel-title {
     position: relative;
     letter-spacing: 5px;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
     margin-bottom: var(--grid-Margin);
 }
 
@@ -1018,19 +1018,9 @@ Need to use this basic element + before + after to have it all load and transiti
 }
 
 .skill-item {
+    list-style-type: disc;
+    text-align: left;
     /* plain text items now, no icon row to align */
-}
-
-/* === Divider between the two halves (soft fading ends, matching Projects) === */
-.skills-divider {
-    width: 20%;
-    height: 2px;
-    margin: var(--grid-Margin) auto;
-    background: linear-gradient(to right,
-            transparent 0%,
-            #ccc 20%,
-            #ccc 80%,
-            transparent 100%);
 }
 
 /* === Active / Prev / Next states === */
