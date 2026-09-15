@@ -341,9 +341,16 @@ hamburger.addEventListener('click', () => {
 const endpoint_URL = "https://europe-west1-portfoliosite-f7714.cloudfunctions.net/sendContactEmail"
 
 //Waits until all DOM are loaded. Good practice to use.
+//Waits until all DOM are loaded. Good practice to use.
 document.addEventListener('DOMContentLoaded', () => {
   //Load the html form and button, listen for the submitting. Different that click as it checks the form as well.
   const form = document.getElementById('contact-form');
+
+  // currently there is no contact form on the site (contact is via the email/LinkedIn
+  // links), so if the form is not present, do nothing. This prevents the
+  // "form is null" error that was thrown on every page load.
+  if (!form) return;
+
   const sendButton = form.querySelector('.send-button');
 
   form.addEventListener('submit', async (e) => {
