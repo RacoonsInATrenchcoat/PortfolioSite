@@ -337,10 +337,7 @@ hamburger.addEventListener('click', () => {
 });
 
 
-//Contact for details and emailing via Firebase/google
-const endpoint_URL = "https://europe-west1-portfoliosite-f7714.cloudfunctions.net/sendContactEmail"
 
-//Waits until all DOM are loaded. Good practice to use.
 //Waits until all DOM are loaded. Good practice to use.
 document.addEventListener('DOMContentLoaded', () => {
   //Load the html form and button, listen for the submitting. Different that click as it checks the form as well.
