@@ -1,0 +1,348 @@
+<!-- Declare it's HTML5 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>Mahjong Hand Calculator | Tamas Tabi</title>
+    <meta name="description"
+        content="A real-time decision-support tool for Doman Mahjong: evaluates every scoring hand, distance to each shape, and the best discard.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Mahjong Hand Calculator | Tamas Tabi">
+    <meta property="og:description"
+        content="A real-time decision-support tool for the dense scoring of Doman Mahjong, built end to end in React and TypeScript.">
+    <meta property="og:image" content="https://portfoliosite-f7714.web.app/assets/mahjong-hero.png">
+    <meta property="og:url" content="https://portfoliosite-f7714.web.app/projects/mahjong">
+
+    <link rel="icon" type="image/x-icon" href="/assets/icons/website-light-icon.png">
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/main-styles.css" />
+    <link rel="stylesheet" href="/case-study.css" />
+
+    <!-- Preload the hero image once it exists, for a faster first paint -->
+    <!-- <link rel="preload" href="/assets/mahjong-hero.png" as="image"> -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/website-light-icon.png">
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCPFQCDY4H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-KCPFQCDY4H');
+    </script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-menu">
+            <div class="header-menu-left">
+                <!-- The name is a quiet link home: it navigates and shows a pointer cursor,
+                     but is styled to look like plain text, not a coloured link. -->
+                <a class="font-h4 name-text name-home-link" href="/" aria-label="Back to home page">TAMAS<br>TABI</a>
+            </div>
+
+            <button class="hamburger-menu" aria-label="Toggle navigation" aria-controls="site-navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <nav class="header-menu-right" id="site-navigation">
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#about-me-container">About Me</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#skills-container">Skills</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#projects-container">Projects</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#contact-container">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="body">
+
+        <div class="background-container" id="background-container">
+            <div class="parallax-container">
+                <div class="parallax-1"></div>
+                <div class="parallax-2"></div>
+                <div class="parallax-3"></div>
+            </div>
+            <div class="background-body"></div>
+        </div>
+
+        <div class="body-container">
+
+            <div class="left-side" id="left-side">
+                <div class="left-empty"></div>
+
+                <div class="arrows dot-container" id="arrows">
+                    <div class="dot dot-title" data-anchor-y="#hero-heading" style="--x: 50%; --y: 5%;"></div>
+                    <!-- 0 Hero -->
+                    <div class="dot dot-title" data-anchor-y="#overview-heading" style="--x: 50%; --y: 22%;"></div>
+                    <!-- 1 Overview -->
+                    <div class="dot dot-title" data-anchor-y="#problem-heading" style="--x: 50%; --y: 40%;"></div>
+                    <!-- 2 Problem -->
+                    <div class="dot dot-title" data-anchor-y="#detail-heading" style="--x: 50%; --y: 60%;"></div>
+                    <!-- 3 Detail -->
+                    <div class="dot dot-title" data-anchor-y="#outcome-heading" style="--x: 50%; --y: 80%;"></div>
+                    <!-- 4 Outcome -->
+                    <div class="dot dot-title" data-anchor-y="#reflection-heading" style="--x: 50%; --y: 95%;"></div>
+                    <!-- 5 Reflection -->
+
+                    <div class="line" data-from="0" data-to="1"></div>
+                    <div class="line" data-from="1" data-to="2"></div>
+                    <div class="line" data-from="2" data-to="3"></div>
+                    <div class="line" data-from="3" data-to="4"></div>
+                    <div class="line" data-from="4" data-to="5"></div>
+                </div>
+
+                <div class="right-empty"></div>
+            </div>
+
+            <div class="middle-body case-study">
+
+                <!-- 1. HERO -->
+                <section class="case-section case-hero main-container" id="hero-section">
+                    <a class="case-back-link font-h5" href="/">&larr; Back to portfolio</a>
+
+                    <h1 class="case-hero-title font-h1" id="hero-heading">Mahjong Hand Calculator</h1>
+                    <p class="case-hero-summary font-h3">A real-time decision support tool for the complicated game of
+                        Mahjong.</p>
+
+                    <div class="case-hero-meta font-h5">
+                        <span class="case-hero-meta-item"><strong>Role:</strong> Product owner and sole developer</span>
+                        <span class="case-hero-meta-item"><strong>Timeframe:</strong> 21 build sessions with 2 feedback
+                            rounds over 3 months</span>
+                        <span class="case-hero-meta-item"><strong>Tools:</strong> React 18, TypeScript, Vite, Firebase
+                            Hosting, Google Analytics, Claude AI</span>
+                    </div>
+
+
+                    <div class="case-hero-links">
+                        <a class="case-hero-link font-h4" href="https://doman-mahjong.web.app/" target="_blank"
+                            rel="noopener">
+                            <img class="case-hero-link-icon" src="/assets/Mahjong.svg" alt="Mahjong Icon" aria-hidden="true"
+                                width="24" height="24">
+                            <strong>View the live tool!</strong>
+                        </a>
+                        <a class="case-hero-link font-h4"
+                            href="https://github.com/RacoonsInATrenchcoat/doman-mahjong/tree/main" target="_blank"
+                            rel="noopener">
+                            <img class="case-hero-link-icon" src="/assets/icons/github-mark-white.png" alt="Github Icon"
+                                aria-hidden="true" width="24" height="24">
+                            <strong>View the code on GitHub</strong>
+                        </a>
+                    </div>
+
+                    <figure class="case-figure">
+                        <img class="case-hero-image" src="/assets/projects/mahjong_1.png"
+                            alt="The main view of the tool with a 13 tile hand entered" width="800" height="450">
+                        <figcaption class="case-figure-caption font-h5">The main view: enter a hand, read its scoring
+                            possibilities at a glance.</figcaption>
+                    </figure>
+                </section>
+
+                <!-- 2. OVERVIEW -->
+                <section class="case-section main-container" id="overview-section">
+                    <h2 class="case-section-title font-h2" id="overview-heading">Overview</h2>
+                    <div class="case-text-group case-tldr">
+                        <p class="font-h4">Mahjong scores a hand from dozens of interlocking combinations, and
+                            holding that whole picture in your head during live play is exhausting, especially for
+                            newcomers.</p>
+                        <p class="font-h4">So I created something that didn't exist before!</p>
+                        <p class="font-h4">This tool takes your current tiles and, in real time, works out every
+                            scoring
+                            hand they could form, how many tile exchanges you are from each useful shape, and which tile
+                            to discard.</p>
+                        <p class="font-h4">I built it to solve my own problem at the table, and I use it during real
+                            games.</p>
+                    </div>
+
+                    <figure class="case-figure">
+                        <img class="case-figure-image" src="/assets/projects/mahjong_2.png"
+                            alt="Using it with 14 tiles, showing discard suggestions" width="800" height="450">
+                        <figcaption class="case-figure-caption font-h5">With a full hand, it provides discard
+                            recommendations and shows what you are closest to achieve.</figcaption>
+                    </figure>
+                </section>
+
+                <!-- 3. PROBLEM -->
+                <section class="case-section main-container" id="problem-section">
+                    <h2 class="case-section-title font-h2" id="problem-heading">The Problem</h2>
+
+                    <div class="slanted-band">
+                        <div class="case-text-group">
+                            <p class="slanted-band-text font-h3">Mahjong rules are well documented, but they are dense
+                                and deeply interdependent:
+                                <br>31 distinct scoring patterns, three different winning hand
+                                shapes, and scoring that changes depending on how the same tiles are read.
+                            </p>
+                            <p class="slanted-band-text font-h3">For newcomers, holding all of that in your head, during
+                                live play, is the real
+                                barrier.</p>
+                        </div>
+                    </div>
+
+                    <p class="case-text font-h5">So unlike my other projects, the hard part here was never research; it
+                        was delivery. The rules were a known quantity. <br> The challenge was turning a well-defined but
+                        very intricate rule set into calculations that stay correct in every edge case and still fast
+                        enough to feel instant as the tiles change.</p>
+                </section>
+
+                <!-- 4. DETAIL -->
+                <section class="case-section main-container" id="detail-section">
+                    <h2 class="case-section-title font-h2" id="detail-heading">Approach and decisions</h2>
+
+                    <div class="media-rows">
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/projects/mahjong_4.png"
+                                    alt="Code snippet" width="600" height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">A real engine, not a lookup table</h3>
+                                <p class="case-text font-h5"> Simply put, there is no clean table that one can pull the
+                                    results from.
+                                    Instead, the core logic is a recursive backtracking validator that checks
+                                    a hand against all 31 yaku, paired with a shanten calculator that works across all
+                                    three hand shapes and reports how far the hand is from completion. <br>The
+                                    difficulty was
+                                    correctness under interdependency: whether a hand qualifies for Pinfu depends on how
+                                    it is decomposed and which wait shape results, and Fu and Yakuman carry their own
+                                    supersession rules. <br>Making a simple lookup table would have been easier to do
+                                    but also broken on the many
+                                    edge cases, so I built a proper logic engine instead.</p>
+                            </div>
+                        </div>
+
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/projects/mahjong_3.png"
+                                    alt="The 14 tile hand showing a completed, winning result" width="600" height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">Deciding what to include and show</h3>
+                                <p class="case-text font-h5">The later decisions were less about what to build and more
+                                    about where to stop.
+                                    <br>Mahjong has many moving parts: the tiles in hand, the mandatory shapes and yaku,
+                                    player positions, han scoring, and more. I drew the line at the closed hand.
+                                    <br>The tool fully covers every closed-hand possibility, which is what lets it stay
+                                    correct and fast, and I deliberately shelved open-hand simulation as an explicit
+                                    scope cut rather than letting it creep in.
+                                    <br>The trade-off is simple:
+                                    the tool fully covers all personal, close-handed possibilities, so it can stay
+                                    correct.
+                                    The alternative was effectively a full table simulation, like the paid games offer,
+                                    which would have multiplied the scope.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="case-text font-h5">Underneath the features, I ran it as a delivery rather than a random
+                        hobby.
+                        <br>Each of the 21 sessions scoped, researched, and documented a feature in a living project
+                        brief
+                        before any code was written, so a session could always resume with full context. Partway
+                        when the code became too large, I refactored the calculation logic into a single hook and moved
+                        shared helpers into their own
+                        module to resolve circular dependencies, which kept the codebase workable as the feature set
+                        grew.
+                        <br>That is end-to-end ownership I had: not only deciding what to build, but keeping it easy to
+                        work with.
+                    </p>
+                </section>
+
+                <!-- 5. OUTCOME -->
+                <section class="case-section main-container" id="outcome-section">
+                    <h2 class="case-section-title font-h2" id="outcome-heading">Outcome and impact</h2>
+
+                    <!-- These are honest coverage facts, not usage metrics. If you have Google
+                         Analytics figures you are happy to stand behind, add one here. -->
+                    <!-- The reversed slanted band sits behind the metrics, mirroring the Problem
+                         band. The metrics container inside is unchanged. -->
+                    <div class="slanted-band slanted-band--reversed">
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">31</span>
+                                <span class="case-metric-label font-h5">yaku checks</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">51</span>
+                                <span class="case-metric-label font-h5">calculations per hand</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">~10+ trillion</span>
+                                <span class="case-metric-label font-h5">possible hands</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">1</span>
+                                <span class="case-metric-label font-h5">delivered product!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="case-text font-h5">The tool is deployed and live, feature-complete across the scope I set,
+                        and in
+                        real use, by me and friends, during actual games.
+                        <br>That is the most honest signal I can give: I can personally vouch for it
+                        because it solves the problem it was built for.
+                        <br>It also gave me a working reference for the
+                        arc of owning something small but real, keeping it in scope, from the many problems to being
+                        shipped and maintained.
+                    </p>
+                </section>
+
+                <!-- 6. REFLECTION -->
+                <section class="case-section main-container" id="reflection-section">
+                    <h2 class="case-section-title font-h2" id="reflection-heading">Reflection</h2>
+
+                    <div class="case-reflection">
+
+                        <p class="font-h5">There were two main takeaways while working on this:
+                            <br>The clearest lesson was that a well-defined problem is
+                            not the same as an easy one: even as all the rules being defined at the beginning, it was no
+                            wonder I found no other calculators that do what this one does. The scope of actually
+                            calculating
+                            distances and providing recommendations is much higher than the end-result checking that
+                            other
+                            calculators do.
+                        </p>
+                        <p class="font-h5">
+                            The other lesson was obvious: every project needs a second pair of eyes.
+                            <br> The multiple feedback rounds from friends were very helpful.
+                            They raised issues I did not think of, edge cases that slipped through, or UX problems that
+                            made it way more intuitive to use.
+                        </p>
+                </section>
+
+            </div>
+
+            <div class="right-side"></div>
+        </div>
+
+        <div class="footer" id="footer"></div>
+
+        <script defer src="/logic.js"></script>
+
+    </main>
+
+</body>
+
+</html>

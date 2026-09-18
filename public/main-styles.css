@@ -955,6 +955,17 @@ Need to use this basic element + before + after to have it all load and transiti
     line-height: 1.3;
 }
 
+/* The name in the header is an <a> so it can navigate home, but it must not look
+   like a link. Inherit the surrounding white text colour, drop the underline, and
+   only hint at interactivity through the pointer cursor. Covers the visited state
+   too, so it never turns purple. */
+.name-home-link,
+.name-home-link:visited {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* SKILLS */
 /* === Main container === */
 .skills-container {

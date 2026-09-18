@@ -1,0 +1,300 @@
+<!-- Declare it's HTML5 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- EDIT PER PROJECT: page title and description -->
+    <title>Project Title | Tamas Tabi</title>
+    <meta name="description" content="One-line description of this project for search results and link previews.">
+
+    <!-- EDIT PER PROJECT: Open Graph tags control how the shared link looks when pasted into
+         an application, an email, or a message. Keep these in step with the title above. -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Project Title | Tamas Tabi">
+    <meta property="og:description" content="One-line description of this project for link previews.">
+    <meta property="og:image" content="https://portfoliosite-f7714.web.app/assets/racoon.webp">
+    <meta property="og:url" content="https://portfoliosite-f7714.web.app/projects/your-project">
+
+    <link rel="icon" type="image/x-icon" href="/assets/icons/website-light-icon.png">
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Root-absolute path so the stylesheet resolves from /projects/ as well -->
+    <link rel="stylesheet" href="/main-styles.css" />
+    <!-- Case-study-specific styles. Loads after main-styles.css so it can build
+         on the shared tokens and win ties in the cascade. -->
+    <link rel="stylesheet" href="/case-study.css" />
+
+    <!-- EDIT PER PROJECT (optional): preload the hero image for a faster first paint -->
+    <!-- <link rel="preload" href="/assets/your-hero-image.jpg" as="image"> -->
+
+    <!-- Mandatory Apple tax -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/website-light-icon.png">
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCPFQCDY4H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-KCPFQCDY4H');
+    </script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-menu">
+            <div class="header-menu-left">
+                <!-- The name is a quiet link home: it navigates and shows a pointer cursor,
+                     but is styled to look like plain text, not a coloured link. -->
+                <a class="font-h4 name-text name-home-link" href="/" aria-label="Back to home page">TAMAS<br>TABI</a>
+            </div>
+
+            <!-- Only for mobile. -->
+            <button class="hamburger-menu" aria-label="Toggle navigation" aria-controls="site-navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <!-- Nav links point back to the main page's sections with "/#...", so they work
+                 from inside /projects/. The logic.js guard lets these navigate normally. -->
+            <nav class="header-menu-right" id="site-navigation">
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#about-me-container">About Me</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#skills-container">Skills</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#projects-container">Projects</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#contact-container">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="body">
+
+        <!-- Background: parallax star layers, carried over so logic.js can populate them. -->
+        <div class="background-container" id="background-container">
+            <div class="parallax-container">
+                <div class="parallax-1"></div>
+                <div class="parallax-2"></div>
+                <div class="parallax-3"></div>
+            </div>
+            <div class="background-body"></div>
+        </div>
+
+        <div class="body-container">
+
+            <!-- Left column: the constellation guide line. One node per section heading.
+                 logic.js anchors each node vertically to the heading named in data-anchor-y,
+                 then draws the connecting lines. This is the metro-map effect. -->
+            <div class="left-side" id="left-side">
+                <div class="left-empty"></div>
+
+                <div class="arrows dot-container" id="arrows">
+                    <div class="dot dot-title" data-anchor-y="#hero-heading" style="--x: 50%; --y: 5%;"></div>
+                    <!-- 0 Hero -->
+                    <div class="dot dot-title" data-anchor-y="#overview-heading" style="--x: 50%; --y: 22%;"></div>
+                    <!-- 1 Overview -->
+                    <div class="dot dot-title" data-anchor-y="#problem-heading" style="--x: 50%; --y: 40%;"></div>
+                    <!-- 2 Problem -->
+                    <div class="dot dot-title" data-anchor-y="#detail-heading" style="--x: 50%; --y: 60%;"></div>
+                    <!-- 3 Detail -->
+                    <div class="dot dot-title" data-anchor-y="#outcome-heading" style="--x: 50%; --y: 80%;"></div>
+                    <!-- 4 Outcome -->
+                    <div class="dot dot-title" data-anchor-y="#reflection-heading" style="--x: 50%; --y: 95%;"></div>
+                    <!-- 5 Reflection -->
+
+                    <div class="line" data-from="0" data-to="1"></div>
+                    <div class="line" data-from="1" data-to="2"></div>
+                    <div class="line" data-from="2" data-to="3"></div>
+                    <div class="line" data-from="3" data-to="4"></div>
+                    <div class="line" data-from="4" data-to="5"></div>
+                </div>
+
+                <div class="right-empty"></div>
+            </div>
+
+            <!-- Content column: the six sections -->
+            <div class="middle-body case-study">
+
+                <!-- 1. HERO. Same in full and light pages. -->
+                <section class="case-section case-hero main-container" id="hero-section">
+                    <a class="case-back-link font-h5" href="/">&larr; Back to portfolio</a>
+
+                    <h1 class="case-hero-title font-h1" id="hero-heading">Project Title</h1>
+                    <p class="case-hero-summary font-h3">One-line summary of what this project is and why it matters.
+                    </p>
+
+                    <div class="case-hero-meta font-h5">
+                        <span class="case-hero-meta-item"><strong>Role:</strong> your role</span>
+                        <span class="case-hero-meta-item"><strong>Timeframe:</strong> dates</span>
+                        <span class="case-hero-meta-item"><strong>Tools:</strong> tech and tools</span>
+                    </div>
+
+                    <!-- Secondary action. Remove this line if the project has no live site. -->
+                    <div class="case-hero-links">
+                        <a class="case-hero-link font-h4" href="https://wwww.link.com" target="_blank" rel="noopener">
+                            <img class="case-hero-link-icon" src="/assets/something.svg" alt="" aria-hidden="true"
+                                width="24" height="24">
+                            <strong>View the live tool!</strong>
+                        </a>
+                        <a class="case-hero-link font-h4" href="https://github.com/your-repo-here" target="_blank"
+                            rel="noopener">
+                            <img class="case-hero-link-icon" src="/assets/icons/github-mark-white.png" alt=""
+                                aria-hidden="true" width="24" height="24">
+                            <strong>View the code on GitHub</strong>
+                        </a>
+                    </div>
+
+                    <!-- EDIT PER PROJECT: the single strongest visual goes here. -->
+                    <figure class="case-figure">
+                        <img class="case-hero-image" src="/assets/racoon.webp" alt="description" width="800"
+                            height="450">
+                        <figcaption class="case-figure-caption font-h5">The main view and description.</figcaption>
+                    </figure>
+
+                </section>
+
+                <!-- 2. OVERVIEW. Same in full and light pages. -->
+                <section class="case-section main-container" id="overview-section">
+                    <h2 class="case-section-title font-h2" id="overview-heading">Overview</h2>
+                    <p class="case-tldr font-h4">Two or three sentences summarising the whole project for a reader who
+                        is
+                        skimming.</p>
+
+                    <figure class="case-figure">
+                        <img class="case-figure-image" src="/assets/racoon.webp" alt="Describe this image" width="800"
+                            height="450">
+                        <figcaption class="case-figure-caption font-h5">A short caption explaining what this image
+                            shows.
+                        </figcaption>
+                    </figure>
+                </section>
+
+                <!-- 3. PROBLEM. FULL CASE STUDY ONLY. To make a light page, delete this whole
+                     section, delete guide node 2 above, and renumber the guide lines (see notes). -->
+                <section class="case-section main-container" id="problem-section">
+                    <h2 class="case-section-title font-h2" id="problem-heading">The Problem</h2>
+
+                    <!-- The slanted highlight band. It will get its diagonal shape and purple
+                         tint in the CSS step; for now it renders as a plain block. -->
+                    <div class="slanted-band">
+                        <p class="slanted-band-text font-h3">The core problem, stated in one strong, highlighted
+                            sentence or two. This is the band that covers the stars to draw the eye.</p>
+                    </div>
+
+                    <p class="case-text font-h5">Supporting detail on why the problem mattered and to whom.</p>
+                </section>
+
+                <!-- 4. DETAIL. The long middle, built as alternating image-and-text rows. -->
+                <section class="case-section main-container" id="detail-section">
+                    <h2 class="case-section-title font-h2" id="detail-heading">Approach and build</h2>
+
+                    <!-- The .media-rows wrapper holds only the rows, so the even-row flip counts
+                         cleanly. On desktop, even rows reverse automatically. On mobile, each row
+                         stacks with the image above the text. Copy a whole media-row block to add
+                         another step. -->
+                    <div class="media-rows">
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/racoon.webp" alt="Describe this image" width="600" height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">A decision or step</h3>
+                                <p class="case-text font-h5">Explain the option you considered, what you chose, and the
+                                    trade-off. This is the most valuable part for a product reader.</p>
+                            </div>
+                        </div>
+
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/racoon.webp" alt="Describe this image" width="600" height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">Another decision or step</h3>
+                                <p class="case-text font-h5">Continue the story. This row will sit reversed on desktop
+                                    so
+                                    the page has a rhythm.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. OUTCOME. FULL CASE STUDY ONLY. Delete this section and guide node 4 for a light page. -->
+                <section class="case-section main-container" id="outcome-section">
+                    <h2 class="case-section-title font-h2" id="outcome-heading">Outcome and impact</h2>
+
+                    <div class="slanted-band slanted-band--reversed">
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">31</span>
+                                <span class="case-metric-label font-h5">main number</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">51</span>
+                                <span class="case-metric-label font-h5">calculations per hand</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">10+ trillion</span>
+                                <span class="case-metric-label font-h5">possible hands</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">1</span>
+                                <span class="case-metric-label font-h5">delivered product!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="case-text font-h5">Describe the results. Keep observed evidence separate from anything
+                        that
+                        is a hypothesis.</p>
+
+                    <figure class="case-figure">
+                        <img class="case-figure-image" src="/assets/racoon.webp" alt="Describe this image" width="800"
+                            height="450">
+                        <figcaption class="case-figure-caption font-h5">Caption.</figcaption>
+                    </figure>
+                </section>
+
+                <!-- 6. REFLECTION. FULL CASE STUDY ONLY. Delete this section and guide node 5 for a light page. -->
+                <section class="case-section main-container" id="reflection-section">
+                    <h2 class="case-section-title font-h2" id="reflection-heading">Reflection</h2>
+
+                    <div class="case-reflection">
+
+                        <p class="font-h5">asd 1
+                        </p>
+                        <p class="font-h5">
+                            asd 2
+                        </p>
+                </section>
+
+            </div>
+
+            <div class="right-side"></div>
+        </div>
+
+        <div class="footer" id="footer"></div>
+
+        <!-- Main use. canvas.js is intentionally NOT loaded here; it drives the landing
+             galaxy canvas, which sub-pages do not have. -->
+        <script defer src="/logic.js"></script>
+
+    </main>
+
+</body>
+
+</html>

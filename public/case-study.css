@@ -1,0 +1,238 @@
+/* ==========================================================================
+   case-study.css
+   Styles for the project case-study sub-pages (public/projects/*.html).
+   Loads AFTER main-styles.css, so it reuses the shared :root tokens
+   (--grid-Margin, --grid-Gap, the font utilities, the accent colour) and only
+   adds what the main page does not have: the hero, the slanted band, the
+   alternating media rows, figures, and the metric blocks.
+   Breakpoint matches the rest of the site: max-width 1420px.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Section base
+   Every section already carries .main-container for the frosted panel. Here we
+   add the internal padding and a single, consistent vertical gap between a
+   section's own children, using the same spacing token as the main page.
+   -------------------------------------------------------------------------- */
+.case-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid-Margin);
+    padding: var(--grid-Margin);
+}
+
+.case-section-title {
+    margin: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Hero
+   -------------------------------------------------------------------------- */
+.case-hero-title {
+    margin: 0;
+}
+
+.case-hero-summary {
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* The TL;DR is a <p>, which carries a default browser margin. Zero it so its
+   spacing comes only from the section's flex gap, matching the other text and
+   removing the doubled space above and below it. */
+.case-tldr {
+    margin: 0;
+}
+
+/* Role / timeframe / tools sit in a wrapping row, so they reflow on narrow
+   screens instead of overflowing. */
+.case-hero-meta {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--grid-Gap) / 2);
+}
+
+.case-hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* The back link and the live-site link are inline actions, so stop the flex
+   column from stretching them across the full panel width. */
+.case-back-link,
+.case-hero-link {
+    color: #12a0ff;
+    text-decoration: none;
+    padding-right: var(--grid-Margin);
+}
+
+.case-back-link:hover,
+.case-hero-link:hover {
+    text-decoration: underline;
+}
+
+/* The back link is a standalone block in the hero's flex column, so it needs to
+   stay left rather than stretch. The hero links get that from their row wrapper
+   instead, so align-self moved off the shared rule and onto the back link only. */
+.case-back-link {
+    align-self: flex-start;
+}
+
+/* A group of paragraphs that should read as one block with normal paragraph
+   spacing between them. The wrapper carries the gap; the paragraphs inside carry
+   no margin of their own, matching how the sections space their children. Reuse
+   this anywhere you want several spaced sentences as one unit. */
+.case-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--grid-Gap) / 2);
+}
+
+.case-text-group p {
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Slanted highlight band (Problem section)
+   The diagonal is drawn with clip-path, no asset file. The four points are the
+   top-left, top-right, bottom-right, and bottom-left corners; because they are
+   percentages, the angle flexes with the band's width, which matches the
+   stretched-SVG look you liked. The purple wash sits over the stars so this
+   strip reads as a deliberate "stop and read this" break. The larger top and
+   bottom padding keeps the text clear of the cut corners.
+   -------------------------------------------------------------------------- */
+.slanted-band {
+    clip-path: polygon(0 12%, 100% 0, 100% 88%, 0 100%);
+    background: linear-gradient(120deg,
+            rgba(181, 0, 252, 0.35),
+            rgba(181, 0, 252, 0.18));
+    /* Negative margin cancels the .case-section padding on all four sides, so the
+       band bleeds out to the section's true edges. The matching border-radius lets
+       the band's corners sit flush inside the panel's rounded corners instead of
+       being clipped by them. Vertical padding keeps the text clear of the cuts. */
+    margin: calc(var(--grid-Margin) * -1);
+    padding: calc(var(--grid-Margin) * 2.5) var(--grid-Margin);
+}
+
+.slanted-band-text {
+    margin: 0;
+}
+
+.slanted-band--reversed {
+    clip-path: polygon(0 0, 100% 22%, 100% 100%, 0 78%);
+        /* Thinner than the Problem band: less vertical padding pulls the top and
+       bottom edges closer to the metrics, reducing the band's weight. The first
+       value is vertical (top/bottom), the second horizontal (left/right).
+       Lower the 1.25 to make it thinner still; raise it towards 2.5 to match
+       the Problem band again. */
+    padding: calc(var(--grid-Margin) * 1.5) var(--grid-Margin);
+    padding-top: calc(var(--grid-Margin) * 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   4. Alternating media rows (Detail section)
+   Image beside text on desktop; every even row swaps the image to the right so
+   the page zig-zags. On mobile the rows collapse to one column with the image
+   above the text, and the even-row swap is reset.
+   -------------------------------------------------------------------------- */
+.media-rows {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--grid-Gap) * 2);
+}
+
+.media-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--grid-Gap);
+    align-items: center;
+}
+
+/* Even rows: send the image to the second column; the text takes the first. */
+.media-row:nth-child(even) .media-row-image {
+    order: 2;
+}
+
+.media-row-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.media-row-heading {
+    margin: 0 0 calc(var(--grid-Margin) / 2) 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Figures and captions
+   No caption utility class exists in main-styles.css, so captions are sized
+   here from the caption-scale token. This rule loads after .font-h5 and has
+   equal specificity, so on the caption elements it wins the font-size, giving
+   a proper small caption.
+   -------------------------------------------------------------------------- */
+.case-figure {
+    margin: 0;
+}
+
+.case-figure-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.case-figure-caption {
+    font-size: var(--font-body-small-size);
+    opacity: 0.75;
+    text-align: center;
+    margin-top: calc(var(--grid-Margin) / 2);
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Outcome metrics
+   -------------------------------------------------------------------------- */
+.case-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--grid-Gap) * 2);
+}
+
+.case-metric {
+    display: flex;
+    flex-direction: column;
+}
+
+.case-metric-label {
+    opacity: 0.8;
+}
+
+
+/* --------------------------------------------------------------------------
+   7. General text
+   Paragraphs are spaced by their section's gap, so they carry no own margin.
+   -------------------------------------------------------------------------- */
+.case-text {
+    margin: 0;
+    padding-top: calc(var(--grid-Gap) * 1);
+}
+
+
+/* --------------------------------------------------------------------------
+   8. Mobile: single-column media rows, image above text.
+   Matches the site-wide 1420px breakpoint.
+   -------------------------------------------------------------------------- */
+@media (max-width: 1420px) {
+    .media-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reset the even-row swap so the image returns to its source position,
+       which is above the text in a single column. */
+    .media-row:nth-child(even) .media-row-image {
+        order: 0;
+    }
+}

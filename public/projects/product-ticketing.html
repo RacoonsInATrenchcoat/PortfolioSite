@@ -1,0 +1,390 @@
+<!-- Declare it's HTML5 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- EDIT PER PROJECT: page title and description -->
+    <title>Project Title | Tamas Tabi</title>
+    <meta name="description" content="One-line description of this project for search results and link previews.">
+
+    <!-- EDIT PER PROJECT: Open Graph tags control how the shared link looks when pasted into
+         an application, an email, or a message. Keep these in step with the title above. -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Project Title | Tamas Tabi">
+    <meta property="og:description" content="One-line description of this project for link previews.">
+    <meta property="og:image" content="https://portfoliosite-f7714.web.app/assets/racoon.webp">
+    <meta property="og:url" content="https://portfoliosite-f7714.web.app/projects/your-project">
+
+    <link rel="icon" type="image/x-icon" href="/assets/icons/website-light-icon.png">
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Root-absolute path so the stylesheet resolves from /projects/ as well -->
+    <link rel="stylesheet" href="/main-styles.css" />
+    <!-- Case-study-specific styles. Loads after main-styles.css so it can build
+         on the shared tokens and win ties in the cascade. -->
+    <link rel="stylesheet" href="/case-study.css" />
+
+    <!-- EDIT PER PROJECT (optional): preload the hero image for a faster first paint -->
+    <!-- <link rel="preload" href="/assets/your-hero-image.jpg" as="image"> -->
+
+    <!-- Mandatory Apple tax -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/website-light-icon.png">
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCPFQCDY4H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-KCPFQCDY4H');
+    </script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-menu">
+            <div class="header-menu-left">
+                <!-- The name is a quiet link home: it navigates and shows a pointer cursor,
+                     but is styled to look like plain text, not a coloured link. -->
+                <a class="font-h4 name-text name-home-link" href="/" aria-label="Back to home page">TAMAS<br>TABI</a>
+            </div>
+
+            <!-- Only for mobile. -->
+            <button class="hamburger-menu" aria-label="Toggle navigation" aria-controls="site-navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <!-- Nav links point back to the main page's sections with "/#...", so they work
+                 from inside /projects/. The logic.js guard lets these navigate normally. -->
+            <nav class="header-menu-right" id="site-navigation">
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#about-me-container">About Me</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#skills-container">Skills</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#projects-container">Projects</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#contact-container">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="body">
+
+        <!-- Background: parallax star layers, carried over so logic.js can populate them. -->
+        <div class="background-container" id="background-container">
+            <div class="parallax-container">
+                <div class="parallax-1"></div>
+                <div class="parallax-2"></div>
+                <div class="parallax-3"></div>
+            </div>
+            <div class="background-body"></div>
+        </div>
+
+        <div class="body-container">
+
+            <!-- Left column: the constellation guide line. One node per section heading.
+                 logic.js anchors each node vertically to the heading named in data-anchor-y,
+                 then draws the connecting lines. This is the metro-map effect. -->
+            <div class="left-side" id="left-side">
+                <div class="left-empty"></div>
+
+                <div class="arrows dot-container" id="arrows">
+                    <div class="dot dot-title" data-anchor-y="#hero-heading" style="--x: 50%; --y: 5%;"></div>
+                    <!-- 0 Hero -->
+                    <div class="dot dot-title" data-anchor-y="#overview-heading" style="--x: 50%; --y: 22%;"></div>
+                    <!-- 1 Overview -->
+                    <div class="dot dot-title" data-anchor-y="#problem-heading" style="--x: 50%; --y: 40%;"></div>
+                    <!-- 2 Problem -->
+                    <div class="dot dot-title" data-anchor-y="#detail-heading" style="--x: 50%; --y: 60%;"></div>
+                    <!-- 3 Detail -->
+                    <div class="dot dot-title" data-anchor-y="#outcome-heading" style="--x: 50%; --y: 80%;"></div>
+                    <!-- 4 Outcome -->
+                    <div class="dot dot-title" data-anchor-y="#reflection-heading" style="--x: 50%; --y: 95%;"></div>
+                    <!-- 5 Reflection -->
+
+                    <div class="line" data-from="0" data-to="1"></div>
+                    <div class="line" data-from="1" data-to="2"></div>
+                    <div class="line" data-from="2" data-to="3"></div>
+                    <div class="line" data-from="3" data-to="4"></div>
+                    <div class="line" data-from="4" data-to="5"></div>
+                </div>
+
+                <div class="right-empty"></div>
+            </div>
+
+            <!-- Content column: the six sections -->
+            <div class="middle-body case-study">
+
+                <!-- 1. HERO. Same in full and light pages. -->
+                <section class="case-section case-hero main-container" id="hero-section">
+                    <a class="case-back-link font-h5" href="/">&larr; Back to portfolio</a>
+
+                    <h1 class="case-hero-title font-h1" id="hero-heading">Product: From approved to build-ready</h1>
+                    <p class="case-hero-summary font-h3">How I took a signed-off product concept, with only a working
+                        prototype and its exported data to go on, and turned it into a structured, prioritised,
+                        build-ready backlog of features, epics, and refinement-ready stories.
+                    </p>
+
+                    <div class="case-hero-meta font-h5">
+                        <span class="case-hero-meta-item"><strong>Role:</strong> Product management, scoping and
+                            requirements</span>
+                        <span class="case-hero-meta-item"><strong>Timeframe:</strong> 2 days</span>
+                        <span class="case-hero-meta-item"><strong>Tools:</strong> Notion, Google Sheets, Visio,
+                            Claude</span>
+                    </div>
+
+                    <!-- Secondary action. Remove this line if the project has no live site. -->
+                    <div class="case-hero-links">
+                        <a class="case-hero-link font-h4"
+                            href="https://app.notion.com/p/Riskhub-Homework-3ba5622169b5809c81e8f748804e0308?source=copy_link"
+                            target="_blank" rel="noopener">
+                            <img class="case-hero-link-icon" src="/assets/icons/notion_app_logo.png" alt="" aria-hidden="true"
+                                width="24" height="24">
+                            <strong>View it in Notion!</strong>
+                        </a>
+                    </div>
+
+                </section>
+
+                <!-- 2. OVERVIEW. Same in full and light pages. -->
+                <section class="case-section main-container" id="overview-section">
+                    <h2 class="case-section-title font-h2" id="overview-heading">Overview</h2>
+                    <p class="case-tldr font-h4">A product in the UK building-safety compliance space had been approved
+                        for build, but there was no written specification. The only sources of truth were a functioning
+                        prototype and a set of exported data.
+                    </p>
+                                        <p class="case-tldr font-h4">
+                        My job was to close the gap between "approved" and "ready for build": to impose a clear, logical
+                        structure on the whole product and decide, explicitly, what was in and out of scope.
+
+                        I reverse-engineered the product from the prototype, mapped its boundaries, broke it into
+                        features, epics, and refinement-ready stories, and logged every assumption I made along the way.
+                    </p>
+
+                    <figure class="case-figure">
+                        <img class="case-figure-image" src="/assets/projects/productticket_1.png" alt="Describe this image" width="800"
+                            height="450">
+                        <figcaption class="case-figure-caption font-h5">Sample of the Epics Page in Notion
+                        </figcaption>
+                    </figure>
+                </section>
+
+                <!-- 3. PROBLEM. FULL CASE STUDY ONLY. To make a light page, delete this whole
+                     section, delete guide node 2 above, and renumber the guide lines (see notes). -->
+                <section class="case-section main-container" id="problem-section">
+                    <h2 class="case-section-title font-h2" id="problem-heading">The Problem</h2>
+
+                    <!-- The slanted highlight band. It will get its diagonal shape and purple
+                         tint in the CSS step; for now it renders as a plain block. -->
+                    <div class="slanted-band">
+                        <p class="slanted-band-text font-h4">The hardest, least glamorous part of product management is
+                            the gap between a green-lit idea and an engineer picking up a ticket.
+
+                            Doing it well means breaking a whole product into a logical structure of features, epics,
+                            and stories, then deciding what is deliberately in and out of scope.</p>
+                    </div>
+
+                    <p class="case-text font-h5">Two things made this harder than an ordinary breakdown. First, there
+                        was no written spec, so the requirements had to be inferred from a prototype and its data, not
+                        read from a document. Second, the domain is regulated building safety, where a regulator can
+                        demand evidence at short notice, so a product's boundaries and completeness are not academic.
+                        Getting the scope wrong is expensive.</p>
+                </section>
+
+                <!-- 4. DETAIL. The long middle, built as alternating image-and-text rows. -->
+                <section class="case-section main-container" id="detail-section">
+                    <h2 class="case-section-title font-h2" id="detail-heading">Approach and build</h2>
+
+                    <!-- The .media-rows wrapper holds only the rows, so the even-row flip counts
+                         cleanly. On desktop, even rows reverse automatically. On mobile, each row
+                         stacks with the image above the text. Copy a whole media-row block to add
+                         another step. -->
+                    <div class="media-rows">
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/projects/productticket_3.png" alt="Describe this image" width="600" height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">Map the product before splitting it.</h3>
+                                <p class="case-text font-h5">Before dividing anything, I reverse-engineered the
+                                    product's data model, its entity relationships, and its boundaries directly from the
+                                    prototype and its exported data. I worked out which system owned which data, what
+                                    this product owned versus what it only consumed from adjacent systems, and what fed
+                                    off it downstream. That boundary was the foundation of everything that followed,
+                                    because a clean scope depends entirely on knowing where your product ends and
+                                    someone else's begins. Most scope disputes are really boundary disputes in disguise.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/projects/productticket_4.png" alt="Describe this image" width="600" height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">Make every assumption visible.</h3>
+                                <p class="case-text font-h5">With no specification, assumptions were unavoidable, so I
+                                    made them a first-class part of the work rather than hiding them. Every assumption
+                                    went into a tagged decision log, which kept the reasoning visible and let me show
+                                    what I did not know as clearly as what I did. You can see that discipline surface
+                                    directly in the backlog: again and again, an epic's out-of-scope column names an
+                                    adjacent system I assumed already existed, the account setup, the notification
+                                    centre, the assessment workflows, the permission model. Each epic's boundary is
+                                    drawn against a stated assumption, not a guess.</p>
+                            </div>
+                        </div>
+
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/projects/productticket_5.png" alt="Describe this image" width="600" height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">Break it into features and epics.</h3>
+                                <p class="case-text font-h5">Only then did I decompose. I split the whole product into
+                                    six features, Data Ingestion, Document Model and Taxonomy, Lifecycle, Access and
+                                    Sharing, Monitoring, and Audit Trail, and broke those into 21 epics. The split
+                                    follows the product's own seams: how documents get in, how they are structured, how
+                                    their state changes over time, who can see them, how people read the whole picture,
+                                    and how change is recorded. Grouping by those seams, rather than by screen or by
+                                    user, is what keeps each feature independently meaningful.</p>
+                            </div>
+                        </div>
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/projects/productticket_6.png" alt="Describe this image" width="600" height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">Prioritise, size, scope, and sequence.</h3>
+                                <p class="case-text font-h5">A list of epics is not a plan, so every epic got four
+                                    things: a MoSCoW priority, a rough size, an explicit in-and-out-of-scope statement,
+                                    and a place in a dependency-driven order. The priorities did real work. Rather than
+                                    treat contractor self-service upload as one item, I scoped a barebones version in as
+                                    a Should and marked the full version an explicit Won't, so the line between this
+                                    release and a later one lives on the page, not in my head. The ordering column
+                                    encodes what has to exist before what: the document model and the status lifecycle
+                                    are first-wave, the dashboard and external sharing come later because they read from
+                                    those foundations. This is the stage that turns a breakdown into a build sequence.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/projects/productticket_7.png" alt="Describe this image" width="600" height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">Prove the depth on one epic.</h3>
+                                <p class="case-text font-h5">I deliberately went wide-and-shallow across all 21 epics
+                                    and deep on one: the Completeness engine, the logic that knows which fields are
+                                    required per document type, reports the specific gap, and drives the Missing
+                                    Information status. I chose it because it is the epic that turns a passive document
+                                    store into an active compliance tool. Storing files is table stakes; knowing what is
+                                    required, what is present, and what is missing per type is what lets the platform
+                                    answer whether a building's evidence is actually complete, which is the product's
+                                    whole promise. I took it to refinement-ready quality across five stories. One of
+                                    them, "evaluate completeness and trigger a status recompute on save or edit," ran to
+                                    a main, alternate, and error use case, seven acceptance criteria, the business rule
+                                    that the lifecycle machine owns status under a strict precedence of Superseded,
+                                    Expired, Missing Info, then Active, the confirmation UX for saving a soft-incomplete
+                                    document, explicit test conditions, the data it touches, and what it deliberately
+                                    leaves out. That is the level you would actually take into a session with
+                                    engineering and design.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. OUTCOME. FULL CASE STUDY ONLY. Delete this section and guide node 4 for a light page. -->
+                <section class="case-section main-container" id="outcome-section">
+                    <h2 class="case-section-title font-h2" id="outcome-heading">Outcome and impact</h2>
+
+                    <div class="slanted-band slanted-band--reversed">
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">6</span>
+                                <span class="case-metric-label font-h5">features</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">21</span>
+                                <span class="case-metric-label font-h5">epics</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">1</span>
+                                <span class="case-metric-label font-h5">epic to refinement-ready</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">5</span>
+                                <span class="case-metric-label font-h5">user stories fully specified</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="case-text font-h5">The work was assessed against the criteria it set out to meet: how
+                        scope is broken into meaningful, logical units, how assumptions are surfaced and shape
+                        decisions, and how requirements are documented across functional behaviour, business logic, and
+                        UX. The high-level structure and the explicit assumptions were the strongest part of the
+                        response, praised for their thoroughness and clarity.</p>
+                    <p class="case-text font-h5">One part drew particular praise: the documentation itself. I built the
+                        deliverable as a navigable landing page rather than a loose set of files, summarising the major
+                        decisions with links through to the detail: the full list of assumptions, what each feature owns
+                        versus what it only consumes from other teams, and a flowchart for the visuals. Because
+                        the company was explicitly pro-AI, I also kept a dedicated decision log recording where I used
+                        AI to make a call and where I overrode it, so the reasoning behind each choice stayed visible
+                        and attributable.</p>
+                </section>
+
+                <!-- 6. REFLECTION. FULL CASE STUDY ONLY. Delete this section and guide node 5 for a light page. -->
+                <section class="case-section main-container" id="reflection-section">
+                    <h2 class="case-section-title font-h2" id="reflection-heading">Reflection</h2>
+
+                    <div class="case-reflection">
+
+                        <p class="font-h5">This was a heavy task, with only two days to deliver it and no support.
+                            Having an up-to-date brief and a working test environment to explore was a real advantage
+                            for discovery, and I spent about half the time simply understanding how the product worked,
+                            immersed in the what, why, and how.
+                            <br>That paid off: the response was praised for being
+                            correct on the high-level direction, on which parts mattered most to prioritise, and on what
+                            depended on other teams.
+                        </p>
+                        <p class="font-h5">
+                            Given the same task again, I would write fewer stories but take them deeper, with tighter,
+                            more testable acceptance criteria, and I would bring engineering in earlier to pressure-test
+                            them before calling them refinement-ready.
+                            <br>That said, I still think going wide on the
+                            structure and deep on only one epic was the right trade-off under a two-day limit: a shallow
+                            story is cheap to deepen later, whereas a wrong high-level breakdown is expensive to unpick
+                            once a team has built on it.
+                        </p>
+                </section>
+
+            </div>
+
+            <div class="right-side"></div>
+        </div>
+
+        <div class="footer" id="footer"></div>
+
+        <!-- Main use. canvas.js is intentionally NOT loaded here; it drives the landing
+             galaxy canvas, which sub-pages do not have. -->
+        <script defer src="/logic.js"></script>
+
+    </main>
+
+</body>
+
+</html>

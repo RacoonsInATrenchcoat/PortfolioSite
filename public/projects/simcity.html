@@ -1,0 +1,368 @@
+<!-- Declare it's HTML5 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- EDIT PER PROJECT: page title and description -->
+    <title>Project Title | Tamas Tabi</title>
+    <meta name="description" content="One-line description of this project for search results and link previews.">
+
+    <!-- EDIT PER PROJECT: Open Graph tags control how the shared link looks when pasted into
+         an application, an email, or a message. Keep these in step with the title above. -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Project Title | Tamas Tabi">
+    <meta property="og:description" content="One-line description of this project for link previews.">
+    <meta property="og:image" content="https://portfoliosite-f7714.web.app/assets/racoon.webp">
+    <meta property="og:url" content="https://portfoliosite-f7714.web.app/projects/your-project">
+
+    <link rel="icon" type="image/x-icon" href="/assets/icons/website-light-icon.png">
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Root-absolute path so the stylesheet resolves from /projects/ as well -->
+    <link rel="stylesheet" href="/main-styles.css" />
+    <!-- Case-study-specific styles. Loads after main-styles.css so it can build
+         on the shared tokens and win ties in the cascade. -->
+    <link rel="stylesheet" href="/case-study.css" />
+
+    <!-- EDIT PER PROJECT (optional): preload the hero image for a faster first paint -->
+    <!-- <link rel="preload" href="/assets/your-hero-image.jpg" as="image"> -->
+
+    <!-- Mandatory Apple tax -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/website-light-icon.png">
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCPFQCDY4H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-KCPFQCDY4H');
+    </script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-menu">
+            <div class="header-menu-left">
+                <!-- The name is a quiet link home: it navigates and shows a pointer cursor,
+                     but is styled to look like plain text, not a coloured link. -->
+                <a class="font-h4 name-text name-home-link" href="/" aria-label="Back to home page">TAMAS<br>TABI</a>
+            </div>
+
+            <!-- Only for mobile. -->
+            <button class="hamburger-menu" aria-label="Toggle navigation" aria-controls="site-navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <!-- Nav links point back to the main page's sections with "/#...", so they work
+                 from inside /projects/. The logic.js guard lets these navigate normally. -->
+            <nav class="header-menu-right" id="site-navigation">
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#about-me-container">About Me</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#skills-container">Skills</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#projects-container">Projects</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#contact-container">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="body">
+
+        <!-- Background: parallax star layers, carried over so logic.js can populate them. -->
+        <div class="background-container" id="background-container">
+            <div class="parallax-container">
+                <div class="parallax-1"></div>
+                <div class="parallax-2"></div>
+                <div class="parallax-3"></div>
+            </div>
+            <div class="background-body"></div>
+        </div>
+
+        <div class="body-container">
+
+            <!-- Left column: the constellation guide line. One node per section heading.
+                 logic.js anchors each node vertically to the heading named in data-anchor-y,
+                 then draws the connecting lines. This is the metro-map effect. -->
+            <div class="left-side" id="left-side">
+                <div class="left-empty"></div>
+
+                <div class="arrows dot-container" id="arrows">
+                    <div class="dot dot-title" data-anchor-y="#hero-heading" style="--x: 50%; --y: 5%;"></div>
+                    <!-- 0 Hero -->
+                    <div class="dot dot-title" data-anchor-y="#overview-heading" style="--x: 50%; --y: 22%;"></div>
+                    <!-- 1 Overview -->
+                    <div class="dot dot-title" data-anchor-y="#problem-heading" style="--x: 50%; --y: 40%;"></div>
+                    <!-- 2 Problem -->
+                    <div class="dot dot-title" data-anchor-y="#detail-heading" style="--x: 50%; --y: 60%;"></div>
+                    <!-- 3 Detail -->
+                    <div class="dot dot-title" data-anchor-y="#outcome-heading" style="--x: 50%; --y: 80%;"></div>
+                    <!-- 4 Outcome -->
+                    <div class="dot dot-title" data-anchor-y="#reflection-heading" style="--x: 50%; --y: 95%;"></div>
+                    <!-- 5 Reflection -->
+
+                    <div class="line" data-from="0" data-to="1"></div>
+                    <div class="line" data-from="1" data-to="2"></div>
+                    <div class="line" data-from="2" data-to="3"></div>
+                    <div class="line" data-from="3" data-to="4"></div>
+                    <div class="line" data-from="4" data-to="5"></div>
+                </div>
+
+                <div class="right-empty"></div>
+            </div>
+
+            <!-- Content column: the six sections -->
+            <div class="middle-body case-study">
+
+                <!-- 1. HERO. Same in full and light pages. -->
+                <section class="case-section case-hero main-container" id="hero-section">
+                    <a class="case-back-link font-h5" href="/">&larr; Back to portfolio</a>
+
+                    <h1 class="case-hero-title font-h1" id="hero-heading">Sim City 4 - Sync Region addon</h1>
+                    <p class="case-hero-summary font-h3">My first official Mod for a game with over 100+ downloads!
+                    </p>
+
+                    <div class="case-hero-meta font-h5">
+                        <span class="case-hero-meta-item"><strong>Role:</strong> Product owner and developer</span>
+                        <span class="case-hero-meta-item"><strong>Timeframe:</strong> 1 month</span>
+                        <span class="case-hero-meta-item"><strong>Tools:</strong> C++, Visual Studio, Github</span>
+                    </div>
+
+                    <!-- Secondary action. Remove this line if the project has no live site. -->
+                    <div class="case-hero-links">
+                        <a class="case-hero-link font-h4"
+                            href="https://community.simtropolis.com/files/file/37590-region-sync/" target="_blank"
+                            rel="noopener">
+                            <img class="case-hero-link-icon" src="/assets/SC4.png" alt="Sim City 4 icon" aria-hidden="true" width="24"
+                                height="24">
+                            <strong>Download the mod</strong>
+                        </a>
+                        <a class="case-hero-link font-h4"
+                            href="https://github.com/RacoonsInATrenchcoat/SC4-Region-Update/tree/main" target="_blank"
+                            rel="noopener">
+                            <img class="case-hero-link-icon" src="/assets/icons/github-mark-white.png" alt="Github icon"
+                                aria-hidden="true" width="24" height="24">
+                            <strong>View the code on GitHub</strong>
+                        </a>
+                    </div>
+
+                    <!-- EDIT PER PROJECT: the single strongest visual goes here. -->
+                    <figure class="case-figure">
+                        <img class="case-hero-image" src="/assets/projects/simcity_1.png" alt="In-game image as a show of the game" width="800"
+                            height="450">
+                    </figure>
+
+                </section>
+
+                <!-- 2. OVERVIEW. Same in full and light pages. -->
+                <section class="case-section main-container" id="overview-section">
+                    <h2 class="case-section-title font-h2" id="overview-heading">Overview</h2>
+                    <div class="case-text-group case-tldr">
+                        <p class="font-h4">You have probably heard of the SimCity series, but not everyone knows that
+                            even 20 years after its release, SimCity 4 is still popular. Possibly the best in its
+                            genre, I keep returning to it over the years, and I have always wanted better
+                            quality-of-life tools for it.
+                        </p>
+                        <p class="font-h4">So I built one!</p>
+                    </div>
+
+                    <figure class="case-figure">
+                        <img class="case-figure-image" src="/assets/projects/simcity_2.png" alt="Region example as the city loads"
+                            width="800" height="450">
+                        <figcaption class="case-figure-caption font-h5">Loading into one of the many cities, as it syncs
+                            through the region.
+                        </figcaption>
+                    </figure>
+                </section>
+
+                <!-- 3. PROBLEM. FULL CASE STUDY ONLY. To make a light page, delete this whole
+                     section, delete guide node 2 above, and renumber the guide lines (see notes). -->
+                <section class="case-section main-container" id="problem-section">
+                    <h2 class="case-section-title font-h2" id="problem-heading">The Problem</h2>
+
+                    <!-- The slanted highlight band. It will get its diagonal shape and purple
+                         tint in the CSS step; for now it renders as a plain block. -->
+                    <div class="slanted-band">
+                        <p class="slanted-band-text font-h3">This addon solves a problem I had for quite a while:
+                            <br>ensuring that all cities are updated is both time-consuming and repetitive.
+                        </p>
+                    </div>
+
+                    <p class="case-text font-h5">
+                        In order to ensure all are in sync, a person had to load into a city, let it run for a while,
+                        save, and then repeat for every other tile.
+                        <br>My issue was that unlike the SimCity 2013, regions are not automatically in sync, and
+                        letting a few neighbours fall behind often causes problems to the city as they equalise. There
+                        is no simple way to solve this problem in-game, however this DLL is effectively a macro that let
+                        each
+                        city run and save from a single command.
+                    </p>
+                </section>
+
+                <!-- 4. DETAIL. The long middle, built as alternating image-and-text rows. -->
+                <section class="case-section main-container" id="detail-section">
+                    <h2 class="case-section-title font-h2" id="detail-heading">Approach and build</h2>
+
+                    <!-- The .media-rows wrapper holds only the rows, so the even-row flip counts
+                         cleanly. On desktop, even rows reverse automatically. On mobile, each row
+                         stacks with the image above the text. Copy a whole media-row block to add
+                         another step. -->
+                    <div class="media-rows">
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/projects/simcity_3.jpg" alt="In-game image wtih the command entered" width="600"
+                                    height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">Starting point</h3>
+                                <p class="case-text font-h5">I have used mods before, however there was a recent
+                                    breakthough that allowed accessing much more, by using DLL's.
+                                    Originally I thought of using AutoHotkey to mimic the user's input, but reading on
+                                    the DLL's realised that there was a much better, elegant way to handle it:
+                                    commanding the
+                                    existing game logic.
+                                </p>
+                                <p class="case-text font-h5"> End goal was to use the game engine's internal commands to
+                                    scan
+                                    the region, then step through each city tile in turn: load it, run the simulation
+                                    for a configurable number of months, save, and exit, repeating across the whole
+                                    region. This resynchronises cross-border data that would otherwise only update
+                                    through manual play.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/projects/simcity_4.png" alt="Code snippet of the many ingame test commands" width="600"
+                                    height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">Working with an outdated engine</h3>
+                                <p class="case-text font-h5">The main challenge was working without documentation.
+                                    <br>It was my first time using C++ and even while using other addons as an example
+                                    to build upon,
+                                    I had to reverse-engineer the game's internal commands, piece together what
+                                    references I
+                                    could find, exchange notes with others on the modding forums, and work through
+                                    several failed approaches before landing on one that was stable.
+                                <p class="case-text font-h5">In the end, I have discovered about 6 methods that did not
+                                    work and had to build
+                                    several testing methods to validate edge cases, before finding a valid solution.
+                                    <br>For example, even simple things like loading a .ini file had problems, as it had
+                                    to
+                                    be a forced "headerless" file to read it correctly, otherwise it errored out.
+                                    <br> This doesnt even touch on the scale where people use different versions,
+                                    different addons and operating systems, all that needed to be tested for
+                                    compatibility.
+                                </p>
+                                <p class="case-text font-h5">Since I was building something that was uncharted
+                                    territory,
+                                    I deliberately wrote down all test and
+                                    findings into a Github documentation, so others can learn from my research and be
+                                    inspired to build even
+                                    better things with it!</p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. OUTCOME. -->
+                <section class="case-section main-container" id="outcome-section">
+                    <h2 class="case-section-title font-h2" id="outcome-heading">Outcome and impact</h2>
+
+                    <div class="slanted-band slanted-band--reversed">
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">1000+</span>
+                                <span class="case-metric-label font-h5">page views as of Sept 2026</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">103</span>
+                                <span class="case-metric-label font-h5">downloads</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">10+ minutes</span>
+                                <span class="case-metric-label font-h5">saved on average region</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="case-metric-number font-h1">1</span>
+                                <span class="case-metric-label font-h5">delivered product!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="case-text font-h5"> Originally I thought I may be the only one who had this issue. That
+                        was not the case, and it is very nice to see that my personal project has helped others.
+                        The results were overwhelmingly positive, both as reception and download numbers.
+                        <br>Both on Simpropolis and
+                        Reddit, it was welcomed as a nice quality-of-life addon. I also know that this project has
+                        inspired other developer to create another mod based on my
+                        findings!
+                    </p>
+                    <p class="case-text font-h5">To quote one: <br>"I have always wondered whether something like
+                        this exists, delighted to hear it now does!"
+                    </p>
+
+
+                </section>
+
+                <!-- 6. REFLECTION. FULL CASE STUDY ONLY. Delete this section and guide node 5 for a light page. -->
+                <section class="case-section main-container" id="reflection-section">
+                    <h2 class="case-section-title font-h2" id="reflection-heading">Reflection</h2>
+
+                    <div class="case-reflection">
+
+                        <p class="font-h5">I loved working on this, as the many years of playing
+                            this game has given me a very good background knowledge of how things work, what are
+                            pitfalls to
+                            avoid, and what are possible avenues to make this happen. This just validated for me the
+                            importance of research and discovery, as otherwise I would have spent much, much longer time
+                            to
+                            get the same results.
+                        </p>
+                        <p class="font-h5">
+                            Perhaps most importantly of them all, this one had a direct impact with me and the
+                            community.
+                            Many projects are handed-off and never to be seen again. This one I could see on what people
+                            reacted, why they were happy to use it.
+                            <br> It has provided with me with a passion to continue and see how it helps others, called
+                            "ikigai". <br>This made me ensure that all my findings are documented and
+                            accessible, so others can take what I built and continue with new ideas, just as I did with
+                            theirs.
+                        </p>
+                </section>
+
+            </div>
+
+            <div class="right-side"></div>
+        </div>
+
+        <div class="footer" id="footer"></div>
+
+        <!-- Main use. canvas.js is intentionally NOT loaded here; it drives the landing
+             galaxy canvas, which sub-pages do not have. -->
+        <script defer src="/logic.js"></script>
+
+    </main>
+
+</body>
+
+</html>

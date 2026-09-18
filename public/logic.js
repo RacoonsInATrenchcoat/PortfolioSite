@@ -320,8 +320,13 @@ function smoothScroll(selector, duration) {
 //Then to actually use the above details:
 document.querySelectorAll('.nav-button').forEach(btn => {
   btn.addEventListener('click', e => {
+    const href = btn.getAttribute('href');
+    // Only intercept same-page anchors (href starting with "#"). On sub-pages the
+    // nav links point to "/#section" on the main page, and those must navigate
+    // normally instead of being caught and turned into a no-op scroll.
+    if (!href || !href.startsWith('#')) return;
     e.preventDefault();
-    smoothScroll(btn.getAttribute('href'), 1500);
+    smoothScroll(href, 1500);
   });
 });
 
