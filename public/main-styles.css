@@ -1201,6 +1201,55 @@ Need to use this basic element + before + after to have it all load and transiti
     /*Vertical align*/
 }
 
+/* Cover image at the top of a project card: a wide landscape preview that
+   catches a skimming eye before any text. Wrapped in a link so the whole image
+   is a click target through to the case study. */
+.project-card-cover-link {
+    display: block;
+}
+
+.project-card-cover {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit:contain ;      /* fills the frame and crops, never distorts */
+    border-radius: 20px;
+    display: block;
+}
+
+/* Foot-of-card action links, stacked one per line, case study on top. */
+.project-card-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(var(--grid-Gap) / 2);
+    margin-top: calc(var(--grid-Margin) / 2);
+}
+
+.project-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    color: #12a0ff;
+    text-decoration: none;
+}
+
+/* Link icon: sized in em so it tracks the link's text size and stays aligned. */
+
+.project-card-link-icon {
+    height: 1.2em;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+}
+
+.project-card-link:hover {
+    text-decoration: underline;
+}
+
+.project-card-link--primary {
+    font-weight: 700;
+}
+
 /* Card grid: flows automatically. Reorder by moving <article> blocks in the HTML. */
 .projects-grid {
     display: grid;

@@ -1,0 +1,256 @@
+<!-- Declare it's HTML5 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- EDIT PER PROJECT: page title and description -->
+    <title>Product work with an AI coding agent | Tamas Tabi</title>
+    <meta name="description"
+        content="A working building-safety tool built end to end by directing an AI coding agent, run like a real engineering workstream rather than an ad-hoc prompt session.">
+
+    <!-- EDIT PER PROJECT: Open Graph tags control how the shared link looks when pasted into
+         an application, an email, or a message. Keep these in step with the title above. -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Product work with an AI coding agent | Tamas Tabi">
+    <meta property="og:description"
+        content="A working building-safety tool built end to end by directing an AI coding agent, run like a real engineering workstream rather than an ad-hoc prompt session.">
+    <meta property="og:image" content="https://portfoliosite-f7714.web.app/assets/racoon.webp">
+    <meta property="og:url" content="https://portfoliosite-f7714.web.app/projects/your-project">
+
+    <link rel="icon" type="image/x-icon" href="/assets/icons/website-light-icon.png">
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Root-absolute path so the stylesheet resolves from /projects/ as well -->
+    <link rel="stylesheet" href="/main-styles.css" />
+    <!-- Case-study-specific styles. Loads after main-styles.css so it can build
+         on the shared tokens and win ties in the cascade. -->
+    <link rel="stylesheet" href="/case-study.css" />
+
+    <!-- EDIT PER PROJECT (optional): preload the hero image for a faster first paint -->
+    <!-- <link rel="preload" href="/assets/your-hero-image.jpg" as="image"> -->
+
+    <!-- Mandatory Apple tax -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/website-light-icon.png">
+
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCPFQCDY4H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-KCPFQCDY4H');
+    </script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-menu">
+            <div class="header-menu-left">
+                <!-- The name is a quiet link home: it navigates and shows a pointer cursor,
+                     but is styled to look like plain text, not a coloured link. -->
+                <a class="font-h4 name-text name-home-link" href="/" aria-label="Back to home page">TAMAS<br>TABI</a>
+            </div>
+
+            <!-- Only for mobile. -->
+            <button class="hamburger-menu" aria-label="Toggle navigation" aria-controls="site-navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <!-- Nav links point back to the main page's sections with "/#...", so they work
+                 from inside /projects/. The logic.js guard lets these navigate normally. -->
+            <nav class="header-menu-right" id="site-navigation">
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#about-me-container">About Me</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#skills-container">Skills</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#projects-container">Projects</a>
+                </div>
+                <div class="nav-button-container">
+                    <a class="nav-button font-h5" href="/#contact-container">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="body">
+
+        <!-- Background: parallax star layers, carried over so logic.js can populate them. -->
+        <div class="background-container" id="background-container">
+            <div class="parallax-container">
+                <div class="parallax-1"></div>
+                <div class="parallax-2"></div>
+                <div class="parallax-3"></div>
+            </div>
+            <div class="background-body"></div>
+        </div>
+
+        <div class="body-container">
+
+            <!-- Left column: the constellation guide line. One node per section heading.
+                 logic.js anchors each node vertically to the heading named in data-anchor-y,
+                 then draws the connecting lines. This is the metro-map effect. -->
+            <div class="left-side" id="left-side">
+                <div class="left-empty"></div>
+
+                <div class="arrows dot-container" id="arrows">
+                    <div class="dot dot-title" data-anchor-y="#hero-heading" style="--x: 50%; --y: 8%;"></div>
+                    <!-- 0 Hero -->
+                    <div class="dot dot-title" data-anchor-y="#overview-heading" style="--x: 50%; --y: 45%;"></div>
+                    <!-- 1 Overview -->
+                    <div class="dot dot-title" data-anchor-y="#detail-heading" style="--x: 50%; --y: 85%;"></div>
+                    <!-- 2 Detail -->
+
+                    <div class="line" data-from="0" data-to="1"></div>
+                    <div class="line" data-from="1" data-to="2"></div>
+                </div>
+
+                <div class="right-empty"></div>
+            </div>
+
+            <!-- Content column: the six sections -->
+            <div class="middle-body case-study">
+
+                <!-- 1. HERO. Same in full and light pages. -->
+                <section class="case-section case-hero main-container" id="hero-section">
+                    <a class="case-back-link font-h5" href="/">&larr; Back to portfolio</a>
+
+                    <h1 class="case-hero-title font-h1" id="hero-heading">Product work with an AI coding agent</h1>
+                    <p class="case-hero-summary font-h3">A working building-safety tool built end to end by directing an
+                        AI coding agent, run like a real engineering workstream rather than an ad-hoc prompt session.
+                    </p>
+
+                    <div class="case-hero-meta font-h5">
+                        <span class="case-hero-meta-item"><strong>Role:</strong> Product owner and sole developer,
+                            directing the AI coding agent, Claude Code.</span>
+                        <span class="case-hero-meta-item"><strong>Timeframe:</strong> 2 days</span>
+                        <span class="case-hero-meta-item"><strong>Tools:</strong> HTML, CSS, TypeScript, no framework,
+                            localStorage, Claude Code, Firebase, GitHub</span>
+                    </div>
+
+                    <!-- Secondary action. Remove this line if the project has no live site. -->
+                    <div class="case-hero-links">
+                        <a class="case-hero-link font-h4" href="https://claudecproject.web.app/" target="_blank"
+                            rel="noopener">
+                            <img class="case-hero-link-icon" src="/assets/product_work.svg" alt="" aria-hidden="true"
+                                width="24" height="24">
+                            <strong>View the live tool!</strong>
+                        </a>
+                        <a class="case-hero-link font-h4" href="https://github.com/RacoonsInATrenchcoat/Practice-CCode"
+                            target="_blank" rel="noopener">
+                            <img class="case-hero-link-icon" src="/assets/icons/github-mark-white.png" alt=""
+                                aria-hidden="true" width="24" height="24">
+                            <strong>View the code on GitHub</strong>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- 2. OVERVIEW. Same in full and light pages. -->
+                <section class="case-section main-container" id="overview-section">
+                    <h2 class="case-section-title font-h2" id="overview-heading">Overview</h2>
+                    <p class="case-tldr font-h4">I wanted to test a specific idea: that a product manager's job on an
+                        AI-native team is not to hand a tool a prompt and accept what comes back, but to direct it with
+                        the same rigour you would bring to a real engineering workstream.
+
+                        <br>So I built a working fire-risk-assessment remedial-action tracker, the kind of tool the UK
+                        building-safety industry runs on, where each finding becomes an action with an owner, a
+                        priority, and a target date, moving through the lifecycle that forms the auditable record
+                        compliance depends on.
+                    </p>
+                    <p class="case-tldr font-h4">
+                        The point was not the final code, it was the delivery to a working example.</p>
+
+                    <p class="case-text font-h5">This is the hands-on companion to my <a
+                            href="/projects/[ticketing-file]">scoping and ticketing case study</a>, where I took a
+                        similar building-safety product from an approved concept to a build-ready backlog for a team,
+                        rather than building it myself.</p>
+
+                    <figure class="case-figure">
+                        <img class="case-figure-image" src="/assets/projects/productwork_1.png"
+                            alt="Describe this image" width="800" height="450">
+                        <figcaption class="case-figure-caption font-h5">The main view, with fully functioning logic.
+                        </figcaption>
+                    </figure>
+                </section>
+
+                <!-- 4. DETAIL. The long middle, built as alternating image-and-text rows. -->
+                <section class="case-section main-container" id="detail-section">
+                    <h2 class="case-section-title font-h2" id="detail-heading">Approach and build</h2>
+
+                    <!-- The .media-rows wrapper holds only the rows, so the even-row flip counts
+                         cleanly. On desktop, even rows reverse automatically. On mobile, each row
+                         stacks with the image above the text. Copy a whole media-row block to add
+                         another step. -->
+                    <div class="media-rows">
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/projects/productwork_2.png" alt="Describe this image" width="600"
+                                    height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">What I built</h3>
+                                <p class="case-text font-h5">A deliberately small but functional slice: a browser-based
+                                    tracker that lists remedial actions, each with a building reference, description,
+                                    priority, owner, target date, and status. You can add an action with validation, so
+                                    required fields are enforced and a target date cannot be in the past, update a
+                                    status straight from the list, and filter by status, priority, building, or overdue.
+                                    Everything persists in the browser with no backend and no accounts. </p>
+                                <p class="case-text font-h5">It is a learning
+                                    and portfolio piece, not a commercial product, and it was scoped that way on
+                                    purpose: just enough working software to prove the delivery approach.</p>
+                            </div>
+                        </div>
+
+                        <div class="media-row">
+                            <div class="media-row-image">
+                                <img src="/assets/projects/productwork_3.png" alt="Describe this image" width="600"
+                                    height="400">
+                            </div>
+                            <div class="media-row-text">
+                                <h3 class="media-row-heading font-h3">How I ran it</h3>
+                                <p class="case-text font-h5">Rather than a loose chat with an AI, I ran it like an
+                                    engineering workstream: versioned checkpoints, a written working agreement,
+                                    conventional commits, and a dated decision log that tagged every decision by type,
+                                    whether I directed the agent, overrode its output, or corrected its process.
+                                    <br>My user
+                                    stories were written to a reusable structure, so a fresh agent session could pick up
+                                    any one of them and build it with no re-explanation.
+                                </p>
+                                <p class="case-text font-h5"> The documentation lived
+                                    alongside the build (all visible on Github!), a product brief with the original
+                                    scope and success criteria, a
+                                    running project summary of what shipped and what was deliberately left out, and the
+                                    decision log itself.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-side"></div>
+        </div>
+
+        <div class="footer" id="footer"></div>
+
+        <!-- Main use. canvas.js is intentionally NOT loaded here; it drives the landing
+             galaxy canvas, which sub-pages do not have. -->
+        <script defer src="/logic.js"></script>
+
+    </main>
+
+</body>
+
+</html>

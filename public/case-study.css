@@ -26,6 +26,17 @@
     margin: 0;
 }
 
+/* Inline links within case-study body text, e.g. the related-project cross-links. */
+.case-text a,
+.case-tldr a {
+    color: #12a0ff;
+    text-decoration: none;
+}
+
+.case-text a:hover,
+.case-tldr a:hover {
+    text-decoration: underline;
+}
 
 /* --------------------------------------------------------------------------
    2. Hero

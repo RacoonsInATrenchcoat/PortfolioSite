@@ -48,6 +48,7 @@ Icons:  https://www.svgrepo.com
         Mahjong icon: https://commons.wikimedia.org/wiki/File:MJt1-.svg
         Product work icon: https://thenounproject.com/icon/command-prompt-4139429/
         Sim City 4 icon: https://www.steamgriddb.com/icon/47120
+        Case Study: https://thenounproject.com/icon/case-study-8100829/
 Logo:   https://www.flaticon.com/free-icon/circle_11068138
 
 
